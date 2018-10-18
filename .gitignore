@@ -4,3 +4,7 @@ public/styles
 *.log
 *.sqlite3
 .DS_Store
+<<<<<<< HEAD
+=======
+resource_wall.md
+>>>>>>> ad4425c856123c1d01314d066772ad2287e4b4b6
