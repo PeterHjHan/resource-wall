@@ -1,14 +1,18 @@
-function makeDataHelpers(knex){
+function makeDataHelpers(knex) {
 
-  function getUserById(userId, cb){
+  function getUserById(userId, cb) {
     knex('users')
       .first('*')
-      .where({id: userId})
+      .where({
+        id: userId
+      })
       .asCallback(cb);
 
-  return {
-    getUserById,
-  };
-}
+    }
+    return {
+      getUserById,
+    };
+  }
+
 
 module.exports = makeDataHelpers;

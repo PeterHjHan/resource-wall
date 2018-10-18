@@ -67,7 +67,6 @@ app.use((req, res, next) => {
   });
 });
 
-
 // Home page
 app.get('/', (req, res) => {
   res.render('index');
@@ -78,7 +77,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  dataHelpers.getUserByName(req.params.username)
+  getUserByName(req.params.username)
     .then(user => {
       req.session.id = user.id;
       res.redirect('/');
@@ -105,11 +104,19 @@ app.post('/logout', (req, res) => {
 
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
+
   res.render('search');
 });
 
 //resources categorized under a topic
 app.get('/:topic', (req, res) => {
+  var topicPage = req.params.topic;
+  console.log(topicPage);
+  knex('topics')
+    .select('name')
+    .asCallback((res)=> {
+      console.log(res);
+    })
   res.render('topic');
 });
 
