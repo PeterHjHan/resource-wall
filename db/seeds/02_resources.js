@@ -1,13 +1,33 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('resources').del()
     .then(function () {
       return Promise.all([
         // Inserts seed entries
-        knex('table_name').insert({id: 1, colName: 'rowValue1'}),
-        knex('table_name').insert({id: 2, colName: 'rowValue2'}),
-        knex('table_name').insert({id: 3, colName: 'rowValue3'})
+        knex('resources').insert({
+          id: 1,
+          title: 'Peter',
+          description: 'Peter. Help me',
+          topic: 'Food',
+          url: 'http://www.youtube.com',
+          user_id: 1,
+        }),
+        knex('resources').insert({
+          id: 2,
+          title: 'Bassem',
+          description: 'Ore-sama wa saigou Bassem dessu yo nae',
+          topic: 'Food',
+          url: 'http://www.youtube.com',
+          user_id: 2,
+        }),
+        knex('resources').insert({
+          id: 3,
+          title: 'Monica',
+          description: 'Ore-sama wa Monica dessu yo nae',
+          topic: 'Food',
+          url: 'http://www.youtube.com',
+          user_id: 3,
+        })
       ]);
     });
 };
