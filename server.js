@@ -76,8 +76,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  getUserByName(req.params.username)
-    .then(user => {
+  getUserByName(req.params.username, (err, user) => {
       req.session.id = user.id;
       res.redirect('/');
     });
@@ -91,9 +90,13 @@ app.get('/users/:user', (req, res) => {
 });
 
 app.get('/users/:user/settings', (req, res) => {
-  
-  res.render('user-settings');
-});
+  if (res.locals.user) {
+    res.render('user-settings');
+  } else {
+    res.status(403).send('Forbidden');
+    res.redirect('/')
+  }
+
 
 app.post('/logout', (req, res) => {
   req.session = null;
