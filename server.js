@@ -54,6 +54,14 @@ app.listen(PORT, () => {
 });
 
 
+// for checking cookeis
+app.use((req, res, next) => {
+  // use this for setting cookies
+  // res.locals.user = ...?
+  next();
+})
+
+
 // Home page
 app.get('/', (req, res) => {
   res.render("index");
