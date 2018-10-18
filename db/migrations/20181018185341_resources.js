@@ -4,13 +4,12 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('title').notNull();
     table.text('description').notNull();
-    table.string('topic').notNull();
     table.text('url');
     table.integer('user_id').unsigned().notNull();
+    table.integer('topic_id').unsigned().notNull();
 
-    table.foreign('user_id')
-        .references('id')
-        .inTable('users');
+    table.foreign('user_id').references('id').inTable('users');
+    table.foreign('topic_id').references('id').inTable('topics');
   })
 };
 
