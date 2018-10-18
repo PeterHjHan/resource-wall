@@ -7,19 +7,19 @@ exports.seed = function (knex, Promise) {
         knex('users').insert({
           id: 1,
           username: 'peter',
-          password: 'admin',
+          password: 'peter',
           avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
         }),
         knex('users').insert({
           id: 2,
           username: 'bassem',
-          password: 'admin',
+          password: 'bassem',
           avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
         }),
         knex('users').insert({
           id: 3,
           username: 'monica',
-          password: 'admin',
+          password: 'monica',
           avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
         })
       ]);
