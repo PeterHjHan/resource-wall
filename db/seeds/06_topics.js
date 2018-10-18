@@ -1,18 +1,18 @@
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex('tables').del()
+  return knex('topics').del()
     .then(function () {
       return Promise.all([
         // Inserts seed entries
-        knex('tables').insert({
+        knex('topics').insert({
           id: 1,
           name: 'Food'
         }),
-        knex('tables').insert({
+        knex('topics').insert({
           id: 2,
           name: 'Sports'
         }),
-        knex('tables').insert({
+        knex('topics').insert({
           id: 3,
           name: 'Movie'
         })
