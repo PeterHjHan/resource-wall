@@ -4,7 +4,8 @@ function makeDataHelpers(knex){
     knex('users')
       .first('*')
       .where({id: userId})
-      .asCallback(cb);
+      .asCallback(cb)
+  };
 
   return {
     getUserById,

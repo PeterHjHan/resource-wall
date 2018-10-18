@@ -58,7 +58,6 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-
 // Check for cookies
 app.use((req, res, next) => {
   getUserById(req.session.userId, (err, user) => {
@@ -66,7 +65,6 @@ app.use((req, res, next) => {
     next();
   });
 });
-
 
 // Home page
 app.get('/', (req, res) => {
@@ -78,7 +76,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  dataHelpers.getUserByName(req.params.username)
+  getUserByName(req.params.username)
     .then(user => {
       req.session.id = user.id;
       res.redirect('/');
@@ -88,11 +86,12 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
+  
   res.render('user');
 });
 
 app.get('/users/:user/settings', (req, res) => {
-
+  
   res.render('user-settings');
 });
 
