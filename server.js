@@ -59,7 +59,6 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-
 // Check for cookies
 app.use((req, res, next) => {
   getUserById(req.session.userId, (err, user) => {
@@ -67,7 +66,6 @@ app.use((req, res, next) => {
     next();
   });
 });
-
 
 // Home page
 app.get('/', (req, res) => {
@@ -88,13 +86,18 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
+  
   res.render('user');
 });
 
 app.get('/users/:user/settings', (req, res) => {
+  if (res.locals.user) {
+    res.render('user-settings');
+  } else {
+    res.status(403).send('Forbidden');
+    res.redirect('/')
+  }
 
-  res.render('user-settings');
-});
 
 app.post('/logout', (req, res) => {
   req.session = null;

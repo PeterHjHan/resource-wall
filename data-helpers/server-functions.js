@@ -12,7 +12,7 @@ function makeDataHelpers(knex){
       .first('*')
       .where({username: user})
       .asCallback(cb)
-  }
+  };
 
   return {
     getUserById,
