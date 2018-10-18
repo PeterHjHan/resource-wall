@@ -46,7 +46,7 @@ app.use(cookieSession({
 app.use('/api/users', usersRoutes(knex));
 
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Routing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
 app.listen(PORT, () => {
