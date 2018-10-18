@@ -54,60 +54,69 @@ app.listen(PORT, () => {
 });
 
 
-// for checking cookeis
+// Check for cookies
 app.use((req, res, next) => {
-  // use this for setting cookies
-  // res.locals.user = ...?
-  next();
-})
+  getUserById(req.session.userId, (err, user) => {
+    res.locals.user = user;
+    next();
+  });
+});
 
 
 // Home page
 app.get('/', (req, res) => {
-  res.render("index");
+  res.render('index');
 });
 
 
 //----------------------- User ---------------------//
 
+// backdoor by username
+app.get('/backdoor/:username', (req, res) => {
+  dataHelpers.getUserByName(req.params.username)
+    .then(user => {
+      req.session.id = user.id;
+      res.redirect('/');
+    });
+});
 
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-
+  res.render('user');
 });
 
 app.get('/users/:user/settings', (req, res) => {
 
+  res.render('user-settings');
 });
 
 app.post('/logout', (req, res) => {
-
+  req.session = null;
+  res.redirect('/');
 });
 
 //----------------------- Pages ---------------------//
 
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
-
+  res.render('search');
 });
 
 //resources categorized under a topic
-
 app.get('/:topic', (req, res) => {
-
-});
-
-//post a new resource
-app.post('/:topic/new', (req, res) => {
-
+  res.render('topic');
 });
 
 //specific resource
 app.get('/:topic/:id', (req, res) => {
-
+  res.render('resource');
 });
 
+//post a new resource
+app.post('/:topic/new', (req, res) => {
+  res.redirect('')
+});
 
 //delete a resource if you are the owner
 app.post('/:topic/:id/delete', (req, res) => {
