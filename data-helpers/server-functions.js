@@ -7,14 +7,16 @@ function makeDataHelpers(knex){
       .asCallback(cb);
   }
 
-  function getUserByName(user){
+  function getUserByName(user, cb){
     knex('users')
       .first('*')
       .where({username: user})
+      .asCallback(cb)
   }
 
   return {
     getUserById,
+    getUserByName
   };
 }
 

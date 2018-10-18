@@ -18,6 +18,7 @@ const knexLogger  = require('knex-logger');
 
 const {
   getUserById,
+  getUserByName
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -78,8 +79,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  getUserByName(req.params.username)
-    .then(user => {
+  getUserByName(req.params.username, (err, user) => {
       req.session.id = user.id;
       res.redirect('/');
     });
