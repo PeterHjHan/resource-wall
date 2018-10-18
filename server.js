@@ -86,7 +86,7 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-  
+
   res.render('user');
 });
 
@@ -95,9 +95,9 @@ app.get('/users/:user/settings', (req, res) => {
     res.render('user-settings');
   } else {
     res.status(403).send('Forbidden');
-    res.redirect('/')
+    res.redirect('/');
   }
-
+});
 
 app.post('/logout', (req, res) => {
   req.session = null;
