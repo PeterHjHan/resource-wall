@@ -98,15 +98,16 @@ app.get('/:topic', (req, res) => {
 
 });
 
+//post a new resource
+app.post('/:topic/new', (req, res) => {
+
+});
+
 //specific resource
 app.get('/:topic/:id', (req, res) => {
 
 });
 
-//post a new resource
-app.post('/:topic/new', (req, res) => {
-
-});
 
 //delete a resource if you are the owner
 app.post('/:topic/:id/delete', (req, res) => {
