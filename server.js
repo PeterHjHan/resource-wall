@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  dataHelpers.getUserByName(req.params.username)
+  getUserByName(req.params.username)
     .then(user => {
       req.session.id = user.id;
       res.redirect('/');
