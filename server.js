@@ -114,13 +114,10 @@ app.get('/search', (req, res) => {
 //resources categorized under a topic
 app.get('/topics/:topic', (req, res) => {
   let topicPage = req.params.topic;
-  //TODO: in the topics database, change them to ALL LOWERCASES
-
   knex('topics')
     .select('name')
     .where({ name : topicPage})
     .asCallback((err, rows)=> {
-        console.log(rows[0]);
       if(!rows[0]) {
         res.redirect('/');
       } else {
