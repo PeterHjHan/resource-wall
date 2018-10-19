@@ -31,8 +31,6 @@ const {
 const usersRoutes = require('./routes/users');
 const resourcesRoutes = require('./routes/resources');
 const commentsRoutes = require('./routes/comments');
-const likesRoutes = require('./routes/likes');
-const ratingsRoutes = require('./routes/ratings');
 const topicsRoutes = require('./routes/topics');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -62,8 +60,6 @@ app.use(cookieSession({
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/resources', resourcesRoutes(knex));
 app.use('/api/comments', commentsRoutes(knex));
-app.use('/api/likes', likesRoutes(knex));
-app.use('/api/ratings', ratingsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
 
 
