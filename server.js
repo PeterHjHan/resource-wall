@@ -112,23 +112,25 @@ app.get('/search', (req, res) => {
 });
 
 //resources categorized under a topic
-app.get('/:topic', (req, res) => {
+app.get('/topics/:topic', (req, res) => {
   res.render('topic');
 });
 
 //specific resource
-app.get('/:topic/:id', (req, res) => {
+app.get('/resources/:id', (req, res) => {
   res.render('resource');
 });
 
 //post a new resource
-app.post('/:topic/new', (req, res) => {
+app.post('/resources/new', (req, res) => {
   res.redirect('')
 });
 
 //delete a resource if you are the owner
-app.post('/:topic/:id/delete', (req, res) => {
+app.post('/resources/:id/delete', (req, res) => {
+  deleteResource(req.params.id, req.session.userId, (err, del) => {
 
+  })
 });
 
 
