@@ -66,7 +66,7 @@ app.listen(PORT, () => {
 
 // Check for cookies
 app.use((req, res, next) => {
-  getUserById(req.session.userId, (err, user) => {
+  getUserById(req.session.id, (err, user) => {
     res.locals.user = user;
     next();
   });
