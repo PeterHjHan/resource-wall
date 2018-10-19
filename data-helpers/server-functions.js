@@ -3,7 +3,6 @@ function makeDataHelpers(knex) {
   function getUserById(userId, cb) {
     knex('users')
       .first('*')
-
       .where({id: userId})
       .asCallback(cb);
   };
@@ -15,16 +14,26 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   };
 
+  function filterTopicsByName(topic, cb) {
+    knex('topics')
+      .select('name')
+      .where({name : topic})
+      .asCallback(cb)
+  };
+
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
       .where({resource_id: resourceId, user_id: userId})
       .del()
       .asCallback(cb)
-  }
+  };
+
   return {
     getUserById,
-    getUserByName
+    getUserByName,
+    filterTopicsByName,
+    deleteResource
   };
 }
 
