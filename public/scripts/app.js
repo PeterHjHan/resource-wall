@@ -1,4 +1,6 @@
 $(() => {
+
+
   $.ajax({
     method: "GET",
     url: "/api/users"
@@ -6,7 +8,6 @@ $(() => {
     for(user of users) {
       $("<article>").addClass(".grid-item").text(user.username).appendTo($("body"));
     }
-
   });;
 
   $('.grid').masonry({
@@ -15,7 +16,9 @@ $(() => {
     columnWidth: 20
   });
 
-  function showResource(){
+
+
+  function createResourceElement(){
     const $article = $('<article>').addClass('grid-item');
 
     const $title = $('<h4>').addClass();

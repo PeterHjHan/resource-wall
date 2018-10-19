@@ -55,6 +55,7 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use('/api/users', usersRoutes(knex));
+app.use('/api/resources', usersRoutes(knex));
 
 
 
