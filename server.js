@@ -30,6 +30,10 @@ const {
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
 const resourcesRoutes = require('./routes/resources');
+const commentsRoutes = require('./routes/comments');
+const likesRoutes = require('./routes/likes');
+const ratingsRoutes = require('./routes/ratings');
+const topicsRoutes = require('./routes/topics');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -56,8 +60,11 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use('/api/users', usersRoutes(knex));
-
 app.use('/api/resources', resourcesRoutes(knex));
+app.use('/api/comments', commentsRoutes(knex));
+app.use('/api/likes', likesRoutes(knex));
+app.use('/api/ratings', ratingsRoutes(knex));
+app.use('/api/topics', topicsRoutes(knex));
 
 
 

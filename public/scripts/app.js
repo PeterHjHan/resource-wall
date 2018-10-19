@@ -22,8 +22,7 @@ $(() => {
     itemSelector: '.grid-item',
     columnWidth: 20
   });
-
-
+window.location.pathname
 
   function createResourceElement(){
     const $article = $('<article>').addClass('grid-item');
