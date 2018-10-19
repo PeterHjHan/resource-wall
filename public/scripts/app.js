@@ -40,7 +40,7 @@ $(() => {
     const $userUrl = $('<a>').addClass().text(item.url);
     // const $like = $('<p>').addClass().text(item.like)
     const $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
-    const $topic = $('<p>').addClass().text(`Topic ${item.name}`)
+    const $topic = $('<p>').addClass().text(`Topic ${item.topic}`)
 
     return $article
       .append($title)

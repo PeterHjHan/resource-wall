@@ -14,10 +14,10 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   };
 
-  function filterTopicsByName(topic, cb) {
+  function filterTopicsByName(name, cb) {
     knex('topics')
-      .select('name')
-      .where({name : topic})
+      .select('topic')
+      .where({topic : name})
       .asCallback(cb)
   };
 
