@@ -23,10 +23,13 @@ $(() => {
     const $title = $('<h4>').addClass().text(item.title);
     const $description = $('<p>').addClass().text(item.description);
     const $userUrl = $('<a>').addClass().text(item.url);
+    // const $like = $('<p>').addClass().text(item.like)
+    const $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
 
     return $article
       .append($title)
       .append($description)
       .append($userUrl)
+      .append($ratings)
   }
 });
