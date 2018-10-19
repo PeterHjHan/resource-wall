@@ -124,7 +124,6 @@ app.get('/topics/:topic', (req, res) => {
         res.render('topic');
       }
     })
-
 });
 
 //specific resource
