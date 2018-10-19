@@ -58,7 +58,6 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-
 // Check for cookies
 app.use((req, res, next) => {
   getUserById(req.session.userId, (err, user) => {
@@ -77,8 +76,7 @@ app.get('/', (req, res) => {
 
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
-  getUserByName(req.params.username)
-    .then(user => {
+  getUserByName(req.params.username, (err, user) => {
       req.session.id = user.id;
       res.redirect('/');
     });
@@ -87,12 +85,17 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
+  
   res.render('user');
 });
 
 app.get('/users/:user/settings', (req, res) => {
-
-  res.render('user-settings');
+  if (res.locals.user) {
+    res.render('user-settings');
+  } else {
+    res.status(403).send('Forbidden');
+    res.redirect('/')
+  }
 });
 
 app.post('/logout', (req, res) => {
@@ -109,39 +112,37 @@ app.get('/search', (req, res) => {
 });
 
 //resources categorized under a topic
-app.get('/:topic', (req, res) => {
-  var topicPage = req.params.topic;
-  console.log(topicPage);
+app.get('/topics/:topic', (req, res) => {
+  let topicPage = req.params.topic;
+  //TODO: in the topics database, change them to ALL LOWERCASES
+
   knex('topics')
     .select('name')
-    .asCallback((res)=> {
-      console.log(res);
+    .where({ name : topicPage})
+    .asCallback((err, rows)=> {
+        console.log(rows[0]);
+      if(!rows[0]) {
+        res.redirect('/');
+      } else {
+        res.render('topic');
+      }
     })
-  res.render('topic');
+
 });
 
 //specific resource
-app.get('/:topic/:id', (req, res) => {
+//TODO: change that route
+app.get('/resources/:id', (req, res) => {
+
   res.render('resource');
 });
 
 //post a new resource
-app.post('/:topic/new', (req, res) => {
+app.post('/resources/new', (req, res) => {
   res.redirect('')
 });
 
 //delete a resource if you are the owner
-app.post('/:topic/:id/delete', (req, res) => {
+app.post('/resources/:id/delete', (req, res) => {
 
 });
-
-
-
-
-
-
-
-
-
-
-

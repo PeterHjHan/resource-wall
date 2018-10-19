@@ -6,13 +6,12 @@ function makeDataHelpers(knex) {
       .where({
         id: userId
       })
-      .asCallback(cb);
+      .asCallback(cb)
+  };
 
-    }
-    return {
-      getUserById,
-    };
-  }
-
+  return {
+    getUserById,
+  };
+}
 
 module.exports = makeDataHelpers;
