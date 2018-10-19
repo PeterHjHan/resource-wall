@@ -21,7 +21,23 @@
   </header>
 
   <body>
-    <h1>Hello World!</h1>
+    <section>
+    <h1>Hello changing <%= user.username %>!</h1>
+    
+    <h3>Username</h3>
+    <input type="text" value="<%= user.username %>">
+
+    <h3>Password</h3>
+    <input type="text" value="**********">
+
+    <h3>Avatar</h3>
+    <input type="text" value="<%= user.avatar %>">
+
+    <form method="POST" action="/users/:user/settings">
+      <button class="btn btn-outline-secondary" type="submit" name="update">Update</button>
+    </form>
+    
+    </section>
   </body>
 </html>
 

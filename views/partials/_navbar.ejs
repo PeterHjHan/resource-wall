@@ -1,20 +1,29 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Resource Wall</a>
+  <a class="navbar-brand" href="/">Resource Wall</a>
  
-  <form class="form-inline">
+  <form method="GET" action="/search" class="form-inline">
     <input class="form-control mr-sm-2" type="search" name='query' placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-outline-secondary my-2 my-sm-0">Search</button>
   </form>
 
-<% if (locals.user) { %>
-    <form>
-      <button type="button" class="btn btn-outline-secondary" name='post'>New Post</button>
-      <button type="button" class="btn btn-outline-secondary" name='logout'>Logout</button>
+<% if (user) { %>
+  <form method="POST" action="/resources/new" class="form-inline">
+      <button class="btn btn-outline-secondary" name='post'>New Post</button>
     </form>
-<% } else { %>
-    <form>
-      <button type="button" class="btn btn-outline-secondary" name='register'>Register</button>  
-      <button type="button" class="btn btn-outline-secondary" name='login'>Login</button>
+
+    <form method="POST" action="/logout" class="form-inline">
+      <button class="btn btn-outline-secondary" name='logout'>Logout</button>
     </form>
-<% } %>
+
+    <% } else { %>
+    <form method="POST" action="" class="form-inline">
+      <button class="btn btn-outline-secondary" name='register'>Register</button>  
+    </form>
+
+    <form method="POST" action= "" class="form-inline">
+      <button class="btn btn-outline-secondary" name='login'>Login</button>
+    </form>
+
+    <% } %>
+
 </nav>

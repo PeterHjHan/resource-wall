@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      
+      <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+      <script type="text/javascript" src="/scripts/app.js"></script>
 
   </head>
 
@@ -21,8 +22,45 @@
   </header>
 
   <body>
-    <h1>Hello World!</h1>
+    <h1>Hello One Resource!</h1>
+    
+    <% if (!user) { %>
+        <section>
+          <h3>Title</h3>
+          <h3>Description</h3>
+            <p>There would be a description here about the resource.</p>
+
+          <h4>[Topic Category Here]</h4>
+
+          <a href="#">*CLICK ME*</a>
+
+        </section>
+
+    <% } else { %>
+      <section>
+        <h3><input type="text" value="Title"></h3>
+        <h3><input type="text" value="Description"></h3>
+        <p><textarea placeholder="There would be a description here about the resource."></textarea></p>
+
+        <h4>Topics</h4>
+        <select>
+          <option value="select">-Select-</option>
+          <option value="food">Food</option>
+          <option value="movie">Movie</option>
+          <option value="sports">Sports</option>
+        </select>
+
+        <a href="#">*CLICK ME*</a>
+        
+        <form method="POST" action="/resources/new">
+          <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+        </form>
+
+      </section>
+    <% } %>
+  
   </body>
+
 </html>
 
 

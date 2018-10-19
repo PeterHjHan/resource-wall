@@ -54,7 +54,7 @@ app.use(cookieSession({
 }));
 
 // Mount all resource routes
-app.use('/api/users', usersRoutes(knex));
+// app.use('/api/users', usersRoutes(knex));
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -66,8 +66,9 @@ app.listen(PORT, () => {
 
 // Check for cookies
 app.use((req, res, next) => {
-  getUserById(req.session.userId, (err, user) => {
+  getUserById(req.session.id, (err, user) => {
     res.locals.user = user;
+    console.log(res.locals.user);
     next();
   });
 });

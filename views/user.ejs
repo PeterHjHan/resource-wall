@@ -21,7 +21,16 @@
   </header>
 
   <body>
-    <h1>Hello World!</h1>
+    <h1>Hello <%= user.username %>!</h1>    
+    <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
+    <section class="create">
+      <h4>Your Resources</h4>
+    </section>
+    
+    <section class="likes">
+      <h4>Your Liked Resources</h4>
+    </section>
+  
   </body>
 </html>
 
