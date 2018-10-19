@@ -18,6 +18,7 @@ const knexLogger  = require('knex-logger');
 
 const {
   getUserById,
+  getUserByName
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -129,21 +130,28 @@ app.get('/topics/:topic', (req, res) => {
 //specific resource
 //TODO: change that route
 app.get('/resources/:id', (req, res) => {
+  res.render('topic');
+});
 
+//specific resource
+app.get('/resources/:id', (req, res) => {
   res.render('resource');
 });
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
-
   res.redirect(`/users/${res.locals.user.username}`);
 });
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
-  deleteResource(req.params.id, () => {
-    res.redirect(`/users/${res.locals.user.username}`);
-  })
+  deleteResource(req.params.id, req.session.userId, (err, del) => {
+    if (err) {
+      throw err;
+    } else {
+      res.redirect(`/users/${res.locals.user.username}`);
+    }
+  });
 });
 
 
