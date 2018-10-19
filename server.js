@@ -85,7 +85,6 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-  
   res.render('user');
 });
 
@@ -94,9 +93,9 @@ app.get('/users/:user/settings', (req, res) => {
     res.render('user-settings');
   } else {
     res.status(403).send('Forbidden');
-    res.redirect('/')
+    res.redirect('/');
   }
-
+});
 
 app.post('/logout', (req, res) => {
   req.session = null;
@@ -111,23 +110,26 @@ app.get('/search', (req, res) => {
 });
 
 //resources categorized under a topic
-app.get('/:topic', (req, res) => {
+app.get('/topics/:topic', (req, res) => {
   res.render('topic');
 });
 
 //specific resource
-app.get('/:topic/:id', (req, res) => {
+app.get('/resources/:id', (req, res) => {
   res.render('resource');
 });
 
 //post a new resource
-app.post('/:topic/new', (req, res) => {
-  res.redirect('')
+app.post('/resources/new', (req, res) => {
+
+  res.redirect(`/users/${res.locals.user.username}`);
 });
 
 //delete a resource if you are the owner
-app.post('/:topic/:id/delete', (req, res) => {
-
+app.post('/resources/:id/delete', (req, res) => {
+  deleteResource(req.params.id, () => {
+    res.redirect(`/users/${res.locals.user.username}`);
+  })
 });
 
 
