@@ -21,6 +21,19 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   };
 
+  function addResourceToDatabase(title, desc, URL, userId, topicId, cb) {
+    knex('resources')
+      .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+      .asCallback(cb)
+  }
+
+  function getResourceById(resourceId, cb) {
+    knex('resources')
+      .select('*')
+      .where({id: resourceId})
+      .asCallback(cb)
+  }
+
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
@@ -34,6 +47,8 @@ function makeDataHelpers(knex) {
     getUserById,
     getUserByName,
     filterTopicsByName,
+    addResourceToDatabase,
+    getResourceById,
     deleteResource
   };
 }

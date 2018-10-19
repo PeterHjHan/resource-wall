@@ -20,6 +20,8 @@ const {
   getUserById,
   getUserByName,
   filterTopicsByName,
+  addResourceToDatabase,
+  getResourceById,
   deleteResource
   } = require('./data-helpers/server-functions')(knex);
 
@@ -114,7 +116,7 @@ app.get('/search', (req, res) => {
 
 //resources categorized under a topic
 app.get('/topics/:topic', (req, res) => {
-  let topicPage = req.params.topic;
+  const topicPage = req.params.topic;
   filterTopicsByName(topicPage, (err, rows)=> {
     if(!rows[0]) {
       res.redirect('/');
@@ -126,11 +128,21 @@ app.get('/topics/:topic', (req, res) => {
 
 //specific resource
 app.get('/resources/:id', (req, res) => {
-  res.render('resource');
+  const resourceId = req.params.id
+  getResourceById(resourceId, (err, resource) => {
+    if (err) {
+      throw err;
+    } else {
+      const templateVars = {resource};
+      res.render('resource', templateVars);
+    }
+  });
 });
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
+  // add req.body.: from from submission, or use AJAX
+  // addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
   res.redirect(`/users/${res.locals.user.username}`);
 });
 
