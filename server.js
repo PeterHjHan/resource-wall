@@ -16,6 +16,17 @@ const knex        = require('knex')(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+const {
+  getUserById,
+  getUserByName,
+  filterTopicsByName,
+  addResourceToDatabase,
+  getResourceById,
+  updateUserDetails,
+  deleteResource
+  } = require('./data-helpers/server-functions')(knex);
+
+
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
 
@@ -53,74 +64,112 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-
-// for checking cookeis
+// Check for cookies
 app.use((req, res, next) => {
-  // use this for setting cookies
-  // res.locals.user = ...?
-  next();
-})
-
+  getUserById(req.session.userId, (err, user) => {
+    res.locals.user = user;
+    next();
+  });
+});
 
 // Home page
 app.get('/', (req, res) => {
-  res.render("index");
+  res.render('index');
 });
 
 
 //----------------------- User ---------------------//
 
+// backdoor by username
+app.get('/backdoor/:username', (req, res) => {
+  getUserByName(req.params.username, (err, user) => {
+      req.session.id = user.id;
+      res.redirect('/');
+    });
+});
 
 //users can access their page with post form,
 // their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-
+  res.render('user');
 });
 
 app.get('/users/:user/settings', (req, res) => {
+  if (res.locals.user) {
+    res.render('user-settings');
+  } else {
+    res.status(403).send('Forbidden');
+    res.redirect('/');
+  }
+});
 
+app.post('/users/:user/settings', (req, res) => {
+  //add req.body dteails
+  if (req.session.id) {
+    updateUserDetails(req.session.id, newUsername, newPassword, newAvatar, (err, user) => {
+        if (err) {
+          throw err;
+        } else {
+          res.redirect(`/users/${user.username}`);
+        }
+    });
+  } else {
+    res.redirect('/');
+  }
 });
 
 app.post('/logout', (req, res) => {
-
+  req.session = null;
+  res.redirect('/');
 });
 
 //----------------------- Pages ---------------------//
 
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
-
+  res.render('search');
 });
 
 //resources categorized under a topic
-
-app.get('/:topic', (req, res) => {
-
-});
-
-//post a new resource
-app.post('/:topic/new', (req, res) => {
-
+app.get('/topics/:topic', (req, res) => {
+  const topicPage = req.params.topic;
+  filterTopicsByName(topicPage, (err, rows)=> {
+    if(!rows[0]) {
+      res.redirect('/');
+    } else {
+      res.render('topic');
+    }
+  });
 });
 
 //specific resource
-app.get('/:topic/:id', (req, res) => {
-
+app.get('/resources/:id', (req, res) => {
+  const resourceId = req.params.id
+  getResourceById(resourceId, (err, resource) => {
+    if (err) {
+      throw err;
+    } else {
+      const templateVars = {resource};
+      res.render('resource', templateVars);
+    }
+  });
 });
 
+//post a new resource
+app.post('/resources/new', (req, res) => {
+  // add req.body.: from from submission, or use AJAX
+  // addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
+  res.redirect(`/users/${res.locals.user.username}`);
+});
 
 //delete a resource if you are the owner
-app.post('/:topic/:id/delete', (req, res) => {
-
+app.post('/resources/:id/delete', (req, res) => {
+  deleteResource(req.params.id, req.session.userId, (err, del) => {
+    if (err) {
+      throw err;
+    } else {
+      res.redirect(`/users/${res.locals.user.username}`);
+    }
+  });
 });
-
-
-
-
-
-
-
-
-
-
 
