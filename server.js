@@ -57,6 +57,7 @@ app.use(cookieSession({
 app.use('/api/users', usersRoutes(knex));
 
 
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
@@ -66,7 +67,7 @@ app.listen(PORT, () => {
 
 // Check for cookies
 app.use((req, res, next) => {
-  getUserById(req.session.userId, (err, user) => {
+  getUserById(req.session.id, (err, user) => {
     res.locals.user = user;
     next();
   });
@@ -83,6 +84,7 @@ app.get('/', (req, res) => {
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
   getUserByName(req.params.username, (err, user) => {
+    console.log(req.session);
       req.session.id = user.id;
       res.redirect('/');
     });

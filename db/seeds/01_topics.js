@@ -6,15 +6,23 @@ exports.seed = function (knex, Promise) {
         // Inserts seed entries
         knex('topics').insert({
           id: 1,
-          name: 'Food'
+          name: 'Coding'
         }),
         knex('topics').insert({
           id: 2,
-          name: 'Sports'
+          name: 'Cooking'
         }),
         knex('topics').insert({
           id: 3,
-          name: 'Movie'
+          name: 'Languages'
+        }),
+        knex('topics').insert({
+          id: 4,
+          name: 'Photography'
+        }),
+        knex('topics').insert({
+          id: 5,
+          name: 'Gaming'
         })
       ]);
     });
