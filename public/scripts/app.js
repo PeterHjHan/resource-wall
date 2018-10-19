@@ -4,7 +4,14 @@ $(() => {
     url: "/api/users"
   }).done((users) => {
     for(user of users) {
-      $("<div>").text(user.username).appendTo($("body"));
+      $("<article>").addClass(".grid-item").text(user.username).appendTo($("body"));
     }
   });;
+
+  $('.grid').masonry({
+    // options...
+    itemSelector: '.grid-item',
+    columnWidth: 20
+  });
+
 });
