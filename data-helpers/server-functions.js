@@ -29,6 +29,7 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   };
 
+  //comment for git troubleshooting
   return {
     getUserById,
     getUserByName,
