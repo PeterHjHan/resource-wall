@@ -131,6 +131,7 @@ app.get('/resources/:id', (req, res) => {
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
+  
   res.redirect(`/users/${res.locals.user.username}`);
 });
 
