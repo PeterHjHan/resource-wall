@@ -5,3 +5,4 @@ public/styles
 *.sqlite3s
 .DS_Store
 resource_wall.md
+test.js

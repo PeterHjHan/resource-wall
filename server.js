@@ -18,7 +18,9 @@ const knexLogger  = require('knex-logger');
 
 const {
   getUserById,
-  getUserByName
+  getUserByName,
+  filterTopicsByName,
+  deleteResource
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -107,29 +109,19 @@ app.post('/logout', (req, res) => {
 
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
-
   res.render('search');
 });
 
 //resources categorized under a topic
 app.get('/topics/:topic', (req, res) => {
   let topicPage = req.params.topic;
-  knex('topics')
-    .select('name')
-    .where({ name : topicPage})
-    .asCallback((err, rows)=> {
-      if(!rows[0]) {
-        res.redirect('/');
-      } else {
-        res.render('topic');
-      }
-    })
-});
-
-//specific resource
-//TODO: change that route
-app.get('/resources/:id', (req, res) => {
-  res.render('topic');
+  filterTopicsByName(topicPage, (err, rows)=> {
+    if(!rows[0]) {
+      res.redirect('/');
+    } else {
+      res.render('topic');
+    }
+  });
 });
 
 //specific resource
