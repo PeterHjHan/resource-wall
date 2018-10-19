@@ -8,14 +8,7 @@ $(() => {
     for(resource of resources) {
       $("<article>").addClass(".grid-item").text(resource.description).appendTo($("body"));
     }  
-    // $.ajax({
-    //   method: "GET",
-    //   url: "/api/users"
-    // }).done((users) => {
-    //   for(user of users) {
-    //     $("<article>").addClass(".grid-item").text(user.username).appendTo($("body"));
-    //   }
-  });;
+  });
 
   $('.grid').masonry({
     // options...
