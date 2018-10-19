@@ -29,6 +29,11 @@ const {
 
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
+const resourcesRoutes = require('./routes/resources');
+const commentsRoutes = require('./routes/comments');
+const likesRoutes = require('./routes/likes');
+const ratingsRoutes = require('./routes/ratings');
+const topicsRoutes = require('./routes/topics');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -55,6 +60,12 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use('/api/users', usersRoutes(knex));
+app.use('/api/resources', resourcesRoutes(knex));
+app.use('/api/comments', commentsRoutes(knex));
+app.use('/api/likes', likesRoutes(knex));
+app.use('/api/ratings', ratingsRoutes(knex));
+app.use('/api/topics', topicsRoutes(knex));
+
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -66,7 +77,7 @@ app.listen(PORT, () => {
 
 // Check for cookies
 app.use((req, res, next) => {
-  getUserById(req.session.userId, (err, user) => {
+  getUserById(req.session.id, (err, user) => {
     res.locals.user = user;
     next();
   });
@@ -83,6 +94,7 @@ app.get('/', (req, res) => {
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
   getUserByName(req.params.username, (err, user) => {
+    console.log(req.session);
       req.session.id = user.id;
       res.redirect('/');
     });
