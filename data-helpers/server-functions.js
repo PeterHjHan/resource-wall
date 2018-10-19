@@ -34,6 +34,14 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
+  function updateUserDetails(userId, newUsername, newPassword, newAvatar, cb) {
+    //PETER PLS REVIEW ONEGAISHI MEI SUUUUUUWWWWW
+    knex('users')
+      .returning('*')
+      .alterTable({username: newUsername, password: newPassword, avatar: newAvatar})
+      .asCallback(cb)
+  }
+
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
@@ -49,6 +57,7 @@ function makeDataHelpers(knex) {
     filterTopicsByName,
     addResourceToDatabase,
     getResourceById,
+    updateUserDetails,
     deleteResource
   };
 }

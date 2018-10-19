@@ -22,6 +22,7 @@ const {
   filterTopicsByName,
   addResourceToDatabase,
   getResourceById,
+  updateUserDetails,
   deleteResource
   } = require('./data-helpers/server-functions')(knex);
 
@@ -102,6 +103,21 @@ app.get('/users/:user/settings', (req, res) => {
   }
 });
 
+app.post('/users/:user/settings', (req, res) => {
+  //add req.body dteails
+  if (req.session.id) {
+    updateUserDetails(req.session.id, newUsername, newPassword, newAvatar, (err, user) => {
+        if (err) {
+          throw err;
+        } else {
+          res.redirect(`/users/${user.username}`);
+        }
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
 app.post('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
@@ -156,13 +172,4 @@ app.post('/resources/:id/delete', (req, res) => {
     }
   });
 });
-
-
-
-
-
-
-
-
-
 
