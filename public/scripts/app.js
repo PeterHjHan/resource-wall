@@ -1,4 +1,18 @@
 $(() => {
+  const topicPage = window.location.pathname.slice(8);
+  console.log(topicPage);
+  let topicName = "";
+  $.ajax({
+    method: "GET",
+    url: "/api/topics"
+  }).then((topics) => {
+    for(topic of topics) {
+      if(topic.name === topicPage) {
+        topicName = topic.id;
+        console.log(topicName);
+      }
+    }
+  })
 
   $.ajax({
     method: "GET",
@@ -9,6 +23,7 @@ $(() => {
       createResourceElement(resource).appendTo($("body"));
     }  
   });
+
 
   $('.grid').masonry({
     // options...
@@ -25,11 +40,13 @@ $(() => {
     const $userUrl = $('<a>').addClass().text(item.url);
     // const $like = $('<p>').addClass().text(item.like)
     const $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
+    const $topic = $('<p>').addClass().text(`Topic ${item.name}`)
 
     return $article
       .append($title)
       .append($description)
       .append($userUrl)
       .append($ratings)
+      .append($topic)
   }
 });

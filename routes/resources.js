@@ -10,6 +10,7 @@ module.exports = (knex) => {
       .from("resources")
       .join("likes", "resources.id", "=", "likes.resource_id")
       .join("ratings", "resources.id", "=", "ratings.resource_id")
+      .join("topics", "resources.topic_id", "=", "topics.id")
       .select("*")
       .then((results) => {
         res.json(results);
