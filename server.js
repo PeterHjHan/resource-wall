@@ -54,7 +54,7 @@ app.use(cookieSession({
 }));
 
 // Mount all resource routes
-app.use('/api/users', usersRoutes(knex));
+// app.use('/api/users', usersRoutes(knex));
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -150,6 +150,7 @@ app.get('/resources/:id', (req, res) => {
       throw err;
     } else {
       const templateVars = {resource};
+      console.log(templateVars.resource[0].user_id);
       res.render('resource', templateVars);
     }
   });
