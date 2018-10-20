@@ -11,10 +11,12 @@
       <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
       <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
       <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
       <script type="text/javascript" src="/scripts/client-functions.js"></script>  
       <script type="text/javascript" src="/scripts/app.js"></script>
+
 
   </head>
 
@@ -25,27 +27,55 @@
   <body>
     <h1>Hello One Resource!</h1>
 
-
+<% console.log(resource) %>
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
-        <h3><input type="text" value="<%= resource[0].title %>"></h3>
-        <h3>Description</h3>
-        <p><textarea placeholder="<%= resource[0].description %>"></textarea></p>
-
-        <h4>Topics</h4>
-        <select>
+          <h2><%= resource[0].title %></h2>
+          <h3>Description</h3>
+            <p><%= resource[0].description %></p>
+            <p><textarea placeholder="<%= resource[0].description %>"></textarea></p>
+          <h4>Topics | #<%= resource[0].topic %></h4>
+          <select>
           <option value="select">-Select-</option>
-          <option value="food">Food</option>
-          <option value="movie">Movie</option>
-          <option value="sports">Sports</option>
-        </select>
+          <option value="topic"></option>
+          <option value="topic"></option>
+          </select>
+          <br>
+          <br>
+          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+          <br>
+          
+          <h3>Rating</h3>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+          <br>
+          <br>
+          <h3>Like</h3>
+          <i class="far fa-thumbs-up"></i>
+          <i class="far fa-thumbs-down"></i>
+          <i class="far fa-heart"></i>
 
-        <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
-        
-        <form method="POST" action="/resources/new">
-          <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
-        </form>
-      </section>
+          <br>
+          <form method="POST" action="/resources/new">
+            <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+          </form>
+        </section>
+        <br>
+        <br>
+        <section>
+          <h3>Comments</h3>
+            <article class="comment-box">
+              <form method="POST" action="/resources/:id">
+                <h5><%= resource[0].comment %></h5>
+                <p><%= resource[0].comment %></p>
+                <textarea placeholder="Leave a comment"></textarea>
+                <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
+              </form>
+            </article>
+          </section>
 
     <% } else if (user) { %>
       <section>
@@ -53,18 +83,34 @@
         <h3>Description</h3>
           <p><%= resource[0].description %></p>
 
-        <h4>#<%= resource[0].topic_id %></h4>
+        <h4>#<%= resource[0].topic %></h4>
         
         <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
       </section>
+      <br>
+
+      <h3>Rating</h3>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <br>
+      <br>
+      <h3>Like</h3>
+      <i class="far fa-thumbs-up"></i>
+      <i class="far fa-thumbs-down"></i>
+      <i class="far fa-heart"></i>
+
       <br>
       <br>
       <section>
         <h3>Comments</h3>
           <article class="comment-box">
             <form method="POST" action="/resources/:id">
-              <h5>comments.user_id</h5>
-              <p>comments.text</p>
+              <h5><%= resource[0].comment %></h5>
+              <p><%= resource[0].comment %></p>
+              <textarea placeholder="Leave a comment"></textarea>
               <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
             </form>
           </article>
@@ -76,17 +122,31 @@
           <h3>Description</h3>
             <p><%= resource[0].description %></p>
   
-          <h4>#<%= resource[0].topic_id %></h4>
+          <h4>#<%= resource[0].topic %></h4>
           
           <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
         </section>
         <br>
+
+        <h3>Rating</h3>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <i class="far fa-star"></i>
+        <br>
+        <br>
+        <h3>Like</h3>
+        <i class="far fa-thumbs-up"></i>
+        <i class="far fa-thumbs-down"></i>
+        <i class="far fa-heart"></i>
+        
         <br>
         <section>
           <h3>Comments</h3>
             <article class="comment-box">
-                <h5>comments.user_id</h5>
-                <p>comments.text</p>
+                <h5><%= resource[0].comment %></h5>
+                <p><%= resource[0].comment %></p>
             </article>
           </section>
     <% } %>
