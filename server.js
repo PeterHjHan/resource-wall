@@ -68,7 +68,6 @@ app.listen(PORT, () => {
 app.use((req, res, next) => {
   getUserById(req.session.id, (err, user) => {
     res.locals.user = user;
-    console.log(res.locals.user);
     next();
   });
 });
@@ -151,6 +150,7 @@ app.get('/resources/:id', (req, res) => {
       throw err;
     } else {
       const templateVars = {resource};
+      console.log(templateVars.resource[0].user_id);
       res.render('resource', templateVars);
     }
   });

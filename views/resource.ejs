@@ -23,24 +23,13 @@
 
   <body>
     <h1>Hello One Resource!</h1>
-    
-    <% if (!user) { %>
-        <section>
-          <h3>Title</h3>
-          <h3>Description</h3>
-            <p>There would be a description here about the resource.</p>
 
-          <h4>[Topic Category Here]</h4>
 
-          <a href="#">*CLICK ME*</a>
-
-        </section>
-
-    <% } else { %>
+    <% if (user && user.id === resource[0].user_id) { %>
       <section>
-        <h3><input type="text" value="Title"></h3>
-        <h3><input type="text" value="Description"></h3>
-        <p><textarea placeholder="There would be a description here about the resource."></textarea></p>
+        <h3><input type="text" value="<%= resource[0].title %>"></h3>
+        <h3>Description</h3>
+        <p><textarea placeholder="<%= resource[0].description %>"></textarea></p>
 
         <h4>Topics</h4>
         <select>
@@ -50,13 +39,55 @@
           <option value="sports">Sports</option>
         </select>
 
-        <a href="#">*CLICK ME*</a>
+        <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
         
         <form method="POST" action="/resources/new">
           <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
         </form>
-
       </section>
+
+    <% } else if (user) { %>
+      <section>
+        <h2><%= resource[0].title %></h2>
+        <h3>Description</h3>
+          <p><%= resource[0].description %></p>
+
+        <h4>#<%= resource[0].topic_id %></h4>
+        
+        <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+      </section>
+      <br>
+      <br>
+      <section>
+        <h3>Comments</h3>
+          <article class="comment-box">
+            <form method="POST" action="/resources/:id">
+              <h5>comments.user_id</h5>
+              <p>comments.text</p>
+              <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
+            </form>
+          </article>
+        </section>
+    
+    <% } else { %>
+      <section>
+          <h3><%= resource[0].title %></h3>
+          <h3>Description</h3>
+            <p><%= resource[0].description %></p>
+  
+          <h4>#<%= resource[0].topic_id %></h4>
+          
+          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+        </section>
+        <br>
+        <br>
+        <section>
+          <h3>Comments</h3>
+            <article class="comment-box">
+                <h5>comments.user_id</h5>
+                <p>comments.text</p>
+            </article>
+          </section>
     <% } %>
   
   </body>
