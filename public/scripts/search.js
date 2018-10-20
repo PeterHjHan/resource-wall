@@ -1,7 +1,7 @@
 $(() => {
   var searchQuery = window.location.search.slice(7);
   var string = ""
-
+  showNewResourceForm()
 
   $.ajax({
     method: "GET",

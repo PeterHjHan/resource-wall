@@ -1,5 +1,7 @@
 $(() => {
 
+  showNewResourceForm()
+
   $.ajax({
     method: "GET",
     url: "/api/resources"
