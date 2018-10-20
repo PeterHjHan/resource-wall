@@ -22,3 +22,20 @@ function showNewResourceForm() {
     $('#post-new-resource').slideToggle(300);
   })
 }
+
+function viewTopicsInSelect() {
+  $.ajax({
+    method: "GET",
+    url: "/api/topics"
+  }).then((topics) => {
+    for(item of topics) {
+      $('<option>').text(item.topic)
+      .appendTo('#select-topics')
+    }  
+  });
+
+function loadCommonFunctions() {
+  showNewResourceForm();
+  viewTopicsInSelect();
+}
+}

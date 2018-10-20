@@ -1,6 +1,7 @@
 $(() => {
 
   showNewResourceForm()
+  viewTopicsInSelect();
 
   $.ajax({
     method: "GET",
