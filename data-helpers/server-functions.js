@@ -42,6 +42,14 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
+  function insertNewUser(username, password, cb) {
+    knex('users')
+      .returning('*')
+      .insert({username: username, password: password, avatar: 'https://vanillicon.com/v2/58286045cae6a21f8e48f01f2fe3cb0a.svg'})
+      .asCallback(cb)
+  }
+
+
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
@@ -58,6 +66,7 @@ function makeDataHelpers(knex) {
     addResourceToDatabase,
     getResourceById,
     updateUserDetails,
+    insertNewUser,
     deleteResource
   };
 }

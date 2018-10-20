@@ -9,6 +9,7 @@ const bodyParser  = require('body-parser');
 const sass        = require('node-sass-middleware');
 const app         = express();
 
+const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 
 const knexConfig  = require('./knexfile');
@@ -23,6 +24,7 @@ const {
   addResourceToDatabase,
   getResourceById,
   updateUserDetails,
+  insertNewUser,
   deleteResource
   } = require('./data-helpers/server-functions')(knex);
 
@@ -129,6 +131,40 @@ app.post('/users/:user/settings', (req, res) => {
   }
 });
 
+
+//username and password must be validated before this post request
+app.post('/register', (req, res) => {
+  const username = req.body.username;
+  const password = bcrypt.hashSync(req.body.password, 10);
+  insertNewUser(username, password, (err, user) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      req.session.id = user.id; //make sure the callback is returning the userid
+      res.redirect(`/users/${res.locals.user.username}`);
+    }
+  });
+});
+
+
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  getUserByName(username, (err, user) => {
+    if (err) {
+      res.redirect('/');
+    } else {
+      if (bcrypt.compareSync(password, user.password)) {
+        req.session.id = user.id;
+        res.redirect(`/users/${res.locals.user.username}`);
+      } else {
+        res.redirect('/');
+      }
+
+    }
+  });
+});
+
 app.post('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
@@ -158,9 +194,10 @@ app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id
   getResourceById(resourceId, (err, resource) => {
     if (err) {
-      throw err;
+      res.redirect('/');
     } else {
       const templateVars = {resource};
+      console.log(templateVars.resource[0].user_id);
       res.render('resource', templateVars);
     }
   });
