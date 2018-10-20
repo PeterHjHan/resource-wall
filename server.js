@@ -30,6 +30,7 @@ const {
 // Seperated Routes for each Resource
 const usersRoutes = require('./routes/users');
 const resourcesRoutes = require('./routes/resources');
+const searchRoutes = require('./routes/search');
 const commentsRoutes = require('./routes/comments');
 const topicsRoutes = require('./routes/topics');
 
@@ -58,9 +59,11 @@ app.use(cookieSession({
 
 // Mount all resource routes
 app.use('/api/users', usersRoutes(knex));
-app.use('/api/resources', resourcesRoutes(knex));
+app.use('/api/resources/', resourcesRoutes(knex));
 app.use('/api/comments', commentsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
+app.use('/api/search', searchRoutes(knex));
+
 
 
 
