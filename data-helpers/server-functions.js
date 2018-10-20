@@ -30,7 +30,8 @@ function makeDataHelpers(knex) {
   function getResourceById(resourceId, cb) {
     knex('resources')
       .select('*')
-      .join('comments', 'resources.id', '=', 'comments.resource_id')
+      .join('comments', 'comments.resource_id', '=', 'resources.id')
+      .join('topics', 'resources.topic_id', '=', 'topics.id')
       .where({'resources.id': resourceId})
       .asCallback(cb)
   }
