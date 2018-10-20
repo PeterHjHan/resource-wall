@@ -7,7 +7,7 @@ function createResourceElement(item) {
   //TODO: What about likes? DO we want to put a boolean column in the DB
   // var $like = $('<p>').addClass().text(item.like)
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
-  var $topic = $('<p>').addClass().text(`Topic ${item.topic}`)
+  var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
   return $article
     .append($title)
@@ -20,8 +20,8 @@ function createResourceElement(item) {
 function showNewResourceForm() {
   $('#new-post-button').click(() => {
     $('#post-new-resource').slideToggle(300);
-  })
-}
+  });
+};
 
 function viewTopicsInSelect() {
 
@@ -43,7 +43,7 @@ function renderNewPostForm() {
   const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
   const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
-  const $submitButton = $('<input>').addClass().attr('type','submit').attr('value','post')
+  const $submitButton = $('<input>').addClass().attr('type', 'submit').attr('value', 'post');
 
   return $form
     .append($title)
@@ -54,7 +54,7 @@ function renderNewPostForm() {
     .append($submitButton)
     .appendTo('#post-new-resource')
 
-}
+};
 
 function loadCommonFunctions() {
   showNewResourceForm();
