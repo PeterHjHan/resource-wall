@@ -66,6 +66,7 @@ app.use('/api/resources/', resourcesRoutes(knex));
 app.use('/api/comments', commentsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
 app.use('/api/search', searchRoutes(knex));
+app.use('/api/users', usersRoutes(knex));
 
 
 
@@ -209,15 +210,15 @@ app.post('/resources/:id', (req,res) => {
   const title = req.body.title;
   const desc = req.body.description;
   const URL = req.body.url;
-  const userId = req.session.id;
   const topicName = req.body.topic
 
   console.log(resourceId);
-  
-  // updateExistingResource(resourceId, title, desc, URL, userId, topicId, (err,id) => {
+  console.log(title);
+  console.log(desc);
+  // updateExistingResource(resourceId, title, desc, URL, topicId, (err,id) => {
 
   // })
-  res.redirect('/')
+  res.redirect('/resources/:id')
 });
 
 //post a new resource

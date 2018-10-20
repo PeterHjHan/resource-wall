@@ -27,10 +27,10 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
-  function updateExistingResource(resourceId, title, desc, URL, userId, topicId, cb) {
+  function updateExistingResource(resourceId, title, desc, URL, topicId, cb) {
     knex('resources')
       .returning('*')
-      .alterTable({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+      .alterTable({title: title, description: desc, url: URL, topic_id: topicId})
       .asCallback(cb)
   }
 

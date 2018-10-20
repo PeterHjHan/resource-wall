@@ -27,13 +27,15 @@
   <body>
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
-          <h2>Existing Title: <%= resource[0].title %></h2>
+          <form method="POST" action="/resources/:id">
+        <h2>Existing Title: <%= resource[0].title %></h2>
             <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
             <p>Existing Description: <br> <%= resource[0].description %></p>
             <p><textarea name ="description" placeholder="<%= resource[0].description %>"></textarea></p>
-          <h4>Topics | #<%= resource[0].topic %></h4>
-          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
-          <br><br>
+         
+            <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+            <br><br>
+            <h4>Topics | #<%= resource[0].topic %></h4>
           <select name ="topic" class="select-topics">
             
           </select>
@@ -54,8 +56,8 @@
           <i class="far fa-heart"></i>
 
           <br>
-          <form method="POST" action="/resources/:id">
-            <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+
+            <button class="btn btn-outline-secondary" type="submit">Update</button>
           </form>
         </section>
         <br>
