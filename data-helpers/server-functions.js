@@ -24,13 +24,15 @@ function makeDataHelpers(knex) {
   function addResourceToDatabase(title, desc, URL, userId, topicId, cb) {
     knex('resources')
       .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+      .returning('*')
       .asCallback(cb)
   }
 
   function updateExistingResource(resourceId, title, desc, URL, topicId, cb) {
     knex('resources')
       .returning('*')
-      .alterTable({title: title, description: desc, url: URL, topic_id: topicId})
+      .where({id: resourceId})
+      .update({title: title, description: desc, url: URL, topic_id: topicId})
       .asCallback(cb)
   }
 
@@ -47,7 +49,7 @@ function makeDataHelpers(knex) {
     //PETER PLS REVIEW ONEGAISHI MEI SUUUUUUWWWWW
     knex('users')
       .returning('*')
-      .alterTable({username: newUsername, password: newPassword, avatar: newAvatar})
+      .update({username: newUsername, password: newPassword, avatar: newAvatar})
       .asCallback(cb)
   }
 

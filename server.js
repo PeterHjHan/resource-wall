@@ -193,32 +193,47 @@ app.get('/topics/:topic', (req, res) => {
 //specific resource
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id
-  console.log("resourceID", resourceId);
+
+  console.log("reource ID", resourceId);
   getResourceById(resourceId, (err, resource) => {
     if (err) {
       res.redirect('/');
     } else {
       const templateVars = {resource};
-      console.log(templateVars.resource);
       res.render('resource', templateVars);
     }
   });
 });
 
-app.post('/resources/:id', (req,res) => {
-  const resourceId = req.params.id
+app.post('/resources/:id/update', (req,res) => {
+  const what = req.params.id
+  const resourceId = res.locals.user.id
   const title = req.body.title;
   const desc = req.body.description;
   const URL = req.body.url;
   const topicName = req.body.topic
 
-  console.log(resourceId);
-  console.log(title);
-  console.log(desc);
-  // updateExistingResource(resourceId, title, desc, URL, topicId, (err,id) => {
+  console.log(what);
+  // console.log(req);
+  console.log("===============")
+  // console.log(res);
 
-  // })
-  res.redirect('/resources/:id')
+  // knex('topics')
+  //   .select('id')
+  //   .where({topic: topicName})
+  //   .then((result) => {
+  //      return result[0].id;
+  //     }).then((topicId) => {
+  //       updateExistingResource(resourceId, title, desc, URL, topicId, (err,id) => {
+  //         if(err) {
+  //           console.log("OMG")
+  //           res.send('FAILED');
+  //         }
+  //         res.redirect(`/users/${res.locals.user.username}`);
+  //       });
+
+  //   });
+  res.redirect('/')
 });
 
 //post a new resource
