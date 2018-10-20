@@ -192,6 +192,7 @@ app.get('/topics/:topic', (req, res) => {
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id
   getResourceById(resourceId, (err, resource) => {
+    console.log(resource);
     if (err) {
       res.redirect('/');
     } else {
