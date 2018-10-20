@@ -145,7 +145,7 @@ app.get('/topics/:topic', (req, res) => {
     if(!rows[0]) {
       res.redirect('/');
     } else {
-      res.render('topic');
+      res.render('topics');
     }
   });
 });
