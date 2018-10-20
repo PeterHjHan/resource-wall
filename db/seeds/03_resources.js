@@ -27,6 +27,30 @@ exports.seed = function (knex, Promise) {
           topic_id: 3,
           url: 'http://www.youtube.com',
           user_id: 3,
+        }),
+        knex('resources').insert({
+          id: 4,
+          title: 'Ujuhbaba',
+          description: 'KOKO COCO KOKO COCO',
+          topic_id: 3,
+          url: 'http://www.youtube.com',
+          user_id: 3,
+        }),
+        knex('resources').insert({
+          id: 5,
+          title: 'Keigo',
+          description: `It's  such wonderful time of the year~`,
+          topic_id: 2,
+          url: 'http://www.youtube.com',
+          user_id: 3,
+        }),
+        knex('resources').insert({
+          id: 6,
+          title: 'Kagebunshin',
+          description: `Doe Shi Tae TOTOTOTOTOTOOTOTOT`,
+          topic_id: 3,
+          url: 'http://www.youtube.com',
+          user_id: 1,
         })
       ]);
     });
