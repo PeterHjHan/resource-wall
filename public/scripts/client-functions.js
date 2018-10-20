@@ -24,18 +24,39 @@ function showNewResourceForm() {
 }
 
 function viewTopicsInSelect() {
+
   $.ajax({
     method: "GET",
     url: "/api/topics"
   }).then((topics) => {
-    for(item of topics) {
+    for (item of topics) {
       $('<option>').text(item.topic)
-      .appendTo('#select-topics')
-    }  
+        .appendTo('.select-topics')
+    }
   });
 
 }
-  function loadCommonFunctions() {
-    showNewResourceForm();
-    viewTopicsInSelect();
-  }
+
+function renderNewPostForm() {
+  const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/new");
+  const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
+  const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
+  const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
+  const $select = $('<select>').addClass("select-topics").attr("name", "topic");
+  const $submitButton = $('<input>').addClass().attr('type','submit').attr('value','post')
+
+  return $form
+    .append($title)
+    .append($description)
+    .append($url)
+    .append($select)
+    .append(viewTopicsInSelect())
+    .append($submitButton)
+    .appendTo('#post-new-resource')
+
+}
+
+function loadCommonFunctions() {
+  showNewResourceForm();
+  renderNewPostForm();
+}
