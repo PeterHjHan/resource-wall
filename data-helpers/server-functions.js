@@ -21,6 +21,13 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   };
 
+  function updateExistingResource(resourceId, title, desc, URL, topicId, cb) {
+    knex('resources')
+      .where({id:resourceId})
+      .update({title: title, description: desc, url: URL, topic_id: topicId})
+      .asCallback(cb)
+  }
+
   function addResourceToDatabase(title, desc, URL, userId, topicId, cb) {
     knex('resources')
       .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
@@ -71,6 +78,7 @@ function makeDataHelpers(knex) {
     updateUserDetails,
     insertNewUser,
     deleteResource,
+    updateExistingResource,
   };
 }
 
