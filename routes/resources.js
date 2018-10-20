@@ -6,7 +6,6 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    console.log(req);
     knex
       .from("resources")
       .join("likes", "resources.id", "=", "likes.resource_id")
