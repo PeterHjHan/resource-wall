@@ -206,7 +206,9 @@ app.post('/resources/new', (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const url = req.body.url;
+  const useruser = req.session.id;
 
+  console.log(useruser);
   console.log(title)
   console.log(description)
   console.log(url)
