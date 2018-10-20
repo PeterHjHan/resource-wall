@@ -64,9 +64,13 @@ app.use(cookieSession({
 app.use('/api/resources/', resourcesRoutes(knex));
 app.use('/api/comments', commentsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
-app.use('/api/search', searchRoutes(knex));
+app.use('/api/search/', searchRoutes(knex));
 
-
+  // addResourceToDatabase('hi', 'no', 'this.com', '1', '1', cb) {
+  //   knex('resources')
+  //     .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+  //     .asCallback(cb)
+  // }
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

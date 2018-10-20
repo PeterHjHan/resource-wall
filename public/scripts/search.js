@@ -1,3 +1,4 @@
+
 $(() => {
   var searchQuery = window.location.search.slice(7);
   var string = ""
@@ -5,20 +6,21 @@ $(() => {
 
   $.ajax({
     method: "GET",
-    url: "/api/resources/"
+    url: "/api/search/:query"
   }).then((resources) => {
-    for(resource of resources) {
-      // Object.values(resource).includes(searchQuery)
+    console.log('done');
+    // for(resource of resources) {
+    //   // Object.values(resource).includes(searchQuery)
 
-      if(Object.values(resource).includes(searchQuery)){
-        createResourceElement(resource).appendTo($("body"));
-      }
-      else if (!searchQuery) {
+    //   if(Object.values(resource).includes(searchQuery)){
+    //     createResourceElement(resource).appendTo($("body"));
+    //   }
+    //   else if (!searchQuery) {
 
-        createResourceElement(resource).appendTo($("body"));
+    //     createResourceElement(resource).appendTo($("body"));
 
-      }
-    }
+    //   }
+    // }
   });
 
 
