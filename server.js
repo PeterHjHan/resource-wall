@@ -95,7 +95,6 @@ app.get('/', (req, res) => {
 // backdoor by username
 app.get('/backdoor/:username', (req, res) => {
   getUserByName(req.params.username, (err, user) => {
-    console.log(req.session);
       req.session.id = user.id;
       res.redirect('/');
     });
@@ -197,7 +196,6 @@ app.get('/resources/:id', (req, res) => {
       res.redirect('/');
     } else {
       const templateVars = {resource};
-      console.log(templateVars.resource[0].user_id);
       res.render('resource', templateVars);
     }
   });
