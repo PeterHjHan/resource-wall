@@ -1,13 +1,14 @@
 
 $(() => {
-  var searchQuery = window.location.search.slice(7);
-  var string = ""
 
 
   $.ajax({
+
     method: "GET",
-    url: "/api/search/:query"
+    url: "/api/search/"
   }).then((resources) => {
+    var searchQuery = window.location.pathname;
+    console.log('A;SDJLGH;ALSKHGJAL;S', searchQuery);
     console.log('done');
     // for(resource of resources) {
     //   // Object.values(resource).includes(searchQuery)

@@ -9,7 +9,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = (knex) => {
 
-  router.get("/:query", (req, res) => {
+  router.get("/", (req, res) => {
     console.log('l;asdjfas;', req.params.query)
 
     // knex
