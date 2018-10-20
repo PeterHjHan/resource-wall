@@ -206,18 +206,18 @@ app.get('/resources/:id', (req, res) => {
 });
 
 app.post('/resources/:id/update', (req,res) => {
-  const testing = req.params.id
-  console.log("개 쓰럐끼", testing);
+  const resourceId = req.params.id;
+  const title = req.body.title;
+  const desc = req.body.description;
+  const URL = req.body.url;
+  const topicName = req.body.topic
+
   res.redirect('/');
 })
 
 // app.post('/resources/:id/update', (req,res) => {
 //   const what = req.params.id
 //   const resourceId = res.locals.user.id
-//   const title = req.body.title;
-//   const desc = req.body.description;
-//   const URL = req.body.url;
-//   const topicName = req.body.topic
 
 //   console.log(what);
 //   // console.log(req);
