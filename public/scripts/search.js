@@ -1,7 +1,10 @@
 $(() => {
-  var searchQuery = window.location.search.slice(7);
-  var string = ""
+  var urlParams = new URLSearchParams(window.location.search)
+
   loadCommonFunctions();
+
+  console.log(urlParams.get('query'));
+
 
   $.ajax({
     method: "GET",
