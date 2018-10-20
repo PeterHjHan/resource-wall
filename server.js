@@ -203,6 +203,14 @@ app.get('/resources/:id', (req, res) => {
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
+  const title = req.body.title;
+  const description = req.body.description;
+  const url = req.body.url;
+
+  console.log(title)
+  console.log(description)
+  console.log(url)
+
   // add req.body.: from from submission, or use AJAX
   // addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
   res.redirect(`/users/${res.locals.user.username}`);

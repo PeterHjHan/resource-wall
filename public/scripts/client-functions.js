@@ -16,3 +16,9 @@ function createResourceElement(item) {
     .append($ratings)
     .append($topic)
 }
+
+function showNewResourceForm() {
+  $('#new-post-button').click(() => {
+    $('#post-new-resource').slideToggle(300);
+  })
+}

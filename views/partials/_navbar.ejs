@@ -9,24 +9,32 @@
   </form>
 
   <% if (user) { %>
-    <form method="POST" action="/resources/new" class="form-inline">
-      <button class="btn btn-outline-secondary" name='post'>New Post</button>
-    </form>
 
-    <form method="POST" action="/logout" class="form-inline">
-      <button class="btn btn-outline-secondary" name='logout'>Logout</button>
+  <button id="new-post-button" class="btn btn-outline-secondary" name='post'>New Post</button>
+    <!-- TODO: style:display:none should be in the CSS file -->
+  <section id="post-new-resource" style="display:none;">
+    <form method="POST" action="/resources/new">
+      <textarea class="" name="title" placeholder="Title"></textarea>
+      <textarea class="" name="description" placeholder="description"></textarea>
+      <textarea class="" name="url" placeholder="url"></textarea>
+      <input type="submit" value="post">
     </form>
+  </section>
+
+
+  <form method="POST" action="/logout" class="form-inline">
+    <button class="btn btn-outline-secondary" name='logout'>Logout</button>
+  </form>
 
   <% } else { %>
-    <form method="POST" action="" class="form-inline">
-      <button class="btn btn-outline-secondary" name='register'>Register</button>
-    </form>
+  <form method="POST" action="" class="form-inline">
+    <button class="btn btn-outline-secondary" name='register'>Register</button>
+  </form>
 
-    <form method="POST" action= "" class="form-inline">
-      <button class="btn btn-outline-secondary" name='login'>Login</button>
-    </form>
+  <form method="POST" action="" class="form-inline">
+    <button class="btn btn-outline-secondary" name='login'>Login</button>
+  </form>
 
   <% } %>
 
 </nav>
-

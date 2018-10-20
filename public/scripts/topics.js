@@ -1,6 +1,8 @@
 $(() => {
   var topicName = window.location.pathname.slice(8);
 
+  showNewResourceForm();
+
   $.ajax({
     method: "GET",
     url: "/api/resources"
