@@ -9,8 +9,8 @@ module.exports = (knex) => {
     knex("resources")
 
       .join("topics", "resources.topic_id", "=", "topics.id")
-      //.join("likes", "likes.resource_id", "=", "resources.id")
-      // .join("ratings", "resources.id", "=", "ratings.resource_id")
+      .leftJoin("likes", "likes.resource_id", "=", "resources.id")
+      .leftJoin("ratings", "resources.id", "=", "ratings.resource_id")
 
       .select("*")
       .then((results) => {
