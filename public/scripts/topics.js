@@ -9,13 +9,13 @@ $(() => {
       if(resource.topic === topicName) {
         createResourceElement(resource).appendTo($("body"));
       }
-    }  
+    }
   });
 
-  $('.grid').masonry({
-    // options...
-    itemSelector: '.grid-item',
-    columnWidth: 20
-  });
+  // $('.grid').masonry({
+  //   // options...
+  //   itemSelector: '.grid-item',
+  //   columnWidth: 20
+  // });
 
 });

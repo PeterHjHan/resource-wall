@@ -9,10 +9,10 @@ $(() => {
   });;
 
   // Masonry, CSS grid layout library
-  $('.grid').masonry({
-    // options...
-    itemSelector: '.grid-item',
-    columnWidth: 20
-  });
+  // $('.grid').masonry({
+  //   // options...
+  //   itemSelector: '.grid-item',
+  //   columnWidth: 20
+  // });
 
 });
