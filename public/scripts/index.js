@@ -1,7 +1,6 @@
 $(() => {
-
-  showNewResourceForm()
-  viewTopicsInSelect();
+  
+  loadCommonFunctions();
 
   $.ajax({
     method: "GET",

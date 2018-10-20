@@ -1,7 +1,7 @@
 $(() => {
   var topicName = window.location.pathname.slice(8);
 
-  showNewResourceForm();
+  loadCommonFunctions();
 
   $.ajax({
     method: "GET",

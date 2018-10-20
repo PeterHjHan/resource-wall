@@ -34,8 +34,8 @@ function viewTopicsInSelect() {
     }  
   });
 
-function loadCommonFunctions() {
-  showNewResourceForm();
-  viewTopicsInSelect();
 }
-}
+  function loadCommonFunctions() {
+    showNewResourceForm();
+    viewTopicsInSelect();
+  }

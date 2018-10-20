@@ -204,18 +204,20 @@ app.get('/resources/:id', (req, res) => {
 //post a new resource
 app.post('/resources/new', (req, res) => {
   const title = req.body.title;
-  const description = req.body.description;
-  const url = req.body.url;
-  const useruser = req.session.id;
+  const desc = req.body.description;
+  const URL = req.body.url;
+  const userId = req.session.id;
+  const topicName = req.body.topic
 
-  console.log(useruser);
-  console.log(title)
-  console.log(description)
-  console.log(url)
-
-  // add req.body.: from from submission, or use AJAX
-  // addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
-  res.redirect(`/users/${res.locals.user.username}`);
+  knex('topics')
+    .select('id')
+    .where({topic: topicName})
+    .then((result) => {
+       return result[0].id;
+      }).then((topicId) => {
+        addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
+        res.redirect(`/users/${res.locals.user.username}`);
+    });
 });
 
 //delete a resource if you are the owner
