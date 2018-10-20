@@ -27,7 +27,7 @@
   <body>
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
-          <form method="POST" action="/resources/:id/update">
+          <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
         <h2>Existing Title: <%= resource[0].title %></h2>
             <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
             <p>Existing Description: <br> <%= resource[0].description %></p>

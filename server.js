@@ -190,12 +190,11 @@ app.get('/topics/:topic', (req, res) => {
   });
 });
 
+
+
 //specific resource
 app.get('/resources/:id', (req, res) => {
-  const resourceId = req.params.id
-  console.log(resourceId);
-  
-  
+  const resourceId = req.params.id;
   getResourceById(resourceId, (err, resource) => {
     if (err) {
       res.redirect('/');
@@ -205,6 +204,12 @@ app.get('/resources/:id', (req, res) => {
     }
   });
 });
+
+app.post('/resources/:id/update', (req,res) => {
+  const testing = req.params.id
+  console.log("개 쓰럐끼", testing);
+  res.redirect('/');
+})
 
 // app.post('/resources/:id/update', (req,res) => {
 //   const what = req.params.id
@@ -254,4 +259,6 @@ app.post('/resources/:id/delete', (req, res) => {
     }
   });
 });
+
+
 
