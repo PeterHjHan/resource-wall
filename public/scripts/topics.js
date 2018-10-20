@@ -1,5 +1,4 @@
 $(() => {
-  
   var topicName = window.location.pathname.slice(8);
 
   $.ajax({
