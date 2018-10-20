@@ -25,7 +25,8 @@ const {
   getResourceById,
   updateUserDetails,
   insertNewUser,
-  deleteResource
+  deleteResource,
+  updateExistingResource,
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -191,14 +192,32 @@ app.get('/topics/:topic', (req, res) => {
 //specific resource
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id
+  console.log("resourceID", resourceId);
   getResourceById(resourceId, (err, resource) => {
     if (err) {
       res.redirect('/');
     } else {
       const templateVars = {resource};
+      console.log(templateVars.resource);
       res.render('resource', templateVars);
     }
   });
+});
+
+app.post('/resources/:id', (req,res) => {
+  const resourceId = req.params.id
+  const title = req.body.title;
+  const desc = req.body.description;
+  const URL = req.body.url;
+  const userId = req.session.id;
+  const topicName = req.body.topic
+
+  console.log(resourceId);
+  
+  // updateExistingResource(resourceId, title, desc, URL, userId, topicId, (err,id) => {
+
+  // })
+  res.redirect('/')
 });
 
 //post a new resource

@@ -24,7 +24,6 @@ function showNewResourceForm() {
 };
 
 function viewTopicsInSelect() {
-
   $.ajax({
     method: "GET",
     url: "/api/topics"
@@ -34,7 +33,6 @@ function viewTopicsInSelect() {
         .appendTo('.select-topics')
     }
   });
-
 }
 
 function renderNewPostForm() {
@@ -43,7 +41,7 @@ function renderNewPostForm() {
   const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
   const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
-  const $submitButton = $('<input>').addClass().attr('type', 'submit').attr('value', 'post');
+  const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
 
   return $form
     .append($title)
@@ -53,7 +51,6 @@ function renderNewPostForm() {
     .append(viewTopicsInSelect())
     .append($submitButton)
     .appendTo('#post-new-resource')
-
 };
 
 function loadCommonFunctions() {

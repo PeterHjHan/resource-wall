@@ -27,11 +27,18 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
+  function updateExistingResource(resourceId, title, desc, URL, userId, topicId, cb) {
+    knex('resources')
+      .returning('*')
+      .alterTable({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+      .asCallback(cb)
+  }
+
   function getResourceById(resourceId, cb) {
     knex('resources')
       .select('*')
-      .join('comments', 'comments.resource_id', '=', 'resources.id')
-      .join('topics', 'resources.topic_id', '=', 'topics.id')
+      .leftJoin('comments', 'comments.resource_id', '=', 'resources.id')
+      .leftJoin('topics', 'resources.topic_id', '=', 'topics.id')
       .where({'resources.id': resourceId})
       .asCallback(cb)
   }
@@ -69,7 +76,8 @@ function makeDataHelpers(knex) {
     getResourceById,
     updateUserDetails,
     insertNewUser,
-    deleteResource
+    deleteResource,
+    updateExistingResource,
   };
 }
 

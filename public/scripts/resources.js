@@ -1,23 +1,19 @@
 $(() => {
-  showNewResourceForm()
-
+  loadCommonFunctions();
   $.ajax({
     method: "GET",
-    url: "/api/resources/"
-  }).then((resources) => {
-    for(resource of resources) {
-      
+    url: "/api/users/"
+  }).done((users) => {
+    for(user of users) {
+      $("<article>").addClass(".grid-item").text(user.username).appendTo($("body"));
     }
-  });
+  });;
 
-
-  //for every resources, if it contains the searchQuery, pull the resources
-
+  // Masonry, CSS grid layout library
   $('.grid').masonry({
     // options...
     itemSelector: '.grid-item',
     columnWidth: 20
   });
-
 
 });

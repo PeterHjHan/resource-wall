@@ -15,7 +15,7 @@
 
       <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
       <script type="text/javascript" src="/scripts/client-functions.js"></script>  
-      <script type="text/javascript" src="/scripts/app.js"></script>
+      <script type="text/javascript" src="/scripts/resources.js"></script>
 
 
   </head>
@@ -25,20 +25,19 @@
   </header>
 
   <body>
-    <h1>Hello One Resource!</h1>
-
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
-          <h2><%= resource[0].title %></h2>
-          <h3>Description</h3>
-            <p><%= resource[0].description %></p>
-            <p><textarea placeholder="<%= resource[0].description %>"></textarea></p>
+          <h2>Existing Title: <%= resource[0].title %></h2>
+            <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
+            <p>Existing Description: <br> <%= resource[0].description %></p>
+            <p><textarea name ="description" placeholder="<%= resource[0].description %>"></textarea></p>
           <h4>Topics | #<%= resource[0].topic %></h4>
-          <select class="select-topics">
+          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+          <br><br>
+          <select name ="topic" class="select-topics">
+            
           </select>
           <br>
-          <br>
-          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
           <br>
           
           <h3>Rating</h3>
@@ -55,7 +54,7 @@
           <i class="far fa-heart"></i>
 
           <br>
-          <form method="POST" action="/resources/new">
+          <form method="POST" action="/resources/:id">
             <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
           </form>
         </section>
