@@ -24,17 +24,9 @@ function makeDataHelpers(knex) {
   function addResourceToDatabase(title, desc, URL, userId, topicId, cb) {
     knex('resources')
       .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
-      .returning('*')
       .asCallback(cb)
   }
 
-  function updateExistingResource(resourceId, title, desc, URL, topicId, cb) {
-    knex('resources')
-      .returning('*')
-      .where({id: resourceId})
-      .update({title: title, description: desc, url: URL, topic_id: topicId})
-      .asCallback(cb)
-  }
 
   function getResourceById(resourceId, cb) {
     knex('resources')
@@ -79,7 +71,6 @@ function makeDataHelpers(knex) {
     updateUserDetails,
     insertNewUser,
     deleteResource,
-    updateExistingResource,
   };
 }
 

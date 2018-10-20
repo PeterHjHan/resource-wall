@@ -5,7 +5,7 @@ exports.seed = function (knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('resources').insert({
-          id: 1,
+        
           title: 'Peter',
           description: 'Peter. Help me',
           topic_id: 1,
@@ -13,7 +13,7 @@ exports.seed = function (knex, Promise) {
           user_id: 1,
         }),
         knex('resources').insert({
-          id: 2,
+        
           title: 'Bassem',
           description: 'Ore-sama wa saigou Bassem dessu yo nae',
           topic_id: 2,
@@ -21,7 +21,7 @@ exports.seed = function (knex, Promise) {
           user_id: 2,
         }),
         knex('resources').insert({
-          id: 3,
+        
           title: 'Monica',
           description: 'Ore-sama wa Monica dessu yo nae',
           topic_id: 3,
@@ -29,7 +29,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
         }),
         knex('resources').insert({
-          id: 4,
+        
           title: 'Ujuhbaba',
           description: 'KOKO COCO KOKO COCO',
           topic_id: 3,
@@ -37,7 +37,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
         }),
         knex('resources').insert({
-          id: 5,
+        
           title: 'Keigo',
           description: `It's  such wonderful time of the year~`,
           topic_id: 2,
@@ -45,7 +45,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
         }),
         knex('resources').insert({
-          id: 6,
+        
           title: 'Kagebunshin',
           description: `Doe Shi Tae TOTOTOTOTOTOOTOTOT`,
           topic_id: 3,

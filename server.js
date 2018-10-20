@@ -26,7 +26,6 @@ const {
   updateUserDetails,
   insertNewUser,
   deleteResource,
-  updateExistingResource,
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -227,12 +226,6 @@ app.post('/resources/new', (req, res) => {
   const URL = req.body.url;
   const userId = req.session.id;
   const topicName = req.body.topic
-
-  console.log(title)
-  console.log(desc)
-  console.log(URL)
-  console.log(userId)
-  console.log(topicName)
 
   knex('topics')
     .select('id')
