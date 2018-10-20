@@ -45,7 +45,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
         }),
         knex('resources').insert({
-        
+
           title: 'Kagebunshin',
           description: `Doe Shi Tae TOTOTOTOTOTOOTOTOT`,
           topic_id: 3,

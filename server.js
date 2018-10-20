@@ -192,6 +192,8 @@ app.get('/topics/:topic', (req, res) => {
 //specific resource
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id
+  console.log(resourceId);
+  
   
   getResourceById(resourceId, (err, resource) => {
     if (err) {
