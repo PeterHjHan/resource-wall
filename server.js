@@ -205,36 +205,20 @@ app.get('/resources/:id', (req, res) => {
   });
 });
 
-app.post('/resources/:id/update', (req,res) => {
-  const what = req.params.id
-  const resourceId = res.locals.user.id
-  const title = req.body.title;
-  const desc = req.body.description;
-  const URL = req.body.url;
-  const topicName = req.body.topic
+// app.post('/resources/:id/update', (req,res) => {
+//   const what = req.params.id
+//   const resourceId = res.locals.user.id
+//   const title = req.body.title;
+//   const desc = req.body.description;
+//   const URL = req.body.url;
+//   const topicName = req.body.topic
 
-  console.log(what);
-  // console.log(req);
-  console.log("===============")
-  // console.log(res);
-
-  // knex('topics')
-  //   .select('id')
-  //   .where({topic: topicName})
-  //   .then((result) => {
-  //      return result[0].id;
-  //     }).then((topicId) => {
-  //       updateExistingResource(resourceId, title, desc, URL, topicId, (err,id) => {
-  //         if(err) {
-  //           console.log("OMG")
-  //           res.send('FAILED');
-  //         }
-  //         res.redirect(`/users/${res.locals.user.username}`);
-  //       });
-
-  //   });
-  res.redirect('/')
-});
+//   console.log(what);
+//   // console.log(req);
+//   console.log("===============")
+//   // console.log(res);
+//   res.redirect('/')
+// });
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
@@ -244,14 +228,24 @@ app.post('/resources/new', (req, res) => {
   const userId = req.session.id;
   const topicName = req.body.topic
 
+  console.log(title)
+  console.log(desc)
+  console.log(URL)
+  console.log(userId)
+  console.log(topicName)
+
   knex('topics')
     .select('id')
     .where({topic: topicName})
     .then((result) => {
        return result[0].id;
       }).then((topicId) => {
-        addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {});
-        res.redirect(`/users/${res.locals.user.username}`);
+        addResourceToDatabase(title, desc, URL, userId, topicId, (err, id) => {
+          if(err) {
+            console.log("ERROR");
+          }
+        });
+        res.redirect(`/`);
     });
 });
 
