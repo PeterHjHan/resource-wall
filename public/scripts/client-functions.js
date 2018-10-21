@@ -45,13 +45,19 @@ function renderNewPostForm() {
   const $url = $('<textarea>').addClass('form-control').attr('name', "url").attr("placeholder", "url");
   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
   const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
+  const $formDiv = $('<div>').addClass('form-group')
+  const $formDiv1 = $('<div>').addClass('form-group')
+  const $formDiv2 = $('<div>').addClass('form-group')
 
+  const $titleDiv = $formDiv.append($title)
+  const $descDiv = $formDiv1.append($description)
+  const $urlDiv = $formDiv2.append($url)
 
-
+  
   return $form
-    .append($title)
-    .append($description)
-    .append($url)
+    .append($titleDiv)
+    .append($descDiv)
+    .append($urlDiv)
     .append($select)
     .append(viewTopicsInSelect())
     .append($submitButton)

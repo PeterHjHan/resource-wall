@@ -28,25 +28,18 @@
       <ul class="nav navbar-nav navbar-right ml-auto">			
         <li class="nav-item">
       <% if (user) { %>
-        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">New Post</a>
-        <ul class="dropdown-menu form-wrapper">					
-          <li id="post-new-resource">
-            <form action="/examples/actions/confirmation.php" method="post">
-              <p class="hint-text">Create a New Post!</p>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password" required="required">
-              </div>
-              <input type="submit" class="btn btn-primary btn-block" value="New Post">
-            </form>
-          </li>
-        </ul>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content" id="post-new-resource">
+                
+              </div>
+            </div>
+          </div>
+
+
+          <!-- post-new-resource -->
     
     
       <form method="POST" action="/logout" class="form-inline">
