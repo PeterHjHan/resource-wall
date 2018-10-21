@@ -71,9 +71,24 @@ function updateExistingPost() {
     .appendTo('#post-new-resource')
 };
 
+function renderTopicsInNavBar() {
+  const $ul = $('<ul>').addClass()
+  
+  $.ajax({
+    method: "GET",
+    url: "/api/topics"
+  }).then((topics) => {
+    for (item of topics) {
+      $('<li>').text(item.topic)
+        .appendTo('ul')
+    }
+  });
+}
+
 function loadCommonFunctions() {
   showNewResourceForm();
   renderNewPostForm();
+  renderTopicsInNavBar();
 }
 
 
