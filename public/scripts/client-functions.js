@@ -37,6 +37,7 @@ function viewTopicsInSelect() {
   });
 }
 
+
 function renderNewPostForm() {
   const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/new");
   const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
