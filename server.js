@@ -24,6 +24,7 @@ const {
   filterTopicsByName,
   addResourceToDatabase,
   getResourceById,
+  getResourceByUserId,
   updateUserDetails,
   insertNewUser,
   deleteResource,
@@ -113,10 +114,19 @@ app.get('/backdoor/:username', (req, res) => {
     });
 });
 
-//users can access their page with post form,
-// their resources, their liked resources
+//users can access their page with post form, their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-  res.render('user');
+  getUserByName(req.params.user, (err, user) => {
+    getResourceByUserId(user.id, (err, resource) => {
+      console.log(resource);
+      if (err) {
+        res.redirect('/');
+      } else {
+        const templateVars = {resource, username: req.params.user};
+        res.render('user', templateVars);
+      }
+    });
+  })  
 });
 
 app.get('/users/:user/settings', (req, res) => {
@@ -202,7 +212,6 @@ app.get('/topics/:topic', (req, res) => {
 });
 
 
-
 //specific resource
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id;
@@ -269,7 +278,7 @@ app.post('/resources/new', (req, res) => {
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
-  deleteResource(req.params.id, req.session.userId, (err, del) => {
+  deleteResource(req.params.id, req.session.id, (err, del) => {
     if (err) {
       throw err;
     } else {
@@ -277,6 +286,3 @@ app.post('/resources/:id/delete', (req, res) => {
     }
   });
 });
-
-
-
