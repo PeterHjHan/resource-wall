@@ -1,20 +1,24 @@
 function createResourceElement(item) {
 
   var $article = $('<article>').addClass('grid-item');
-  var $title = $('<h4>').addClass().text(item.title);
-  var $description = $('<p>').addClass().text(item.description);
-  var $userUrl = $('<a>').addClass().text(item.url);
-  var $likeForm = $('<form>').attr('method', 'POST').attr('action','/resources/:id/likes')
-  $('<button>').addClass().text('LIKE').appendTo($likeForm);
+  var $title = $('<h4>').addClass().text(item.resource_title);
+  var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
+  var $description = $('<p>').addClass().text(item.resource_description);
+  var $userUrl = $('<a>').addClass().attr('href', item.resource_url).text(item.resource_url);
+  var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
+  console.log(item);
+
+
+
   return $article
-    .append($title)
+    .append($linkedTitle)
     .append($description)
     .append($userUrl)
     .append($ratings)
-    .append($likeForm)
+    .append($like)
     .append($topic)
 }
 
@@ -64,26 +68,28 @@ function renderNewPostForm() {
     .appendTo('#post-new-resource')
 };
 
-function updateExistingPost() {
-  const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/:id");
-  const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
-  const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
-  const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
-  const $select = $('<select>').addClass("select-topics").attr("name", "topic");
-  const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
 
-  return $form
-    .append($title)
-    .append($description)
-    .append($url)
-    .append($select)
-    .append(viewTopicsInSelect())
-    .append($submitButton)
-    .appendTo('#post-new-resource')
-};
+//THIS FUNCTION IS UNUSED
+// function updateExistingPost() {
+//   const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/:id");
+//   const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
+//   const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
+//   const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
+//   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
+//   const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
+
+//   return $form
+//     .append($title)
+//     .append($description)
+//     .append($url)
+//     .append($select)
+//     .append(viewTopicsInSelect())
+//     .append($submitButton)
+//     .appendTo('#post-new-resource')
+// };
 
 function renderTopicsInNavBar() {
-  
+
   $.ajax({
     method: "GET",
     url: "/api/topics"

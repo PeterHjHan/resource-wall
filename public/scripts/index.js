@@ -1,5 +1,5 @@
 $(() => {
-  
+
   loadCommonFunctions();
 
   $.ajax({
@@ -10,6 +10,7 @@ $(() => {
         createResourceElement(resource).appendTo($("body"));
     }
   });
+
 
 
   // $('.grid').masonry({

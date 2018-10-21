@@ -38,6 +38,7 @@ const resourcesRoutes = require('./routes/resources');
 const searchRoutes = require('./routes/search');
 const commentsRoutes = require('./routes/comments');
 const topicsRoutes = require('./routes/topics');
+const likesRoutes = require('./routes/likes');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -75,6 +76,7 @@ app.use('/api/comments', commentsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/search/', searchRoutes(knex));
+app.use('/api/likes/', likesRoutes(knex));
 
   // addResourceToDatabase('hi', 'no', 'this.com', '1', '1', cb) {
   //   knex('resources')
@@ -251,11 +253,11 @@ app.post('/resources/:id/update', (req,res) => {
   })
 });
 
-app.post('/resources/:id/likes', (req, res) => {
-  console.log("PARAMS ID", req.params.id);
+// app.post('/resources/:id/likes', (req, res) => {
+//   console.log("PARAMS ID", req.params.id);
 
-    res.redirect("/");
-});
+//     res.redirect("/");
+// });
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
