@@ -72,7 +72,7 @@ function updateExistingPost() {
 };
 
 function renderTopicsInNavBar() {
-  const $button = $('<button>').addClass().text('Topics')
+  
   $.ajax({
     method: "GET",
     url: "/api/topics"
@@ -108,3 +108,4 @@ $('#test').on('click', function(event){
     }
   })
 })
+

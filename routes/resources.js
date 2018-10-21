@@ -11,7 +11,7 @@ module.exports = (knex) => {
       .leftJoin("likes", "likes.resource_id", "=", "resources.id")
       .leftJoin("ratings", "resources.id", "=", "ratings.resource_id")
       .select('resources.id', 'resources.title', 'resources.description', 'resources.url', 'topics.topic', 'likes.resource_id', 'ratings.resource_id', 'resources.topic_id')
-      .select('likes.id as likes_id')
+      .select('likes.id as likes_id').notNull()
       .then((results) => {
         res.json(results);
       });
