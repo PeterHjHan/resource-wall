@@ -17,15 +17,29 @@
           </ul>
         </li>
       </ul>
-      
-      <form class="navbar-form form-inline">
+
+      <form class="navbar-form form-inline" method="GET" action="/search">
         <div class="input-group search-box">								
-          <input type="text" id="search" class="form-control" placeholder="Search here...">
+          <input type="text" id="search" class="form-control" name='query' placeholder="Search here...">
           <span class="input-group-addon"></span>
         </div>
       </form>
+      
       <ul class="nav navbar-nav navbar-right ml-auto">			
         <li class="nav-item">
+      <% if (user) { %>
+
+      <button id="new-post-button" class="btn btn-outline-secondary" name='post'>New Post</button>
+        <!-- TODO: style:display:none should be in the CSS file -->
+      <section id="post-new-resource" style="display:none;">  </section>
+    
+    
+      <form method="POST" action="/logout" class="form-inline">
+        <button class="btn btn-outline-secondary" name='logout'>Logout</button>
+      </form>
+    
+      <% } else { %>
+
           <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
           <ul class="dropdown-menu form-wrapper">					
             <li>
@@ -64,5 +78,7 @@
           </ul>
         </li>
       </ul>
+
+  <% } %>
     </div>
   </nav>
