@@ -239,17 +239,15 @@ app.post('/resources/:id/update', (req,res) => {
   })
 });
 // rate/like on a specific resource
-// app.post('/resources/:id', (req, res) => {
+app.post('/resources/:id/likes', (req, res) => {
   
-//   // knex('likes')
-//   //   .select('id')
-//   //   .where({'likes.user_id': userId})
-//   //   .then((result) => {
-//   //     return result[0].likes;
-//   //   }).then(() => {
-
-
-// }) 
+  // knex('likes')
+  //   .select('id')
+  //   .where({'likes.user_id': userId})
+  //   .then((result) => {
+  //     return result[0].likes;
+  //   }).then(() => {
+});
 
 //post a new resource
 app.post('/resources/new', (req, res) => {

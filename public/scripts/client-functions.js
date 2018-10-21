@@ -4,8 +4,7 @@ function createResourceElement(item) {
   var $title = $('<h4>').addClass().text(item.title);
   var $description = $('<p>').addClass().text(item.description);
   var $userUrl = $('<a>').addClass().text(item.url);
-  //TODO: What about likes? DO we want to put a boolean column in the DB
-  // var $like = $('<p>').addClass().text(item.like)
+
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
@@ -14,6 +13,7 @@ function createResourceElement(item) {
     .append($description)
     .append($userUrl)
     .append($ratings)
+    .append(renderLikeButton())
     .append($topic)
 }
 
@@ -21,6 +21,18 @@ function showNewResourceForm() {
   $('#new-post-button').click(() => {
     $('#post-new-resource').slideToggle(300);
   });
+};
+
+function renderLikeButton() {
+  var $like = $('<button>').addClass().text('LIKE');
+
+  // $.ajax({
+  //   method: "POST",
+  //   url: "/resources/:id/likes"
+
+  // })
+
+  return $like
 };
 
 function viewTopicsInSelect() {
@@ -83,6 +95,8 @@ function renderTopicsInNavBar() {
     }
   });
 }
+
+$('<button>').addClass().attr('value','like').appendTo('.grid-item');
 
 function loadCommonFunctions() {
   showNewResourceForm();
