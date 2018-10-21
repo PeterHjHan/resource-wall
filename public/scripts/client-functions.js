@@ -80,9 +80,13 @@ function renderTopicsInNavBar() {
     url: "/api/topics"
   }).then((topics) => {
     for (item of topics) {
-      $('<a>').attr(`href`,`/topics/${item.topic}`).addClass('dropdown-item').text(item.topic)
-        .appendTo('.dropdown-menu');
+      const $li = $('<li>')
+      const $topic = $('<a>').attr(`href`,`/topics/${item.topic}`).addClass('dropdown-item').text(item.topic)
+
+      $li.append($topic)
+         .appendTo('.dropdown-menu1');
     }
+
   });
 }
 
