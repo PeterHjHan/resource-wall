@@ -4,8 +4,8 @@ function createResourceElement(item) {
   var $title = $('<h4>').addClass().text(item.title);
   var $description = $('<p>').addClass().text(item.description);
   var $userUrl = $('<a>').addClass().text(item.url);
-  //TODO: What about likes? DO we want to put a boolean column in the DB
-  // var $like = $('<p>').addClass().text(item.like)
+  var $likeForm = $('<form>').attr('method', 'POST').attr('action','/resources/:id/likes')
+  $('<button>').addClass().text('LIKE').appendTo($likeForm);
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
@@ -14,6 +14,7 @@ function createResourceElement(item) {
     .append($description)
     .append($userUrl)
     .append($ratings)
+    .append($likeForm)
     .append($topic)
 }
 
@@ -22,6 +23,7 @@ function showNewResourceForm() {
     $('#post-new-resource').slideToggle(300);
   });
 };
+
 
 function viewTopicsInSelect() {
   $.ajax({
@@ -71,26 +73,24 @@ function updateExistingPost() {
     .appendTo('#post-new-resource')
 };
 
+function renderTopicsInNavBar() {
+  
+  $.ajax({
+    method: "GET",
+    url: "/api/topics"
+  }).then((topics) => {
+    for (item of topics) {
+      $('<a>').attr(`href`,`/topics/${item.topic}`).addClass('dropdown-item').text(item.topic)
+        .appendTo('.dropdown-menu');
+    }
+  });
+}
+
+$('<button>').addClass().attr('value','like').appendTo('.grid-item');
+
 function loadCommonFunctions() {
   showNewResourceForm();
   renderNewPostForm();
+  renderTopicsInNavBar();
 }
 
-
-$('#test').on('click', function(event){
-  event.preventDefault();
-  console.log("it clicked!")
-  $.ajax({
-    method: 'POST',
-    url: '/resources/:id',
-    data: {
-      score: $(this).val() 
-    },
-    success: function(result) {
-      console.log("This worked");
-    },
-    error: function(result) {
-      console.log("Sad face")
-    }
-  })
-})

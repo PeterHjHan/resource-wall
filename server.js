@@ -24,6 +24,7 @@ const {
   filterTopicsByName,
   addResourceToDatabase,
   getResourceById,
+  getResourceByUserId,
   updateUserDetails,
   insertNewUser,
   deleteResource,
@@ -113,10 +114,19 @@ app.get('/backdoor/:username', (req, res) => {
     });
 });
 
-//users can access their page with post form,
-// their resources, their liked resources
+//users can access their page with post form, their resources, their liked resources
 app.get('/users/:user', (req, res) => {
-  res.render('user');
+  getUserByName(req.params.user, (err, user) => {
+    getResourceByUserId(user.id, (err, resource) => {
+      console.log(resource);
+      if (err) {
+        res.redirect('/');
+      } else {
+        const templateVars = {resource, username: req.params.user};
+        res.render('user', templateVars);
+      }
+    });
+  })
 });
 
 app.get('/users/:user/settings', (req, res) => {
@@ -202,7 +212,6 @@ app.get('/topics/:topic', (req, res) => {
 });
 
 
-
 //specific resource
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id;
@@ -241,18 +250,12 @@ app.post('/resources/:id/update', (req,res) => {
         res.redirect(`/`);
   })
 });
-// rate/like on a specific resource
-// app.post('/resources/:id', (req, res) => {
 
-//   // knex('likes')
-//   //   .select('id')
-//   //   .where({'likes.user_id': userId})
-//   //   .then((result) => {
-//   //     return result[0].likes;
-//   //   }).then(() => {
+app.post('/resources/:id/likes', (req, res) => {
+  console.log("PARAMS ID", req.params.id);
 
-
-// })
+    res.redirect("/");
+});
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
@@ -279,7 +282,6 @@ app.post('/resources/new', (req, res) => {
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
-  console.log(req.session.id);
   deleteResource(req.params.id, req.session.id, (err, del) => {
     if (err) {
       throw err;
@@ -288,6 +290,3 @@ app.post('/resources/:id/delete', (req, res) => {
     }
   });
 });
-
-
-
