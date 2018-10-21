@@ -118,7 +118,6 @@ app.get('/backdoor/:username', (req, res) => {
 app.get('/users/:user', (req, res) => {
   getUserByName(req.params.user, (err, user) => {
     getResourceByUserId(user.id, (err, resource) => {
-      console.log(resource);
       if (err) {
         res.redirect('/');
       } else {

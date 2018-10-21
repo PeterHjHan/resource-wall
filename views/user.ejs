@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/user.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Fonts -->
      <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
@@ -31,23 +31,34 @@
     <br>
 
     <% if (user && resource.length !== 0 && user.id === resource[0].user_id) { %>
-    <h1>Hello <%= user.username %>!</h1>
-    <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
-    <% } %>
+    
+    <div class="greeting">
+      <h1>Hello <%= user.username %>!</h1>
+      <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
+      <% } %>
+    </div>
 
-    <br>
-    <br>
     <h3><%= username %>'s Resources</h3>
       <% resource.forEach(function(element, i) { %>
-      <ul>
-        <h4><%= element.title %></h4>
-        <li><%= element.description %></li>
-        <li><%= element.url %></li>
-      </ul>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= element.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text"><%= element.description %></p>
+            <a href="<%= element.url %>" class="<%= element.url %>">Card link</a>
+          </div>
+        </div>
       <% }); %>
 
-    <h4><%= username %>'s Liked Resources</h4>
-
+    <h3><%= username %>'s Liked Resources</h3>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+        </div>
+      </div>
 
   </body>
 </html>
