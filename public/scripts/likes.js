@@ -10,8 +10,10 @@ $(() => {
       url: "/api/likes",
       data: {resourceId}
     }).then((results) => {
-      console.log('results', results);
-      //CHANGE THE CLASS AND MAKE IT BEAUTY
+      console.log($(e.target).css('color'));
+        $(e.target).css({
+          'color': 'red'
+        });
     });
   });
 
@@ -24,7 +26,9 @@ $(() => {
       data: {resourceId: clientResId}
     }).then((results) => {
       console.log('results', results);
-      //CHANGE THE CLASS AND MAKE IT BEAUTY
+      $(e.target).css({
+          'color': 'red'
+        });
     });
   });
   // $('.grid').masonry({
