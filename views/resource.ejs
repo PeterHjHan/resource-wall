@@ -27,7 +27,6 @@
   <body>
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
-        <% console.log(resource[0]) %>
           <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
         <h2>Existing Title: <%= resource[0].title %></h2>
             <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
@@ -62,7 +61,7 @@
             <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
           </form>
 
-          <form method="POST" action="/resources/:id/delete">
+          <form method="POST" action="/resources/<%= resource[0].id%>/delete">
             <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
           </form>
 

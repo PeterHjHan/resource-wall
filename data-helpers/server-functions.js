@@ -63,7 +63,7 @@ function makeDataHelpers(knex) {
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
-      .where({resource_id: resourceId, user_id: userId})
+      .where({id: resourceId, user_id: userId})
       .del()
       .asCallback(cb)
   };

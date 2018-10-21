@@ -207,7 +207,6 @@ app.get('/topics/:topic', (req, res) => {
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id;
   getResourceById(resourceId, (err, resource) => {
-    console.log(resource);
     if (err) {
       res.redirect('/');
     } else {
@@ -276,8 +275,8 @@ app.post('/resources/new', (req, res) => {
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
-  console.log(req.params.id);
-  deleteResource(req.params.id, req.session.userId, (err, del) => {
+  console.log(req.session.id);
+  deleteResource(req.params.id, req.session.id, (err, del) => {
     if (err) {
       throw err;
     } else {
