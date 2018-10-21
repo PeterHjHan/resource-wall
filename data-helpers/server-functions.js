@@ -37,8 +37,20 @@ function makeDataHelpers(knex) {
 
   function getResourceById(resourceId, cb) {
     knex('resources')
-      .select('*')
-      .leftJoin('comments', 'comments.resource_id', '=', 'resources.id')
+      .select(
+        'resources.id as resource_id',
+        'resources.user_id as resource_user_id',
+        'resources.title as resource_title',
+        'resources.description as resource_description',
+        'resources.url as resrouce_url',
+        'resources.topic_id as resource_topic_id',
+        'comments.id as comment_id',
+        'comments.comment as comment',
+        'comments.user_id as comment_user_id',
+        'comments.resource_id as comment_resource_id',
+        'topics.topic as topic',
+        'topics.id as topic_id')
+      .leftJoin('comments', 'resources.id', '=', 'comments.resource_id')
       .leftJoin('topics', 'resources.topic_id', '=', 'topics.id')
       .where({'resources.id': resourceId})
       .asCallback(cb)
@@ -63,7 +75,7 @@ function makeDataHelpers(knex) {
   function deleteResource(resourceId, userId, cb) {
     knex('resources')
       .first('*')
-      .where({id: resourceId, user_id: userId})
+      .where({'resources.id': resourceId, 'resources.user_id': userId})
       .del()
       .asCallback(cb)
   };

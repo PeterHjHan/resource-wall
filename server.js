@@ -210,8 +210,12 @@ app.get('/resources/:id', (req, res) => {
     if (err) {
       res.redirect('/');
     } else {
-      const templateVars = {resource};
-      res.render('resource', templateVars);
+      if (resource.length !== 0) {
+        const templateVars = {resource};
+        res.render('resource', templateVars);
+      } else {
+        res.redirect('/');
+      }
     }
   });
 });
@@ -239,7 +243,7 @@ app.post('/resources/:id/update', (req,res) => {
 });
 // rate/like on a specific resource
 // app.post('/resources/:id', (req, res) => {
-  
+
 //   // knex('likes')
 //   //   .select('id')
 //   //   .where({'likes.user_id': userId})
@@ -248,7 +252,7 @@ app.post('/resources/:id/update', (req,res) => {
 //   //   }).then(() => {
 
 
-// }) 
+// })
 
 //post a new resource
 app.post('/resources/new', (req, res) => {

@@ -8,8 +8,8 @@ exports.up = function(knex, Promise) {
     table.integer('user_id').unsigned().notNull();
     table.integer('topic_id').unsigned().notNull();
 
-    table.foreign('user_id').references('id').inTable('users');
-    table.foreign('topic_id').references('id').inTable('topics');
+    table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
+    table.foreign('topic_id').references('id').inTable('topics').onDelete('CASCADE');
   })
 };
 

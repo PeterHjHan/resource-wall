@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      
+
       <title> <%= resource[0].title %> </title>
 
       <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -14,7 +14,7 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
       <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-      <script type="text/javascript" src="/scripts/client-functions.js"></script>  
+      <script type="text/javascript" src="/scripts/client-functions.js"></script>
       <script type="text/javascript" src="/scripts/resources.js"></script>
 
 
@@ -25,33 +25,35 @@
   </header>
 
   <body>
-    <% if (user && user.id === resource[0].user_id) { %>
+    <% console.log('RESOURCE', resource[0].resource_user_id);
+       console.log('USER', user.id);
+    if (user && user.id === resource[0].resource_user_id) { %>
       <section>
           <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
-        <h2>Existing Title: <%= resource[0].title %></h2>
+        <h2>Existing Title: <%= resource[0].resource_title %></h2>
             <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
-            <p>Existing Description: <br> <%= resource[0].description %></p>
+            <p>Existing Description: <br> <%= resource[0].resource_description %></p>
             <p><textarea name ="description" placeholder="<%= resource[0].description %>"></textarea></p>
             <p><input type='text'  name ="url" placeholder="<%= resource[0].url %>"></textarea></p>
-            <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+            <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
             <br><br>
             <h4>Topics | #<%= resource[0].topic %></h4>
           <select name ="topic" class="select-topics">
-            
+
           </select>
           <br>
             <button class="btn btn-outline-secondary" type="submit">Update</button>
           <br>
-          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+          <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
           <br>
-          
+
           <h3>Rating</h3>
           <button id="test" class="far fa-star" value='1'></button>
           <button id="test" class="far fa-star" value='2'></button>
           <button id="test" class="far fa-star" value='3'></button>
           <button id="test" class="far fa-star" value='4'></button>
           <button id="test" class="far fa-star" value='5'></button>
-    
+
           <br>
           <h3>Like</h3>
           <button class="far fa-heart"></button>
@@ -61,7 +63,7 @@
             <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
           </form>
 
-          <form method="POST" action="/resources/<%= resource[0].id%>/delete">
+          <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
             <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
           </form>
 
@@ -82,13 +84,13 @@
 
     <% } else if (user) { %>
       <section>
-        <h2><%= resource[0].title %></h2>
+        <h2><%= resource[0].resource_title %></h2>
         <h3>Description</h3>
-          <p><%= resource[0].description %></p>
+          <p><%= resource[0].resource_description %></p>
 
         <h4>#<%= resource[0].topic %></h4>
-        
-        <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+
+        <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
       </section>
       <br>
 
@@ -115,18 +117,18 @@
             </form>
           </article>
         </section>
-    
+
     <% } else { %>
       <section>
-          <h3><%= resource[0].title %></h3>
+          <h3><%= resource[0].resource_title %></h3>
           <h3>Description</h3>
-            <p><%= resource[0].description %></p>
-  
+            <p><%= resource[0].resource_description %></p>
+
           <h4>#<%= resource[0].topic %></h4>
-          
-          <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
+
+          <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
         </section>
-        
+
         <br>
         <section>
           <h3>Comments</h3>
@@ -136,7 +138,7 @@
             </article>
           </section>
     <% } %>
-  
+
   </body>
 
 </html>
