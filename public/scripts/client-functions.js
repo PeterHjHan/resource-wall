@@ -32,7 +32,7 @@ function viewTopicsInSelect() {
   }).then((topics) => {
     for (item of topics) {
       $('<option>').text(item.topic)
-        .appendTo('.select-topics')
+        .appendTo('select.form-control')
     }
   });
 }
@@ -43,7 +43,7 @@ function renderNewPostForm() {
   const $title = $('<textarea>').addClass('form-control').attr('name', "title").attr("placeholder", "Title")
   const $description = $('<textarea>').addClass('form-control').attr('name', "description").attr("placeholder", "description");
   const $url = $('<textarea>').addClass('form-control').attr('name', "url").attr("placeholder", "url");
-  const $select = $('<select>').addClass("select-topics").attr("name", "topic");
+  const $select = $('<select>').addClass("form-control").attr("name", "topic").attr('id','exampleFormControlSelect2')
   const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
   const $formDiv = $('<div>').addClass('form-group')
   const $formDiv1 = $('<div>').addClass('form-group')
