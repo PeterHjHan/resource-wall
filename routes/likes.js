@@ -8,6 +8,8 @@ module.exports = (knex) => {
   router.post('/', (req, res) => {
     const resourceId = req.body.resourceId;
     const userId = req.session.id;
+    console.log('user', userId);
+    console.log('id', resourceId)
     knex('likes')
       .first('*')
       .where({'likes.user_id': userId, 'likes.resource_id': resourceId})

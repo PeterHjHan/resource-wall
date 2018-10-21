@@ -15,7 +15,18 @@ $(() => {
     });
   });
 
-
+  $(document).on('click', '.clientLike', (e) => {
+    let clientResId = $(e.target).attr('id');
+    // console.log(clientResId)
+    $.ajax({
+      method: 'POST',
+      url: "/api/likes",
+      data: {resourceId: clientResId}
+    }).then((results) => {
+      console.log('results', results);
+      //CHANGE THE CLASS AND MAKE IT BEAUTY
+    });
+  });
   // $('.grid').masonry({
   //   // options...
   //   itemSelector: '.grid-item',
