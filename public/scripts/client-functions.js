@@ -1,16 +1,19 @@
 function createResourceElement(item) {
 
   var $article = $('<article>').addClass('grid-item');
-  var $title = $('<h4>').addClass().text(item.title);
-  var $description = $('<p>').addClass().text(item.description);
-  var $userUrl = $('<a>').addClass().text(item.url);
+  var $title = $('<h4>').addClass().text(item.resource_title);
+  var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
+  var $description = $('<p>').addClass().text(item.resource_description);
+  var $userUrl = $('<a>').addClass().attr('href', item.resource_url).text(item.resource_url);
   var $likeForm = $('<form>').attr('method', 'POST').attr('action','/resources/:id/likes')
   $('<button>').addClass().text('LIKE').appendTo($likeForm);
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
+  console.log(item);
+
   return $article
-    .append($title)
+    .append($linkedTitle)
     .append($description)
     .append($userUrl)
     .append($ratings)
@@ -74,7 +77,7 @@ function updateExistingPost() {
 };
 
 function renderTopicsInNavBar() {
-  
+
   $.ajax({
     method: "GET",
     url: "/api/topics"

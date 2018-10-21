@@ -28,9 +28,7 @@
   </header>
 
   <body>
-    <% console.log('RESOURCE', resource[0].resource_user_id);
-       console.log('USER', user.id);
-    if (user && user.id === resource[0].resource_user_id) { %>
+    <% if (user && user.id === resource[0].resource_user_id) { %>
       <section>
           <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
         <h2>Existing Title: <%= resource[0].resource_title %></h2>
