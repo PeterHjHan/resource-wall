@@ -17,6 +17,7 @@ const knex        = require('knex')(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+
 const {
   getUserById,
   getUserByName,
@@ -53,6 +54,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   // dest: __dirname + '/public/styles',
 //   // debug: true,
 //   // outputStyle: 'expanded'
+// app.use('/styles', sass({
+//   src: __dirname + '/styles',
+//   dest: __dirname + '/public/styles',
+//   debug: true,
+//   outputStyle: 'expanded'
 // }));
 app.use(express.static('public'));
 
@@ -66,10 +72,14 @@ app.use(cookieSession({
 app.use('/api/resources/', resourcesRoutes(knex));
 app.use('/api/comments', commentsRoutes(knex));
 app.use('/api/topics', topicsRoutes(knex));
-app.use('/api/search', searchRoutes(knex));
 app.use('/api/users', usersRoutes(knex));
+app.use('/api/search/', searchRoutes(knex));
 
-
+  // addResourceToDatabase('hi', 'no', 'this.com', '1', '1', cb) {
+  //   knex('resources')
+  //     .insert({title: title, description: desc, url: URL, user_id: userId, topic_id: topicId})
+  //     .asCallback(cb)
+  // }
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ROUTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -197,6 +207,7 @@ app.get('/topics/:topic', (req, res) => {
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id;
   getResourceById(resourceId, (err, resource) => {
+    console.log(resource);
     if (err) {
       res.redirect('/');
     } else {
@@ -227,6 +238,18 @@ app.post('/resources/:id/update', (req,res) => {
         res.redirect(`/`);
   })
 });
+// rate/like on a specific resource
+app.post('/resources/:id', (req, res) => {
+  
+  // knex('likes')
+  //   .select('id')
+  //   .where({'likes.user_id': userId})
+  //   .then((result) => {
+  //     return result[0].likes;
+  //   }).then(() => {
+
+
+}) 
 
 //post a new resource
 app.post('/resources/new', (req, res) => {
@@ -253,6 +276,7 @@ app.post('/resources/new', (req, res) => {
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
+  console.log(req.params.id);
   deleteResource(req.params.id, req.session.userId, (err, del) => {
     if (err) {
       throw err;

@@ -4,16 +4,19 @@
 const express = require('express');
 const router  = express.Router();
 
+// const bodyParser  = require('body-parser');
+// router.use(bodyParser.urlencoded({ extended: true }));
+
 module.exports = (knex) => {
 
-  router.get("/:id", (req, res) => {
+  router.get("/", (req, res) => {
+    const searchPhrase = decodeURI(req._parsedOriginalUrl.query).toLowerCase();
     knex
-      .from("resources")
-      .leftJoin("likes", "resources.id", "=", "likes.resource_id")
-      .leftJoin("ratings", "resources.id", "=", "ratings.resource_id")
-      .leftJoin("topics", "resources.topic_id", "=", "topics.id")
-      // .where(`%${req.body.id}`)
       .select("*")
+      .from("resources")
+      .whereRaw('LOWER(title) LIKE ?', `%${[searchPhrase]}%`)
+      .orWhereRaw('LOWER(description) LIKE ?', `%${[searchPhrase]}%`)
+      .orWhereRaw('LOWER(url) LIKE ?', `%${[searchPhrase]}%`)
       .then((results) => {
         res.json(results);
     });
