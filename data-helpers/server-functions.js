@@ -44,6 +44,13 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
+  function getResourceByUserId(userId, cb) {
+    knex('resources')
+      .select('*')
+      .where({'resources.user_id': userId})
+      .asCallback(cb)
+  }
+
   function updateUserDetails(userId, newUsername, newPassword, newAvatar, cb) {
     //PETER PLS REVIEW ONEGAISHI MEI SUUUUUUWWWWW
     knex('users')
@@ -75,6 +82,7 @@ function makeDataHelpers(knex) {
     filterTopicsByName,
     addResourceToDatabase,
     getResourceById,
+    getResourceByUserId,
     updateUserDetails,
     insertNewUser,
     deleteResource,
