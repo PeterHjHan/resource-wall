@@ -207,7 +207,6 @@ app.get('/topics/:topic', (req, res) => {
 app.get('/resources/:id', (req, res) => {
   const resourceId = req.params.id;
   getResourceById(resourceId, (err, resource) => {
-    console.log(resource);
     if (err) {
       res.redirect('/');
     } else {
@@ -240,13 +239,14 @@ app.post('/resources/:id/update', (req,res) => {
 });
 // rate/like on a specific resource
 app.post('/resources/:id/likes', (req, res) => {
-  
+    
   // knex('likes')
   //   .select('id')
   //   .where({'likes.user_id': userId})
   //   .then((result) => {
   //     return result[0].likes;
   //   }).then(() => {
+    res.send("teehee");
 });
 
 //post a new resource
@@ -274,7 +274,6 @@ app.post('/resources/new', (req, res) => {
 
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
-  console.log(req.params.id);
   deleteResource(req.params.id, req.session.userId, (err, del) => {
     if (err) {
       throw err;

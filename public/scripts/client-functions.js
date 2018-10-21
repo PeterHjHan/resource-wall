@@ -4,7 +4,8 @@ function createResourceElement(item) {
   var $title = $('<h4>').addClass().text(item.title);
   var $description = $('<p>').addClass().text(item.description);
   var $userUrl = $('<a>').addClass().text(item.url);
-
+  var $likeForm = $('<form>').attr('method', 'POST').attr('action','/resources/:id/likes')
+  $('<button>').addClass().text('LIKE').appendTo($likeForm);
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
@@ -13,7 +14,7 @@ function createResourceElement(item) {
     .append($description)
     .append($userUrl)
     .append($ratings)
-    .append(renderLikeButton())
+    .append($likeForm)
     .append($topic)
 }
 
@@ -23,20 +24,6 @@ function showNewResourceForm() {
   });
 };
 
-function renderLikeButton() {
-  var $like = $('<button>').addClass().text('LIKE');
-
-  $($like).click((e)=>{
-    e.preventDefault();
-  })
-  // $.ajax({
-  //   method: "POST",
-  //   url: "/resources/:id/likes"
-
-  // })
-
-  return $like
-};
 
 function viewTopicsInSelect() {
   $.ajax({
@@ -106,23 +93,4 @@ function loadCommonFunctions() {
   renderNewPostForm();
   renderTopicsInNavBar();
 }
-
-
-$('#test').on('click', function(event){
-  event.preventDefault();
-  console.log("it clicked!")
-  $.ajax({
-    method: 'POST',
-    url: '/resources/:id',
-    data: {
-      score: $(this).val() 
-    },
-    success: function(result) {
-      console.log("This worked");
-    },
-    error: function(result) {
-      console.log("Sad face")
-    }
-  })
-})
 
