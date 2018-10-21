@@ -8,8 +8,8 @@ const router  = express.Router();
 // router.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = (knex) => {
-
   router.get("/", (req, res) => {
+  console.log(req.session.id);
     const searchPhrase = decodeURI(req._parsedOriginalUrl.query).toLowerCase();
     knex
       .select(

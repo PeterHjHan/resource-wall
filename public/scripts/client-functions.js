@@ -58,23 +58,25 @@ function renderNewPostForm() {
     .appendTo('#post-new-resource')
 };
 
-function updateExistingPost() {
-  const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/:id");
-  const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
-  const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
-  const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
-  const $select = $('<select>').addClass("select-topics").attr("name", "topic");
-  const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
 
-  return $form
-    .append($title)
-    .append($description)
-    .append($url)
-    .append($select)
-    .append(viewTopicsInSelect())
-    .append($submitButton)
-    .appendTo('#post-new-resource')
-};
+//THIS FUNCTION IS UNUSED
+// function updateExistingPost() {
+//   const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/:id");
+//   const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
+//   const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
+//   const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
+//   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
+//   const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
+
+//   return $form
+//     .append($title)
+//     .append($description)
+//     .append($url)
+//     .append($select)
+//     .append(viewTopicsInSelect())
+//     .append($submitButton)
+//     .appendTo('#post-new-resource')
+// };
 
 function renderTopicsInNavBar() {
 
