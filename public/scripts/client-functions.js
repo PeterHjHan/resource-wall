@@ -32,12 +32,12 @@ function viewTopicsInSelect() {
   }).then((topics) => {
     for (item of topics) {
       $('<option>').text(item.topic)
-        .appendTo('select.form-control')
+        .appendTo('.select-topics')
     }
   });
 }
 
-
+//TODO: unncessary, may delete it after the final submission
 function renderNewPostForm() {
   const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/new");
   const $title = $('<textarea>').addClass('form-control').attr('name', "title").attr("placeholder", "Title")
