@@ -26,6 +26,9 @@ function showNewResourceForm() {
 function renderLikeButton() {
   var $like = $('<button>').addClass().text('LIKE');
 
+  $($like).click((e)=>{
+    e.preventDefault();
+  })
   // $.ajax({
   //   method: "POST",
   //   url: "/resources/:id/likes"
