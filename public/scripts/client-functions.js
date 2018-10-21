@@ -72,15 +72,14 @@ function updateExistingPost() {
 };
 
 function renderTopicsInNavBar() {
-  const $ul = $('<ul>').addClass()
-  
+  const $button = $('<button>').addClass().text('Topics')
   $.ajax({
     method: "GET",
     url: "/api/topics"
   }).then((topics) => {
     for (item of topics) {
-      $('<li>').text(item.topic)
-        .appendTo('ul')
+      $('<a>').attr(`href`,`/topics/${item.topic}`).addClass('dropdown-item').text(item.topic)
+        .appendTo('.dropdown-menu');
     }
   });
 }
