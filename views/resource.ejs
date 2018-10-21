@@ -27,7 +27,6 @@
   <body>
     <h1>Hello One Resource!</h1>
 
-<% console.log(resource) %>
     <% if (user && user.id === resource[0].user_id) { %>
       <section>
           <h2><%= resource[0].title %></h2>
@@ -46,22 +45,25 @@
           <br>
           
           <h3>Rating</h3>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <br>
+          <button id="test" class="far fa-star" value='1'></button>
+          <button id="test" class="far fa-star" value='2'></button>
+          <button id="test" class="far fa-star" value='3'></button>
+          <button id="test" class="far fa-star" value='4'></button>
+          <button id="test" class="far fa-star" value='5'></button>
+    
           <br>
           <h3>Like</h3>
-          <i class="far fa-thumbs-up"></i>
-          <i class="far fa-thumbs-down"></i>
-          <i class="far fa-heart"></i>
+          <button class="far fa-heart"></button>
 
           <br>
           <form method="POST" action="/resources/new">
             <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
           </form>
+
+          <form method="POST" action="/resources/:id/delete">
+            <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
+          </form>
+
         </section>
         <br>
         <br>
@@ -90,19 +92,16 @@
       <br>
 
       <h3>Rating</h3>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <br>
-      <br>
-      <h3>Like</h3>
-      <i class="far fa-thumbs-up"></i>
-      <i class="far fa-thumbs-down"></i>
-      <i class="far fa-heart"></i>
+      <button class="far fa-star" value='1'></button>
+      <button class="far fa-star" value='2'></button>
+      <button class="far fa-star" value='3'></button>
+      <button class="far fa-star" value='4'></button>
+      <button class="far fa-star" value='5'></button>
 
       <br>
+      <h3>Like</h3>
+      <button class="far fa-heart"></button>
+
       <br>
       <section>
         <h3>Comments</h3>
@@ -126,20 +125,6 @@
           
           <a href="<%= resource[0].url %>"><%= resource[0].url %></a>
         </section>
-        <br>
-
-        <h3>Rating</h3>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <br>
-        <br>
-        <h3>Like</h3>
-        <i class="far fa-thumbs-up"></i>
-        <i class="far fa-thumbs-down"></i>
-        <i class="far fa-heart"></i>
         
         <br>
         <section>

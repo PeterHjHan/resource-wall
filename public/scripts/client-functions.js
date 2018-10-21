@@ -24,7 +24,6 @@ function showNewResourceForm() {
 }
 
 function viewTopicsInSelect() {
-
   $.ajax({
     method: "GET",
     url: "/api/topics"
@@ -34,7 +33,6 @@ function viewTopicsInSelect() {
         .appendTo('.select-topics')
     }
   });
-
 }
 
 function renderNewPostForm() {
@@ -60,3 +58,22 @@ function loadCommonFunctions() {
   showNewResourceForm();
   renderNewPostForm();
 }
+
+
+$('#test').on('click', function(event){
+  event.preventDefault();
+  console.log("it clicked!")
+  $.ajax({
+    method: 'POST',
+    url: '/resources/:id',
+    data: {
+      score: $(this).val() 
+    },
+    success: function(result) {
+      console.log("This worked");
+    },
+    error: function(result) {
+      console.log("Sad face")
+    }
+  })
+})
