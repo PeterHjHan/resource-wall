@@ -28,20 +28,22 @@
       <ul class="nav navbar-nav navbar-right ml-auto">			
         <li class="nav-item">
       <% if (user) { %>
-        <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">New Post</a>
+        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">New Post</a>
         <ul class="dropdown-menu form-wrapper">					
           <li id="post-new-resource">
-            <!-- <br>
             <form action="/examples/actions/confirmation.php" method="post">
-
+              <p class="hint-text">Create a New Post!</p>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" required="required">
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password" required="required">
               </div>
-              <input type="submit" class="btn btn-primary btn-block" value="Login">
-            </form> -->
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password" required="required">
+              </div>
+              <input type="submit" class="btn btn-primary btn-block" value="New Post">
+            </form>
           </li>
         </ul>
 

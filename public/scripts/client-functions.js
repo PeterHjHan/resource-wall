@@ -40,11 +40,13 @@ function viewTopicsInSelect() {
 
 function renderNewPostForm() {
   const $form = $('<form>').addClass().attr("method", "POST").attr("action", "/resources/new");
-  const $title = $('<textarea>').addClass().attr('name', "title").attr("placeholder", "Title");
-  const $description = $('<textarea>').addClass().attr('name', "description").attr("placeholder", "description");
-  const $url = $('<textarea>').addClass().attr('name', "url").attr("placeholder", "url");
+  const $title = $('<textarea>').addClass('form-control').attr('name', "title").attr("placeholder", "Title")
+  const $description = $('<textarea>').addClass('form-control').attr('name', "description").attr("placeholder", "description");
+  const $url = $('<textarea>').addClass('form-control').attr('name', "url").attr("placeholder", "url");
   const $select = $('<select>').addClass("select-topics").attr("name", "topic");
   const $submitButton = $('<input>').addClass("btn btn-outline-secondary").attr('type', 'submit').attr('value', 'post');
+
+
 
   return $form
     .append($title)
