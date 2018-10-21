@@ -121,6 +121,9 @@ app.get('/users/:user', (req, res) => {
       if (err) {
         res.redirect('/');
       } else {
+        console.log("resource", resource);
+        console.log(":user", req.params.user);
+        console.log("middleware user", user);
         const templateVars = {resource, username: req.params.user};
         res.render('user', templateVars);
       }

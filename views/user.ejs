@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User: <%= user.username %></title>
+    <title>User: <%= username %></title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -31,13 +31,17 @@
     <br>
 
     <% if (user && resource.length !== 0 && user.id === resource[0].user_id) { %>
-    
     <div class="greeting">
-      <h1>Hello <%= user.username %>!</h1>
+      <h1>Hello <%= username %>!</h1>
       <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
-      <% } %>
     </div>
 
+    <% } else { %>
+    <div class="greeting">
+      <h1>Welcome to <%= username %>'s Profile</h1>
+    </div>
+
+    <div class="created-resource">
     <h3><%= username %>'s Resources</h3>
       <% resource.forEach(function(element, i) { %>
         <div class="card">
@@ -45,11 +49,13 @@
             <h5 class="card-title"><%= element.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <p class="card-text"><%= element.description %></p>
-            <a href="<%= element.url %>" class="<%= element.url %>">Card link</a>
+            <a href="<%= element.url %>" class="url"><%= element.url %></a>
           </div>
         </div>
       <% }); %>
+    </div>
 
+    <div class="liked-resource">
     <h3><%= username %>'s Liked Resources</h3>
       <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -59,7 +65,8 @@
           <a href="#" class="card-link">Card link</a>
         </div>
       </div>
-
+      </div>
+    <% } %>
   </body>
 </html>
 

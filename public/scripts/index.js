@@ -12,9 +12,10 @@ $(() => {
   });
 
 
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 20
-  // });
+  $('.grid').masonry({
+    itemSelector: '.grid-item',
+    stamp: '.stamp',
+    columnWidth: 120
+  });
+
 });
