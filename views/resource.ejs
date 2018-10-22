@@ -36,28 +36,27 @@
 
       <section class="resource-container">
         <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
-        <h2>Existing Title: <%= resource[0].resource_title %></h2>
+        <h2>Update Title</h2>
         <input class="edit-text" type='text' name="title" placeholder="<%= resource[0].resource_title %>">
         <br>
         <br>
-        <h2>Existing Description</h2>
-        <p><%= resource[0].resource_description %></p>
-        <textarea class= name ="description" placeholder="<%= resource[0].resource_description %>"></textarea>
+        <h2>Update Description</h2>
+        <textarea class="description" placeholder="<%= resource[0].resource_description %>"></textarea>
         <br>
         <br>
-        <h4>Link</h4>
-        <% console.log(resource[0].resrouce_url) %>
+        <h2>Update Link</h2>
         <input class="edit-text" type='text' name ="url" placeholder="<%= resource[0].resrouce_url %>">
         <br>
         <br>
-        <h4>Topics | #<%= resource[0].topic %></h4>
+        <h2>Topic: #<%= resource[0].topic %></h2>
         <select name ="topic" class="select-topics">
         </select>
+        <br>
         <br>
       </section>
 
       <div class="ratings">
-        <h4>Rating</h4>
+        <h2>Rating</h2>
         <i class="far fa-star" id='1'></i>
         <i class="far fa-star" id='2'></i>
         <i class="far fa-star" id='3'></i>
@@ -66,35 +65,43 @@
       </div>
 
       <div class="likes">
-      <h4>Like</h4>
+      <h2>Like</h2>
         <!-- <form method="POST" actions="/resources/:id/like"> -->
         <i class="far fa-heart like"></i>
         <!-- </form> -->
       </div>
 
-      <form method="POST" action="/resources/new">
-        <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
-      </form>
-
-      <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
-        <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
-      </form>
+      <div class="button-container">
+        <form method="POST" action="/resources/new">
+          <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+        </form>
+        <br>
+        <br>
+        <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
+          <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
+        </form>
+      </div>
       <br>
       <br>
       <br>
+      
       <section class="comment-container">
         <h3>Comments</h3>
           <article>
             <form method="POST" action="/resources/:id">
-              <div class="other-comment">
-              <h5><%= resource[0].comment.substr([0],[4]) %></h5>
-              <p><%= resource[0].comment.substr([6]) %></p>
-              </div>
-              <textarea class="form-control" placeholder="Leave a comment"></textarea>
+              <div class="comment-body">
+                  <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+                  <br>  
+                  <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
+                    <br>
+                    <%= resource[0].comment.substr([6]) %>
+                </div>
+              <textarea class="form-control" placeholder="Leave a comment..."></textarea>
               <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
             </form>
           </article>
         </section>
+
 
     <% } else if (user) { %>
       <section class="resource-container">
@@ -104,10 +111,9 @@
           <p><%= resource[0].resource_description %></p>
           <br>
           <h4>Link</h4>
-          <a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a>
+          <p><a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a></p>
           <br>
           <br>
-
           <h4>Topics | #<%= resource[0].topic %></h4>
           </select>
           <br>
@@ -133,10 +139,13 @@
           <h3>Comments</h3>
             <article>
               <form method="POST" action="/resources/:id">
-                <div class="other-comment">
-                <h5><%= resource[0].comment.substr([0],[4]) %></h5>
-                <p><%= resource[0].comment.substr([6]) %></p>
-                </div>
+                <div class="comment-body">
+                    <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+                    <br>  
+                    <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
+                      <br>
+                      <%= resource[0].comment.substr([6]) %>
+                  </div>
                 <textarea class="form-control" placeholder="Leave a comment"></textarea>
                 <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
               </form>
@@ -178,10 +187,13 @@
         <section class="comment-container">
           <h3>Comments</h3>
             <article>
-                <div class="other-comment">
-                <h5><%= resource[0].comment.substr([0],[4]) %></h5>
-                <p><%= resource[0].comment.substr([6]) %></p>
-                </div>
+                <div class="comment-body">
+                    <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+                    <br>  
+                    <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
+                      <br>
+                      <%= resource[0].comment.substr([6]) %>
+                  </div>
             </article>
           </section>
     <% } %>
