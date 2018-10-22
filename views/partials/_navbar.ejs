@@ -25,13 +25,12 @@
       </div>
     </form>
 
-    <form method="GET" action="/users/<%=user.username %>" class="form-inline btn">
-          <button class="btn btn-primary" name='logout'>Your page</button>
-      </form>
-
     <ul class="nav navbar-nav navbar-right ml-auto">
       <li class="nav-item">
         <% if (user) { %>
+        <form method="GET" action="/users/<%=user.username %>" class="form-inline btn">
+          <button class="btn btn-primary">Your page</button>
+        </form>
 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">New
           Post</button>
