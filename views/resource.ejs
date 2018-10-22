@@ -124,7 +124,7 @@
             <i class="far fa-star" id='4'></i>
             <i class="far fa-star" id='5'></i>
           </div>
-  
+
           <div class="likes">
             <h4>Like</h4>
             <!-- <form method="POST" actions="/resources/:id/like"> -->
@@ -193,7 +193,7 @@
             <i class="far fa-star" id='4'></i>
             <i class="far fa-star" id='5'></i>
           </div>
-  
+
           <div class="likes">
             <h4>Like</h4>
             <!-- <form method="POST" actions="/resources/:id/like"> -->
@@ -206,12 +206,13 @@
         <article>
           <form method="POST" action="/resources/:id">
             <div class="other-comment">
+            <% if (resource[0].comment) { %>
               <h5>
                 <%= resource[0].comment.substr([0],[4]) %>
               </h5>
               <p>
                 <%= resource[0].comment.substr([6]) %>
-              </p>
+             <% };%>
             </div>
             <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
             <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
@@ -263,12 +264,13 @@
         <h3>Comments</h3>
         <article>
           <div class="other-comment">
-
-            <h5>
-              <%= resource[0].comment.substr([0],[4]) %>
-            </h5>
-            <p>
-              <%= resource[0].comment.substr([6]) %>
+            <% if (resource[0].comment) { %>
+              <h5>
+                <%= resource[0].comment.substr([0],[4]) %>
+              </h5>
+              <p>
+                <%= resource[0].comment.substr([6]) %>
+             <% };%>
             </p>
           </div>
         </article>
