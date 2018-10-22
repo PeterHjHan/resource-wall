@@ -1,6 +1,6 @@
 function createResourceElement(item) {
 
-  var $article = $('<article>').addClass('grid-item');
+  var $article = $('<article>').addClass('grid-item')
   var $title = $('<h4>').addClass('lead').text(item.resource_title);
   var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
   var $hr = $('<hr>').addClass();
@@ -22,6 +22,7 @@ function createResourceElement(item) {
     .append($topic)
     .append($ratings)
     .append($like)
+    
 }
 
 function showNewResourceForm() {
