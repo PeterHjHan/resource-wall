@@ -28,7 +28,7 @@ const {
   updateUserDetails,
   insertNewUser,
   deleteResource,
-  updateExistingResource,
+  updateExistingResource
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -128,10 +128,11 @@ app.get('/users/:user', (req, res) => {
         res.redirect('/');
       } else {
         const templateVars = {
-          resource,
-          username: req.params.user,
-          pageuser: user };
-        res.render('user', templateVars);
+              resource,
+              username: req.params.user,
+              pageuser: user
+            };
+            res.render('user', templateVars);
       }
     });
   })

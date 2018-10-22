@@ -25,6 +25,10 @@
       </div>
     </form>
 
+    <form method="GET" action="/users/<%=user.username %>" class="form-inline btn">
+          <button class="btn btn-primary" name='logout'>Your page</button>
+      </form>
+
     <ul class="nav navbar-nav navbar-right ml-auto">
       <li class="nav-item">
         <% if (user) { %>

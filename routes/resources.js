@@ -34,7 +34,6 @@ module.exports = (knex) => {
        'resources.topic_id',
        'likes.id')
       .then((results) => {
-        console.log(results);
         res.json(results);
       });
   });

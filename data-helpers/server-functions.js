@@ -79,6 +79,7 @@ function makeDataHelpers(knex) {
       .asCallback(cb)
   }
 
+
   function updateUserDetails(userId, newUsername, newPassword, newAvatar, cb) {
     //PETER PLS REVIEW ONEGAISHI MEI SUUUUUUWWWWW
     knex('users')
@@ -114,8 +115,8 @@ function makeDataHelpers(knex) {
     updateUserDetails,
     insertNewUser,
     deleteResource,
-    updateExistingResource,
-  };
+    updateExistingResource
+     };
 }
 
 module.exports = makeDataHelpers;
