@@ -5,7 +5,7 @@ function createResourceElement(item) {
   var $hr = $('<hr>').addClass();
   var $description = $('<p>').addClass('desc').text(item.resource_description);
   var $hr1 = $('<hr>').addClass();
-  var $userUrl = $('<a>').addClass('urlLink').attr('href', item.resource_url).text(item.resource_url);
+  var $userUrl = $('<a>').addClass('urlLink').attr('href', item.resource_url).text("link").attr('title',item.resource_url);
   var $hr2 = $('<hr>').addClass();
   var $topic = $('<p>').addClass(`title`).attr('id', item.topic).text(`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);

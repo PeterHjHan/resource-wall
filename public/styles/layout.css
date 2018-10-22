@@ -12,11 +12,12 @@ body h1 {
   color: #244751;
 }
 
+
 /* Masonary CSS */
 
 .grid {
   margin: 20px;
-  column-count: 4;
+  column-count: 3;
   margin: 1.5em 1em;
   padding: 0;
   -moz-column-gap: 1.5em;
@@ -48,8 +49,10 @@ body h1 {
 
 .grid-item .desc {
   margin: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  white-space: pre;
   text-overflow: ellipsis;
 
 }
@@ -64,7 +67,7 @@ body h1 {
 .grid-item .urlLink {
   margin: 5px;
   overflow: hidden;
-  /* white-space: pre; */
+  white-space: pre;
   text-overflow: ellipsis;
 }
 
