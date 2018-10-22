@@ -11,7 +11,7 @@ function createResourceElement(item) {
 
   console.log(item);
 
-
+//TESTING COMMENTS
 
   return $article
     .append($linkedTitle)
