@@ -40,6 +40,8 @@
 </header>
 
 <body>
+   <h4><%console.log(resource[0])%></h4>
+
   <% if (user && user.id === resource[0].resource_user_id) { %>
   <section>
     <!--
@@ -121,11 +123,11 @@
       <section class="opinions">
           <div class="ratings">
             <h4>Rating</h4>
-            <i class="far fa-star" id='1'></i>
-            <i class="far fa-star" id='2'></i>
-            <i class="far fa-star" id='3'></i>
-            <i class="far fa-star" id='4'></i>
-            <i class="far fa-star" id='5'></i>
+              <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
           </div>
 
           <div class="likes">
@@ -191,11 +193,11 @@
       <section class="opinions">
           <div class="ratings">
             <h4>Rating</h4>
-            <i class="far fa-star" id='1'></i>
-            <i class="far fa-star" id='2'></i>
-            <i class="far fa-star" id='3'></i>
-            <i class="far fa-star" id='4'></i>
-            <i class="far fa-star" id='5'></i>
+              <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+              <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
           </div>
 
           <div class="likes">
@@ -249,11 +251,11 @@
       <section class="opinions">
         <div class="ratings">
           <h4>Rating</h4>
-          <i class="far fa-star" id='1'></i>
-          <i class="far fa-star" id='2'></i>
-          <i class="far fa-star" id='3'></i>
-          <i class="far fa-star" id='4'></i>
-          <i class="far fa-star" id='5'></i>
+            <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
         </div>
 
         <div class="likes">

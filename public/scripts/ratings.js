@@ -6,6 +6,7 @@ $(() => {
   $(document).on('click', '.rating', (e) => {
     let ratingNum = $(e.target).attr('name');
     let ratingResId = $(e.target).attr('res');
+    console.log(ratingNum);
     $.ajax({
       method: 'POST',
       url: "/api/ratings",
