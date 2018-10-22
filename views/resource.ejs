@@ -85,7 +85,6 @@
       <!-- <i class="far fa-heart like"></i> -->
       <!-- </form> -->
 
-      -->
       <br>
       <form method="POST" action="/resources/new">
         <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
@@ -156,21 +155,25 @@
 
       <section class="comment-container">
         <h3>Comments</h3>
-          <article>
-            <form method="POST" action="/resources/:id">
-              <div class="comment-body">
-                  <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-                  <br>
-                  <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
-                    <br>
-                    <%= resource[0].comment.substr([6]) %>
-                </div>
-              <textarea class="form-control" id="user-comment" placeholder="Leave a comment..."></textarea>
-              <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
-            </form>
-          </article>
-        </section>
 
+        <article>
+          <form method="POST" action="/resources/:id">
+            <div class="other-comment">
+              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+              <br>
+              <% if (resource[0].comment) { %>
+                <h5 class="comment-user">
+                  <%= resource[0].comment.substr([0],[4]) %>
+                </h5>
+                <p>
+                 <%= resource[0].comment.substr([6]) %>
+               <% };%>
+            </div>
+            <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
+            <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
+          </form>
+        </article>
+      </section>
 
     <% } else if (user) { %>
       <section class="resource-container">
@@ -188,41 +191,6 @@
           <br>
         </section>
 
-        <div class="ratings">
-          <h4>Rating</h4>
-          <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
-        </div>
-
-        </select>
-        <br>
-      </section>
-
-<<<<<<< HEAD
-          <!-- <form method="POST" actions="/resources/:id/like"> -->
-          <i class="far fa-heart like"></i>
-          <!-- </form> -->
-        </div>
-        <section class="comment-container">
-          <h3>Comments</h3>
-            <article>
-              <form method="POST" action="/resources/:id">
-                <div class="comment-body">
-                    <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-                    <br>
-                    <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
-                      <br>
-                      <%= resource[0].comment.substr([6]) %>
-                  </div>
-                <textarea class="form-control" placeholder="Leave a comment"></textarea>
-                <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
-              </form>
-            </article>
-          </section>
-=======
       <section class="opinions">
           <div class="ratings">
              <% if (resource[0].rating) { %>
@@ -247,16 +215,19 @@
         </section>
       <section class="comment-container">
         <h3>Comments</h3>
+
         <article>
           <form method="POST" action="/resources/:id">
             <div class="other-comment">
-            <% if (resource[0].comment) { %>
-              <h5>
-                <%= resource[0].comment.substr([0],[4]) %>
-              </h5>
-              <p>
-                <%= resource[0].comment.substr([6]) %>
-             <% };%>
+              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+              <br>
+              <% if (resource[0].comment) { %>
+                <h5 class="comment-user">
+                  <%= resource[0].comment.substr([0],[4]) %>
+                </h5>
+                <p>
+                 <%= resource[0].comment.substr([6]) %>
+               <% };%>
             </div>
             <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
             <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
@@ -307,19 +278,27 @@
           <!-- </form> -->
         </div>
         <br>
-        <section class="comment-container">
-          <h3>Comments</h3>
-            <article>
-                <div class="comment-body">
-                    <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-                    <br>
-                    <h5 class="comment-user"><%= resource[0].comment.substr([0],[4]) %></h5>
-                      <br>
-                      <%= resource[0].comment.substr([6]) %>
-                  </div>
-            </article>
-          </section>
+      <section class="comment-container">
+        <h3>Comments</h3>
 
+        <article>
+          <form method="POST" action="/resources/:id">
+            <div class="other-comment">
+              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+              <br>
+              <% if (resource[0].comment) { %>
+                <h5 class="comment-user">
+                  <%= resource[0].comment.substr([0],[4]) %>
+                </h5>
+                <p>
+                 <%= resource[0].comment.substr([6]) %>
+               <% };%>
+            </div>
+            <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
+            <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
+          </form>
+        </article>
+      </section>
       <% } %>
 
 </body>
