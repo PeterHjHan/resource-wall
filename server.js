@@ -120,15 +120,13 @@ app.get('/backdoor/:username', (req, res) => {
 app.get('/users/:user', (req, res) => {
   getUserByName(req.params.user, (err, user) => {
     getResourceByUserId(user.id, (err, resource) => {
-      console.log("HERE IS THE USER", user);
-      console.log("RESOURCE", resource)
       if (err) {
         res.redirect('/');
       } else {
         const templateVars = {
           resource, 
           username: req.params.user, 
-          user: user};
+          pageuser: user };
         res.render('user', templateVars);
       }
     });
