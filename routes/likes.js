@@ -8,8 +8,6 @@ module.exports = (knex) => {
   router.post('/', (req, res) => {
     const resourceId = req.body.resourceId;
     const userId = req.session.id;
-    console.log('user', userId);
-    console.log('id', resourceId)
     knex('likes')
       .first('*')
       .where({'likes.user_id': userId, 'likes.resource_id': resourceId})
@@ -38,5 +36,19 @@ module.exports = (knex) => {
       })
   });
 
+  router.get('/', (req, res) => {
+    const resourceId = req.query.resourceId;
+    const userId = req.session['id'];
+    console.log(req.query.resourceId);
+    knex('likes')
+      .first('*')
+      .where({'likes.user_id': userId, 'likes.resource_id': resourceId})
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  });
   return router;
 }
