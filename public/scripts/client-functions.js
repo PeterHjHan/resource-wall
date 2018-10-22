@@ -13,8 +13,8 @@ function createResourceElement(item) {
   var $ratings = $('<p>').addClass('ratings').text(`Rate: ${item.rating}`);
 
   return $article
-    .append($linkedTitle)
     .append($topic)
+    .append($linkedTitle)
     .append($hr)
     .append($description)
     .append($hr1)
