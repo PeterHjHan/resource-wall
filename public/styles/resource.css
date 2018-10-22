@@ -1,0 +1,40 @@
+body {
+    margin: 0 10px;
+}
+
+section {
+    padding: 15px;
+}
+
+input {
+    width: 25%;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+}
+
+.ratings {
+    float: left;
+    margin-right: 50px;
+    margin-left: 15px;
+}
+
+button {
+    margin: 15px;
+    float: left;
+}
+
+.other-comment {
+    display: inline;
+}
+
+.form-control {
+    width: 500px;
+    height: 100px;
+}
+
+#comment {
+    float: left;
+}

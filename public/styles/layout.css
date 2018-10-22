@@ -1,0 +1,13 @@
+.grid {
+  margin: 0 auto;
+}
+
+.grid-item {
+  margin: 5px;
+  float: left;
+  padding: 5px;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid hsla(0, 0%, 0%, 0.5);
+  border-radius: 3px;
+}
