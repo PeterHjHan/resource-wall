@@ -42,6 +42,7 @@
 <body>
   <% if (user && user.id === resource[0].resource_user_id) { %>
   <section>
+    <!--
     <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
       <h2>Existing Title:
         <%= resource[0].resource_title %>
@@ -65,9 +66,10 @@
       <br>
       <button class="btn btn-outline-secondary" type="submit">Update123</button>
       <br>
+      -->
       <!-- <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a> -->
       <br>
-
+      <!--
       <h3>Rating</h3>
       <i class="far fa-star" id='1'></i>
       <i class="far fa-star" id='2'></i>
@@ -76,12 +78,13 @@
       <i class="far fa-star" id='5'></i>
 
       <br>
-      <h3>Like</h3>
+     -->
+     <!-- <h3>Like</h3> -->
       <!-- <form method="POST" actions="/resources/:id/like"> -->
-      <i class="far fa-heart like"></i>
+      <!-- <i class="far fa-heart like"></i> -->
       <!-- </form> -->
 
-
+      -->
       <br>
       <form method="POST" action="/resources/new">
         <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
@@ -148,12 +151,13 @@
         <article>
           <form method="POST" action="/resources/:id">
             <div class="other-comment">
-              <h5>
-                <%= resource[0].comment.substr([0],[4]) %>
-              </h5>
-              <p>
-                <%= resource[0].comment.substr([6]) %>
-              </p>
+              <% if (resource[0].comment) { %>
+                <h5>
+                  <%= resource[0].comment.substr([0],[4]) %>
+                </h5>
+                <p>
+                 <%= resource[0].comment.substr([6]) %>
+               <% };%>
             </div>
             <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
             <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
