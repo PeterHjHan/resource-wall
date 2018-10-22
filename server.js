@@ -39,6 +39,8 @@ const searchRoutes = require('./routes/search');
 const commentsRoutes = require('./routes/comments');
 const topicsRoutes = require('./routes/topics');
 const likesRoutes = require('./routes/likes');
+const ratingsRoutes = require('./routes/ratings');
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -77,6 +79,8 @@ app.use('/api/topics', topicsRoutes(knex));
 app.use('/api/users', usersRoutes(knex));
 app.use('/api/search/', searchRoutes(knex));
 app.use('/api/likes/', likesRoutes(knex));
+app.use('/api/ratings/', ratingsRoutes(knex));
+
 
   // addResourceToDatabase('hi', 'no', 'this.com', '1', '1', cb) {
   //   knex('resources')
@@ -120,7 +124,6 @@ app.get('/backdoor/:username', (req, res) => {
 app.get('/users/:user', (req, res) => {
   getUserByName(req.params.user, (err, user) => {
     getResourceByUserId(user.id, (err, resource) => {
-      console.log(resource);
       if (err) {
         res.redirect('/');
       } else {
