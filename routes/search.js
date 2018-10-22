@@ -18,7 +18,7 @@ module.exports = (knex) => {
        'resources.description as resource_description',
        'resources.url as resource_url',
        'resources.topic_id as resource_topic_id',
-       'topics.topic'
+       'topics.topic',
        )
       .whereRaw('LOWER(title) LIKE ?', `%${[searchPhrase]}%`)
       .orWhereRaw('LOWER(description) LIKE ?', `%${[searchPhrase]}%`)
