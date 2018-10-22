@@ -1,0 +1,7 @@
+node_modules/
+public/styles
+.env
+*.log
+*.sqlite3s
+.DS_Store
+resource_wall.md
