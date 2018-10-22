@@ -9,15 +9,8 @@ $(() => {
   }).then((resources) => {
     for(resource of resources) {
       if(resource.topic === topicName) {
-        createResourceElement(resource).appendTo($("body"));
+        createResourceElement(resource).appendTo($(".grid"));
       }
     }
   });
-
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 20
-  // });
-
 });
