@@ -1,0 +1,105 @@
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .25rem
+}
+
+.dropup .dropdown-menu {
+  margin-top: 0;
+  margin-bottom: .125rem
+}
+
+.dropright .dropdown-menu {
+  margin-top: 0;
+  margin-left: .125rem
+}
+
+.dropdown-menu.show {
+  display: block
+}
+
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0
+}
+
+.navbar-nav .dropdown-menu {
+  position: static;
+  float: none
+}
+
+@media (min-width:576px) {
+  .navbar-expand-sm {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start
+  }
+  .navbar-expand-sm .navbar-nav {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row
+  }
+  .navbar-expand-sm .navbar-nav .dropdown-menu {
+      position: absolute
+  }
+  .navbar-expand-sm .navbar-nav .dropdown-menu-right {
+      right: 0;
+      left: auto
+  }
+  .navbar-expand-sm .navbar-nav .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem
+  }
+  .navbar-expand-sm > .container,
+  .navbar-expand-sm > .container-fluid {
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap
+  }
+  .navbar-expand-sm .navbar-collapse {
+      display: -webkit-box!important;
+      display: -ms-flexbox!important;
+      display: flex!important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto
+  }
+  .navbar-expand-sm .navbar-toggler {
+      display: none
+  }
+  .navbar-expand-sm .dropup .dropdown-menu {
+      top: auto;
+      bottom: 100%
+  }
+}
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  position: absolute
+}
+.navbar-expand .navbar-nav .dropdown-menu-right {
+  right: 0;
+  left: auto
+}
+
+.navbar-expand .dropup .dropdown-menu {
+  top: auto;
+  bottom: 100%
+}
