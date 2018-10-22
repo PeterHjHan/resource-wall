@@ -11,10 +11,7 @@ $(() => {
       url: "/api/likes",
       data: {resourceId}
     }).then((results) => {
-      console.log($(e.target).css('color'));
-        $(e.target).css({
-          'color': 'red'
-        });
+
     });
   });
 
@@ -26,15 +23,40 @@ $(() => {
       url: "/api/likes",
       data: {resourceId: clientResId}
     }).then((results) => {
-      console.log('results', results);
-      $(e.target).css({
-          'color': 'red'
-        });
+
     });
   });
 
+  $(document).on('click', '.like', (e) => {
+    console.log($(e.target).css('color'))
+      if ($(e.target).css('color') !== 'rgb(255, 0, 0)') {
+        $(e.target).css({
+          'color': 'red'
+        });
+      } else {
+        $(e.target).css({
+          'color': 'black'
+        });
+      }
+  });
+
+  $(document).on('click', '.clientLike', (e) => {
+    console.log($(e.target).css('color'))
+      if ($(e.target).css('color') !== 'rgb(255, 0, 0)') {
+        $(e.target).css({
+          'color': 'red'
+        });
+      } else {
+        $(e.target).css({
+          'color': 'black'
+        });
+      }
+  });
+
+
+
   $('.like').ready((e) => {
-    console.log('hi', resourceId);
+    // console.log('hi', typeof parseInt('hello'));
 
     $.ajax({
       method: 'GET',
