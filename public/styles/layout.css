@@ -54,7 +54,6 @@ body h1 {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
 
 .grid-item .topic {

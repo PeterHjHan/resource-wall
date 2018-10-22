@@ -37,16 +37,16 @@
       </div>
       
       <h3>Your Property Cards %></h3>
-      <div class="created-resource">
+      <section class="created-resource">
       <% resource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= element.title %></h5>
               <p class="card-text"><%= element.description %></p>
-              <a href="<%= element.url %>" class="card-link"><%= element.url %></a>
+              <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
           </div>
-      </div>
+        </section>
       <% }); %>
 
       <div class="liked-resource">
