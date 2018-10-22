@@ -8,7 +8,6 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/", (req, res) => {
-  console.log("THIS IS REQ.SESSION.ID", req.session.id);
     const searchPhrase = decodeURI(req._parsedOriginalUrl.query).toLowerCase();
     knex
       .select(
