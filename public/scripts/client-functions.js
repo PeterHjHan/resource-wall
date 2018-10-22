@@ -13,8 +13,6 @@ function createResourceElement(item) {
   var $ratings = $('<p>').addClass('ratings').text(`${item.rating}`);
   var $topic = $('<p>').addClass('title').text(`Topic ${item.topic}`).attr('id',`${item.topic}`);
 
-  // console.log(item);
-
   if(item.likes_id > 0) {
     $($like).css({
       'color': 'red'
