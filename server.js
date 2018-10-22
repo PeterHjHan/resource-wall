@@ -204,6 +204,8 @@ app.post('/logout', (req, res) => {
 
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
+
+  
   res.render('search');
 });
 

@@ -1,5 +1,4 @@
 function createResourceElement(item) {
-
   var $article = $('<article>').addClass('grid-item').attr('id', item.topic)
   var $title = $('<h4>').addClass('title').text(item.resource_title);
   var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
@@ -23,6 +22,7 @@ function createResourceElement(item) {
     })
   }
 //TESTING COMMENTS
+
 
   return $article
     .append($topic)
