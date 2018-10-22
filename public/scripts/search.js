@@ -4,7 +4,7 @@ $(() => {
 
   $.ajax({
     method: "GET",
-    url: "/api/search",
+    url: "/api/resources",
     data: urlParamsString
   }).then((resources) => {
   for(resource of resources) {

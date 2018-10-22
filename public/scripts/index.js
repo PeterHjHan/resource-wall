@@ -10,12 +10,4 @@ $(() => {
         createResourceElement(resource).appendTo($(".grid"));
     }
   });
-
-
-
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 20
-  // });
 });
