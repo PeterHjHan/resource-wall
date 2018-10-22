@@ -1,25 +1,27 @@
 function createResourceElement(item) {
 
   var $article = $('<article>').addClass('grid-item');
-  var $title = $('<h4>').addClass().text(item.resource_title);
+  var $title = $('<h4>').addClass('lead').text(item.resource_title);
   var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
+  var $hr = $('<hr>').addClass();
   var $description = $('<p>').addClass().text(item.resource_description);
+  var $hr1 = $('<hr>').addClass();
   var $userUrl = $('<a>').addClass().attr('href', item.resource_url).text(item.resource_url);
+  var $hr2 = $('<hr>').addClass();
+  var $topic = $('<p>').addClass().text(`Topic: ${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
-  var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
-
-  console.log(item);
-
-
 
   return $article
     .append($linkedTitle)
+    .append($hr)
     .append($description)
+    .append($hr1)
     .append($userUrl)
+    .append($hr2)
+    .append($topic)
     .append($ratings)
     .append($like)
-    .append($topic)
 }
 
 function showNewResourceForm() {
