@@ -10,7 +10,7 @@ function createResourceElement(item) {
   var $hr2 = $('<hr>').addClass();
   var $topic = $('<p>').addClass(`title`).attr('id', item.topic).text(`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
-  var $ratings = $('<p>').addClass('ratings').text(`Rate: ${item.rating}`);
+  var $ratings = $('<p>').addClass('ratings').text(`${item.rating}`);
 
   return $article
     .append($topic)
