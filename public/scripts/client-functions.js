@@ -9,7 +9,7 @@ function createResourceElement(item) {
   var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
   var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
 
-  console.log(item);
+  // console.log(item);
 
 
 
