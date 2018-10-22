@@ -6,7 +6,9 @@ const router = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    knex("resources")
+    knex
+      .distinct()
+      .from("resources")
       .join("topics", "resources.topic_id", "=", "topics.id")
       .leftJoin("likes", "likes.resource_id", "=", "resources.id")
       .leftJoin("ratings", "resources.id", "=", "ratings.resource_id")
@@ -19,8 +21,19 @@ module.exports = (knex) => {
        'likes.resource_id as likes_resource_id',
        'ratings.resource_id as ratings_resource_id',
        'resources.topic_id as resource_topic_id')
-      .select('likes.id as likes_id')
+      .count('likes.id as likes_id')
+      .groupBy(
+        'resources.id',
+       'resources.title',
+       'resources.description',
+       'resources.url',
+       'topics.topic',
+       'likes.resource_id',
+       'ratings.resource_id',
+       'resources.topic_id',
+       'likes.id')
       .then((results) => {
+        console.log(results);
         res.json(results);
       });
   });

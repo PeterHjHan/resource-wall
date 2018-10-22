@@ -11,7 +11,16 @@ function createResourceElement(item) {
 
   // console.log(item);
 
-
+  if(item.likes_id > 0) {
+    $($like).css({
+      'color': 'red'
+    })
+  } else {
+    $($like).css({
+      'color': 'back'
+    })
+  }
+//TESTING COMMENTS
 
   return $article
     .append($linkedTitle)
