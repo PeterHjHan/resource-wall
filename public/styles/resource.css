@@ -41,12 +41,12 @@ h2, h4, h5, p {
 .select-topics {
     margin-left: 45%;
 }
-
+/* 
 textarea {
     margin-left: 32%;
     width: 500px;
     height: 100px;
-}
+} */
 
 .ratings, .likes, .button-container {
     display: flex;
@@ -76,13 +76,12 @@ i {
 }
 
 #user-comment {
-}
-.form-control {
     float: right;
     width: 100%;
     height: 100px;
     text-align: center;
 }
+
 
 #comment {
     margin: 15px;
