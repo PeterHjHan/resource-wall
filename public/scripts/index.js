@@ -7,7 +7,7 @@ $(() => {
     url: "/api/resources"
   }).then((resources) => {
     for(resource of resources) {
-        createResourceElement(resource).appendTo($("body"));
+        createResourceElement(resource).appendTo($(".grid"));
     }
   });
 

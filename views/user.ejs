@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Fonts -->
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
      <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -48,6 +48,9 @@
 
     <h4><%= username %>'s Liked Resources</h4>
 
+    <section class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+        <div id="staging"></div>
+      </section>
 
   </body>
 </html>
