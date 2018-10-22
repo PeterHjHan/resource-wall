@@ -11,7 +11,7 @@ function createResourceElement(item) {
   var $topic = $('<p>').addClass(`title`).attr('id', item.topic).text(`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
   var $ratings = $('<p>').addClass('ratings').text(`${item.rating}`);
-  var $topic = $('<p>').addClass('title').text(`Topic ${item.topic}`).attr('id',`${item.topic}`);
+  var $topic = $('<p>').addClass('title').text(`${item.topic}`).attr('id',`${item.topic}`);
 
   if(item.likes_id > 0) {
     $($like).css({
