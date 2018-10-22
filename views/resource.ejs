@@ -138,17 +138,16 @@
 
     <% } else if (user) { %>
       <section class="resource-container">
+         <h4 id="<%= resource[0].topic %>">Topics | #<%= resource[0].topic %></h4>
           <h2>Title: <%= resource[0].resource_title %></h2>
-          <br>
+          <hr>
           <h2>Description</h2>
           <p><%= resource[0].resource_description %></p>
-          <br>
+          <hr>
           <h4>Link</h4>
           <a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a>
           <br>
-          <br>
 
-          <h4>Topics | #<%= resource[0].topic %></h4>
           </select>
           <br>
         </section>
@@ -185,6 +184,7 @@
 
     <% } else { %>
       <section class="resource-container">
+        <h4 id="<%= resource[0].topic %>">Topics | #<%= resource[0].topic %></h4>
           <h2>Title: <%= resource[0].resource_title %></h2>
           <br>
           <h2>Description</h2>
@@ -194,7 +194,6 @@
           <a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a>
           <br>
           <br>
-          <h4>Topics | #<%= resource[0].topic %></h4>
           </select>
           <br>
         </section>

@@ -4,6 +4,14 @@ section {
     padding: 15px;
 }
 
+.resource-container {
+    border: 1px solid #DDDDDDDD;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 20%;
+    background: white;   
+}
+
 input {
     width: 25%;
 }
@@ -37,3 +45,28 @@ textarea {
     margin: 15px;
     float: left;
 }
+
+ #Coding {
+    background: #3D9970;
+    color: white;
+  }
+  
+   #Gaming {
+    background: #FF4136;
+    color: white;
+  }
+  
+   #Languages {
+    background: #0074D9;
+    color: white;
+  }
+  
+   #Photography {
+    background: #FF851B;
+    color: white;
+  }
+  
+   #Cooking {
+    background: #85144b;
+    color: white;
+  }
