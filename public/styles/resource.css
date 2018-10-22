@@ -1,6 +1,4 @@
-body {
-    margin: 0 10px;
-}
+
 
 section {
     padding: 15px;
@@ -21,20 +19,21 @@ textarea {
     margin-left: 15px;
 }
 
-button {
-    margin: 15px;
-    float: left;
-}
-
 .other-comment {
     display: inline;
 }
 
-.form-control {
+#user-comment {
     width: 500px;
     height: 100px;
 }
 
 #comment {
+    margin: 15px;
+    float: left;
+}
+
+#comment-btn {
+    margin: 15px;
     float: left;
 }
