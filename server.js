@@ -128,8 +128,8 @@ app.get('/users/:user', (req, res) => {
         res.redirect('/');
       } else {
         const templateVars = {
-          resource, 
-          username: req.params.user, 
+          resource,
+          username: req.params.user,
           pageuser: user };
         res.render('user', templateVars);
       }
@@ -165,13 +165,15 @@ app.post('/users/:user/settings', (req, res) => {
 //username and password must be validated before this post request
 app.post('/register', (req, res) => {
   const username = req.body.username;
+  //check if username exists
+  console.log(req.body.password)
   const password = bcrypt.hashSync(req.body.password, 10);
   insertNewUser(username, password, (err, user) => {
     if (err) {
       res.redirect('/');
     } else {
-      req.session.id = user.id; //make sure the callback is returning the userid
-      res.redirect(`/users/${res.locals.user.username}`);
+      req.session.id = user[0].id; //make sure the callback is returning the userid
+      res.redirect(`/users/${user[0].username}`);
     }
   });
 });
@@ -182,15 +184,14 @@ app.post('/login', (req, res) => {
   const password = req.body.password;
   getUserByName(username, (err, user) => {
     if (err) {
-      res.redirect('/');
+      console.error(err);
     } else {
       if (bcrypt.compareSync(password, user.password)) {
         req.session.id = user.id;
-        res.redirect(`/users/${res.locals.user.username}`);
+        res.redirect(`/users/${user.username}`);
       } else {
         res.redirect('/');
       }
-
     }
   });
 });
@@ -205,7 +206,7 @@ app.post('/logout', (req, res) => {
 //search for a resource based on keyword
 app.get('/search', (req, res) => {
 
-  
+
   res.render('search');
 });
 
