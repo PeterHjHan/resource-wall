@@ -30,12 +30,12 @@
     <img src="<%= pageuser.avatar %>">
 
     <% if (user && resource.length !== 0 && user.id === resource[0].user_id) { %>
-    
+
       <div class="greeting">
       <h1>Hello <%= user.username %>!</h1>
       <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
       </div>
-      
+
       <h3>Your Property Cards %></h3>
       <section class="created-resource">
       <% resource.forEach(function(element, i) { %>
@@ -49,12 +49,26 @@
         </section>
       <% }); %>
 
+      <br><br>
+
+      <h3>Your Collected Property Cards %></h3>
+      <section class="liked-resource">
+      <% resource.forEach(function(element, i) { %>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= element.title %></h5>
+              <p class="card-text"><%= element.description %></p>
+              <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
+            </div>
+          </div>
+        </section>
+      <% }); %>
       <div class="liked-resource">
-        <h3>Your Collected Property Cards %></h3>
+
       </div>
 
     <% } else { %>
-    
+
     <div class="greeting">
       <h1>Welcome to <%= username %>'s Profile</h1>
     </div>
@@ -72,10 +86,24 @@
       </div>
     </div>
     <% }); %>
-    
+    <br>
     <div class='liked-resource'>
-    <h3><%= username %>'s Collected Property Cards</h3>
+
+    <br><br>
     </div>
+
+      <h3><%= username %>'s Collected Property Cards</h3>
+      <section class="liked-resource">
+      <% resource.forEach(function(element, i) { %>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= element.title %></h5>
+              <p class="card-text"><%= element.description %></p>
+              <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
+            </div>
+          </div>
+        </section>
+      <% }); %>
 
     <% }; %>
 

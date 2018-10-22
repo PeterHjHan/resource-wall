@@ -14,18 +14,30 @@ img {
 .created-resource {
     display: inline-block;
     margin-bottom: 35px;
+    /*position: absolute;*/
+    width: 80%;
+    margin: 0;
+    width: 0;
+    height: 0;
+    /*height: 100%;*/
 }
 
 .liked-resource {
     display: block;
-    margin-bottom: 35px;
+    margin: 0;
+    padding: 0;
+    /*position: relative;*/
+    width: 0;
+    height: 0;
+    /*height: 100%;*/
 }
 
 .card {
+    display: inline-flex;
     margin: 3px;
     margin-left: 15px;
     flex: 0 0 auto;
-    float: left;
+    /*float: left;*/
     width: 250px;
     height: 200px;
     border-radius: 8px;

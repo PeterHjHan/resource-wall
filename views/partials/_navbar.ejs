@@ -60,8 +60,8 @@
                     <label class="col-form-label">Choose the topic:</label>
                     <select class="select-topics" name="topic"></select>
                   </div>
-              </div> 
-              
+              </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Post</button>
@@ -86,16 +86,16 @@
         <ul class="dropdown-menu form-wrapper">
           <li>
             <br>
-            <form action="/examples/actions/confirmation.php" method="post">
+              <form action="/login" method="post">
 
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
-              </div>
-              <input type="submit" class="btn btn-primary btn-block" value="Login">
-            </form>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Login">
+              </form>
           </li>
         </ul>
       </li>
@@ -103,19 +103,19 @@
         <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
         <ul class="dropdown-menu form-wrapper">
           <li>
-            <form action="/examples/actions/confirmation.php" method="post">
-              <p class="hint-text">Fill in this form to create your account!</p>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password" required="required">
-              </div>
-              <input type="submit" class="btn btn-primary btn-block" value="Sign up">
-            </form>
+            <form action="/register" method="post">
+                <p class="hint-text">Fill in this form to create your account!</p>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Username" name="username" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Password" required="required">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Confirm Password" name="password" required="required">
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+              </form>
           </li>
         </ul>
       </li>
