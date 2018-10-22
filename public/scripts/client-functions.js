@@ -1,6 +1,6 @@
 function createResourceElement(item) {
 
-  var $article = $('<article>').addClass('grid-item')
+  var $article = $('<article>').addClass('grid-item').attr('id', item.topic)
   var $title = $('<h4>').addClass('title').text(item.resource_title);
   var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
   var $hr = $('<hr>').addClass();
@@ -8,7 +8,7 @@ function createResourceElement(item) {
   var $hr1 = $('<hr>').addClass();
   var $userUrl = $('<a>').addClass('urlLink').attr('href', item.resource_url).text(item.resource_url);
   var $hr2 = $('<hr>').addClass();
-  var $topic = $('<p>').addClass(`${item.topic}`).text(`${item.topic}`);
+  var $topic = $('<p>').addClass(`title`).attr('id', item.topic).text(`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
   var $ratings = $('<p>').addClass('ratings').text(`Rate: ${item.rating}`);
 
