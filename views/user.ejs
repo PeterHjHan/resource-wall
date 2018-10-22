@@ -34,7 +34,7 @@
       <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
       </div>
       
-      <h3><%= username %>'s Resources</h3>
+      <h3>Your Property Cards %></h3>
       <div class="created-resource">
       <% resource.forEach(function(element, i) { %>
           <div class="card">
@@ -48,7 +48,7 @@
       <% }); %>
 
       <div class="liked-resource">
-        <h3><%= username %>'s Liked Resources %></h3>
+        <h3>Your Collected Property Cards %></h3>
       </div>
 
     <% } else { %>
@@ -58,7 +58,7 @@
     </div>
 
 
-    <h3><%= username %>'s Resources</h3>
+    <h3><%= username %>'s Property Cards %></h3>
     <div class="created-resource">
     <% resource.forEach(function(element, i) { %>
       <div class="card">
@@ -72,7 +72,7 @@
     <% }); %>
     
     <div class='liked-resource'>
-    <h3><%= username %>'s Liked Resources</h3>
+    <h3><%= username %>'s Collected Property Cards</h3>
     </div>
 
     <% }; %>
