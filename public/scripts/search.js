@@ -8,18 +8,7 @@ $(() => {
     data: urlParamsString
   }).then((resources) => {
   for(resource of resources) {
-    createResourceElement(resource).appendTo($("body"));
+    createResourceElement(resource).appendTo($(".grid"));
   }
   });
-
-
-  //for every resources, if it contains the searchQuery, pull the resources
-
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 20
-  // });
-
-
 });
