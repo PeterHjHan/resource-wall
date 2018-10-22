@@ -86,9 +86,6 @@
       <!-- </form> -->
 
       <br>
-      <form method="POST" action="/resources/new">
-        <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
-      </form>
 
       <section class="resource-container">
         <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
@@ -141,7 +138,7 @@
             <!-- </form> -->
           </div>
         </section>
-
+      <section class="resource-buttons">
       <form method="POST" action="/resources/new">
         <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
       </form>
@@ -149,6 +146,7 @@
       <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
         <button class="btn btn-outline-secondary" name="delete" type="submit">Delete</button>
       </form>
+      </section>
       <br>
       <br>
       <br>

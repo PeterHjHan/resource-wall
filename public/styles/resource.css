@@ -7,7 +7,7 @@ section {
     border-radius: 10px;
     text-align: center;
     margin: 20px 20% 0 20%;
-    background: white;   
+    background: white;
 }
 
 input {
@@ -34,14 +34,13 @@ h2, h4, h5, p {
 }
 
 .edit-text {
-    margin-left: 38%;
-    width: 25%;
+    width: 45%;
 }
 
 .select-topics {
     margin-left: 45%;
 }
-/* 
+/*
 textarea {
     margin-left: 32%;
     width: 500px;
@@ -66,8 +65,8 @@ i {
     border-radius: 10px;
     text-align: center;
     margin: 20px 20% 0 20%;
-    background: white;   
-
+    background: white;
+    width: 80%;
 }
 
 
@@ -97,32 +96,33 @@ i {
     background: #3D9970;
     color: white;
   }
-  
+
    #Gaming {
     background: #FF4136;
     color: white;
   }
-  
+
    #Languages {
     background: #0074D9;
     color: white;
   }
-  
+
    #Photography {
     background: #FF851B;
     color: white;
   }
-  
+
    #Cooking {
     background: #85144b;
     color: white;
   }
 .comment-container {
-    margin: 10px 0;
+    margin: 10px 0 0 10%;
     float: left;
     width: 100%;
     border: 1px solid lightgrey;
     border-radius: 8px;
+    width: 80%;
 }
 
 .comment-body {
@@ -139,4 +139,8 @@ img {
     float: left;
     width: 100px;
     height: 100px
+}
+
+.resource-buttons {
+  margin-left: 20%;
 }
