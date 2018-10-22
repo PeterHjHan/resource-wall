@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/user-setting.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Fonts -->
      <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
@@ -26,23 +26,24 @@
 
   <body>
     <section>
-    <h1>Hello changing <%= user.username %>!</h1>
+      
+      <h1>Edit Your Profile</h1>
 
-    <h3>Username</h3>
-    <input type="text" value="<%= user.username %>">
+      <h3>Avatar</h3>
+      <img src="<%= user.avatar %>">
+      <br>
+      <input type="text" value="<%= user.avatar %>">
 
-    <h3>Password</h3>
-    <input type="password">
+      <h3>Username</h3>
+      <input type="text" value="<%= user.username %>">
 
-    <h3>Avatar</h3>
-    <input type="text" value="<%= user.avatar %>">
+      <h3>Password</h3>
+      <input type="password">
 
-    <form method="POST" action="/users/:user/settings">
-      <button class="btn btn-outline-secondary" type="submit" name="update">Update</button>
-    </form>
+      <form method="POST" action="/users/:user/settings">
+        <button class="btn btn-outline-secondary" type="submit" name="update">Update</button>
+      </form>
 
     </section>
   </body>
 </html>
-
-

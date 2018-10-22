@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User: <%= user.username %></title>
+    <title>Profile | <%= pageuser.username %></title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -26,31 +26,57 @@
 
   <body>
 
-
-    <img src="<%= user.avatar%>">
-    <br>
+    <img src="<%= pageuser.avatar %>">
 
     <% if (user && resource.length !== 0 && user.id === resource[0].user_id) { %>
-    <h1>Hello <%= user.username %>!</h1>
-    <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
-    <% } %>
-
-    <br>
-    <br>
-    <h3><%= username %>'s Resources</h3>
+    
+      <div class="greeting">
+      <h1>Hello <%= user.username %>!</h1>
+      <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
+      </div>
+      
+      <h3>Your Property Cards %></h3>
+      <div class="created-resource">
       <% resource.forEach(function(element, i) { %>
-      <ul>
-        <h4><%= element.title %></h4>
-        <li><%= element.description %></li>
-        <li><%= element.url %></li>
-      </ul>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= element.title %></h5>
+              <p class="card-text"><%= element.description %></p>
+              <a href="<%= element.url %>" class="card-link"><%= element.url %></a>
+            </div>
+          </div>
+      </div>
       <% }); %>
 
-    <h4><%= username %>'s Liked Resources</h4>
+      <div class="liked-resource">
+        <h3>Your Collected Property Cards %></h3>
+      </div>
 
-    <section class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
-        <div id="staging"></div>
-      </section>
+    <% } else { %>
+    
+    <div class="greeting">
+      <h1>Welcome to <%= username %>'s Profile</h1>
+    </div>
+
+
+    <h3><%= username %>'s Property Cards %></h3>
+    <div class="created-resource">
+    <% resource.forEach(function(element, i) { %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= element.title %></h5>
+          <p class="card-text"><%= element.description %></p>
+          <a href="<%= element.url %>" class="card-link"><%= element.url %></a>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+    
+    <div class='liked-resource'>
+    <h3><%= username %>'s Collected Property Cards</h3>
+    </div>
+
+    <% }; %>
 
   </body>
 </html>

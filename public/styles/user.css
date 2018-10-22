@@ -1,0 +1,48 @@
+body {
+    margin: 0 10px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    margin: 25px;
+    float: left;
+}
+
+.greeting {
+    margin-top: 90px;
+    margin-bottom: 125px;
+}
+
+.created-resource {
+    display: inline-block;
+    margin-bottom: 35px;
+}
+
+.liked-resource {
+    display: block;
+    margin-bottom: 35px;
+}
+
+.card {
+    margin: 3px;
+    margin-left: 15px;
+    flex: 0 0 auto;
+    float: left;
+    width: 250px;
+    height: 200px;
+    border-radius: 8px;
+    line-height: 1.5em;
+}
+
+.card-title {
+    background-color: #33cabb;
+    text-align: center;
+}
+
+h3 {
+    margin-left: 40px;
+    border-bottom: 3px solid black;
+}
+
+

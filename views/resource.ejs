@@ -9,8 +9,8 @@
 
       <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
       <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-      <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="/styles/resource.css" type="text/css" />
       <!-- Icon stylesheet -->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
       <!-- Fonts -->
@@ -20,6 +20,7 @@
       <script type="text/javascript" src="/scripts/client-functions.js"></script>
       <script type="text/javascript" src="/scripts/resources.js"></script>
       <script type="text/javascript" src="/scripts/likes.js"></script>
+      <script type="text/javascript" src="/scripts/ratings.js"></script>
 
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
       <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
@@ -72,80 +73,154 @@
             <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
           </form>
 
-          <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
-            <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
-          </form>
-
-        </section>
+      <section class="resource-container">
+        <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
+        <h2>Existing Title: <%= resource[0].resource_title %></h2>
+        <input class="edit-text" type='text' name="title" placeholder="<%= resource[0].resource_title %>">
         <br>
         <br>
-        <section>
-          <h3>Comments</h3>
-            <article class="comment-box">
-              <form method="POST" action="/resources/:id">
-                <h5><%= resource[0].comment %></h5>
-                <p><%= resource[0].comment %></p>
-                <textarea placeholder="Leave a comment"></textarea>
-                <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
-              </form>
-            </article>
-          </section>
-
-    <% } else if (user) { %>
-      <section>
-        <h2><%= resource[0].resource_title %></h2>
-        <h3>Description</h3>
-          <p><%= resource[0].resource_description %></p>
-
-        <h4>#<%= resource[0].topic %></h4>
-
-        <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
+        <h2>Existing Description</h2>
+        <p><%= resource[0].resource_description %></p>
+        <textarea class= name ="description" placeholder="<%= resource[0].resource_description %>"></textarea>
+        <br>
+        <br>
+        <h4>Link</h4>
+        <% console.log(resource[0].resrouce_url) %>
+        <input class="edit-text" type='text' name ="url" placeholder="<%= resource[0].resrouce_url %>">
+        <br>
+        <br>
+        <h4>Topics | #<%= resource[0].topic %></h4>
+        <select name ="topic" class="select-topics">
+        </select>
+        <br>
       </section>
-      <br>
 
-      <h3>Rating</h3>
-      <span>
+      <div class="ratings">
+        <h4>Rating</h4>
         <i class="far fa-star" id='1'></i>
         <i class="far fa-star" id='2'></i>
         <i class="far fa-star" id='3'></i>
         <i class="far fa-star" id='4'></i>
         <i class="far fa-star" id='5'></i>
-      </span>
-      <br>
-      <h3>Like</h3>
-      <i class="far fa-heart like"></i>
+      </div>
 
+      <div class="likes">
+      <h4>Like</h4>
+        <!-- <form method="POST" actions="/resources/:id/like"> -->
+        <i class="far fa-heart like"></i>
+        <!-- </form> -->
+      </div>
 
+      <form method="POST" action="/resources/new">
+        <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+      </form>
+
+      <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
+        <button class="btn btn-outline-secondary"  name="delete" type="submit">Delete</button>
+      </form>
       <br>
-      <section>
+      <br>
+      <br>
+      <section class="comment-container">
         <h3>Comments</h3>
-          <article class="comment-box">
+          <article>
             <form method="POST" action="/resources/:id">
-              <h5><%= resource[0].comment %></h5>
-              <p><%= resource[0].comment %></p>
-              <textarea placeholder="Leave a comment"></textarea>
+              <div class="other-comment">
+              <h5><%= resource[0].comment.substr([0],[4]) %></h5>
+              <p><%= resource[0].comment.substr([6]) %></p>
+              </div>
+              <textarea class="form-control" placeholder="Leave a comment"></textarea>
               <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
             </form>
           </article>
         </section>
 
-    <% } else { %>
-      <section>
-          <h3><%= resource[0].resource_title %></h3>
-          <h3>Description</h3>
-            <p><%= resource[0].resource_description %></p>
+    <% } else if (user) { %>
+      <section class="resource-container">
+          <h2>Title: <%= resource[0].resource_title %></h2>
+          <br>
+          <h2>Description</h2>
+          <p><%= resource[0].resource_description %></p>
+          <br>
+          <h4>Link</h4>
+          <a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a>
+          <br>
+          <br>
 
-          <h4>#<%= resource[0].topic %></h4>
-
-          <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
+          <h4>Topics | #<%= resource[0].topic %></h4>
+          </select>
+          <br>
         </section>
 
-        <br>
-        <section>
+        <div class="ratings">
+          <h4>Rating</h4>
+          <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
+        </div>
+
+        <div class="likes">
+        <h4>Like</h4>
+
+          <!-- <form method="POST" actions="/resources/:id/like"> -->
+          <i class="far fa-heart like"></i>
+          <!-- </form> -->
+        </div>
+        <section class="comment-container">
           <h3>Comments</h3>
-            <article class="comment-box">
-                <h5><%= resource[0].comment %></h5>
-                <p><%= resource[0].comment %></p>
+            <article>
+              <form method="POST" action="/resources/:id">
+                <div class="other-comment">
+                <h5><%= resource[0].comment.substr([0],[4]) %></h5>
+                <p><%= resource[0].comment.substr([6]) %></p>
+                </div>
+                <textarea class="form-control" placeholder="Leave a comment"></textarea>
+                <button class="btn btn-outline-secondary" name="comment" type="submit">Comment</button>
+              </form>
+            </article>
+          </section>
+
+    <% } else { %>
+      <section class="resource-container">
+          <h2>Title: <%= resource[0].resource_title %></h2>
+          <br>
+          <h2>Description</h2>
+          <p><%= resource[0].resource_description %></p>
+          <br>
+          <h4>Link</h4>
+          <a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a>
+          <br>
+          <br>
+          <h4>Topics | #<%= resource[0].topic %></h4>
+          </select>
+          <br>
+        </section>
+
+        <div class="ratings">
+          <h4>Rating</h4>
+          <i class="far fa-star" id='1'></i>
+          <i class="far fa-star" id='2'></i>
+          <i class="far fa-star" id='3'></i>
+          <i class="far fa-star" id='4'></i>
+          <i class="far fa-star" id='5'></i>
+        </div>
+
+        <div class="likes">
+        <h4>Like</h4>
+          <!-- <form method="POST" actions="/resources/:id/like"> -->
+          <i class="far fa-heart like"></i>
+          <!-- </form> -->
+        </div>
+        <br>
+        <section class="comment-container">
+          <h3>Comments</h3>
+            <article>
+                <div class="other-comment">
+                <h5><%= resource[0].comment.substr([0],[4]) %></h5>
+                <p><%= resource[0].comment.substr([6]) %></p>
+                </div>
             </article>
           </section>
     <% } %>

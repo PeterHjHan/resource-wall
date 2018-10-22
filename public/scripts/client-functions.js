@@ -10,7 +10,21 @@ function createResourceElement(item) {
   var $hr2 = $('<hr>').addClass();
   var $topic = $('<p>').addClass(`title`).attr('id', item.topic).text(`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
-  var $ratings = $('<p>').addClass('ratings').text(`${item.rating}`);
+  var $ratings = $('<p>').addClass().text(`Rating: ${item.rating}`);
+  var $topic = $('<p>').addClass().text(`Topic ${item.topic}`);
+
+  // console.log(item);
+
+  if(item.likes_id > 0) {
+    $($like).css({
+      'color': 'red'
+    })
+  } else {
+    $($like).css({
+      'color': 'back'
+    })
+  }
+//TESTING COMMENTS
 
   return $article
     .append($topic)

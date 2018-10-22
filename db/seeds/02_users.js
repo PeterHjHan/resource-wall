@@ -10,19 +10,19 @@ exports.seed = function (knex, Promise) {
           id: 1,
           username: 'peter',
           password: bcrypt.hashSync('peter', 10),
-          avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
+          avatar: 'https://www.princetonportraitphotography.com/wp-content/uploads/2015/08/01_IMG_4296_LR.jpg'
         }),
         knex('users').insert({
           id: 2,
           username: 'bassem',
           password: bcrypt.hashSync('bassem', 10),
-          avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
+          avatar: 'https://www.princetonportraitphotography.com/wp-content/uploads/2015/08/01_IMG_4246_LR.jpg'
         }),
         knex('users').insert({
           id: 3,
           username: 'monica',
           password: bcrypt.hashSync('monica', 10),
-          avatar: 'http://emulation.gametechwiki.com/images/thumb/f/f5/Teknoparrot.png/210px-Teknoparrot.png'
+          avatar: 'https://www.princetonportraitphotography.com/wp-content/uploads/2015/08/01_IMG_4327_LR.jpg'
         })
       ]);
     });
