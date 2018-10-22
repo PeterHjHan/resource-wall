@@ -9,8 +9,14 @@ function createResourceElement(item) {
   var $hr2 = $('<hr>').addClass();
   var $topic = $('<p>').addClass('title').text(`${item.topic}`).attr('id',`${item.topic}`);
   var $like = $('<i>').addClass('far fa-heart clientLike').attr('id', item.resource_id);
-  var $ratings = $('<p>').addClass('ratings').text(`${item.rating}`);
-  
+  if (item.rating) {
+    var $ratings = $('<p>').addClass('ratings').text(`${item.rating.slice(0, 4)}`);
+  } else {
+    var $ratings = $('<p>').addClass('ratings').text(`No rating yet.`);
+  }
+  var $topic = $('<p>').addClass('title').text(`${item.topic}`).attr('id',`${item.topic}`);
+
+  console.log(item)
 
   if(item.likes_id > 0) {
     $($like).css({
@@ -34,7 +40,7 @@ function createResourceElement(item) {
     .append($hr2)
     .append($ratings)
     .append($like)
-    
+
 }
 
 function showNewResourceForm() {
@@ -72,7 +78,7 @@ function renderNewPostForm() {
   const $descDiv = $formDiv1.append($description)
   const $urlDiv = $formDiv2.append($url)
 
-  
+
   return $form
     .append($titleDiv)
     .append($descDiv)

@@ -52,7 +52,23 @@ function makeDataHelpers(knex) {
         'topics.id as topic_id')
       .leftJoin('comments', 'resources.id', '=', 'comments.resource_id')
       .leftJoin('topics', 'resources.topic_id', '=', 'topics.id')
+      .leftJoin('ratings', 'ratings.resource_id', '=', 'resources.id')
+      .avg('ratings.rating as rating')
       .where({'resources.id': resourceId})
+      .groupBy(
+        'resources.id',
+        'resources.user_id',
+        'resources.title',
+        'resources.description',
+        'resources.url',
+        'resources.topic_id',
+        'comments.id',
+        'comments.comment',
+        'comments.user_id',
+        'comments.resource_id',
+        'topics.topic',
+        'topics.id'
+        )
       .asCallback(cb)
   }
 

@@ -18,9 +18,10 @@ module.exports = (knex) => {
        'resources.description as resource_description',
        'resources.url as resource_url',
        'topics.topic as topic',
-       'likes.resource_id as likes_resource_id',
        'ratings.resource_id as ratings_resource_id',
+       'likes.resource_id as likes_resource_id',
        'resources.topic_id as resource_topic_id')
+      .avg('ratings.rating as rating')
       .count('likes.id as likes_id')
       .groupBy(
         'resources.id',
