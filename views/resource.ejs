@@ -37,9 +37,9 @@
           <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
         <h2>Existing Title: <%= resource[0].resource_title %></h2>
 
-            <p><input type='text' name="title" placeholder="<%= resource[0].title %>"></p>
+            <p><input type='text' name="title" placeholder="<%= resource[0].resource_title %>"></p>
             <p>Existing Description: <br> <%= resource[0].resource_description %></p>
-            <p><textarea name ="description" placeholder="<%= resource[0].description %>"></textarea></p>
+            <p><textarea name ="description" placeholder="<%= resource[0].resource_description %>"></textarea></p>
             <p><input type='text'  name ="url" placeholder="<%= resource[0].url %>"></textarea></p>
             <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a>
             <br><br>
