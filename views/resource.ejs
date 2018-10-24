@@ -44,7 +44,7 @@
   <% if (user && user.id === resource[0].resource_user_id) { %>
     <section class="resource-container">
       <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
-      <h2 "<%= resource[0].topic %>">Existing Title:
+      <h2 id="<%= resource[0].topic %>">Existing Title:
         <%= resource[0].resource_title %>
       </h2>
       <input class="edit-text" type='text' name="title" placeholder="<%= resource[0].resource_title %>">
@@ -129,7 +129,7 @@
 
   <% } else if (user) { %>
     <section class="resource-container">
-        <h2 "<%= resource[0].topic %>">Title: <%= resource[0].resource_title %></h2>
+        <h2 id="<%= resource[0].topic %>">Title: <%= resource[0].resource_title %></h2>
         <br>
         <h2>Description</h2>
         <p><%= resource[0].resource_description %></p>
@@ -189,49 +189,42 @@
 
     <% } else { %>
     <section class="resource-container">
-      <h4 id="<%= resource[0].topic %>">Topics | #
-        <%= resource[0].topic %>
-      </h4>
-      <h2 id="<%= resource[0].topic %>">Title:
-        <%= resource[0].resource_title %>
-      </h2>
-      <br>
-      <h2>Description</h2>
-      <p>
-        <%= resource[0].resource_description %>
-      </p>
-      <br>
-      <h4>Link</h4>
-      <a href="<%= resource[0].resource_url %>">
-        <%= resource[0].resource_url %></a>
-      <br>
-      <br>
-      </select>
-      <br>
-    </section>
+        <h2 id="<%= resource[0].topic %>">Title: <%= resource[0].resource_title %></h2>
+        <br>
+        <h2>Description</h2>
+        <p><%= resource[0].resource_description %></p>
+        <br>
+        <h4>Link</h4>
+        <p><a href="<%= resource[0].resource_url %>"><%= resource[0].resource_url %></a></p>
+        <br>
+        <br>
+        <h4>Topics | #<%= resource[0].topic %></h4>
+        </select>
+        <br>
+      </section>
+
     <section class="opinions">
-      <div class="ratings">
-          <% if (resource[0].rating) { %>
+        <div class="ratings">
+           <% if (resource[0].rating) { %>
             <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
           <% } else { %>
             <h4>Rating</h4>
           <% }%>
-          <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
-          <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
-      </div>
 
-      <div class="likes">
-        <h4>Like</h4>
-        <!-- <form method="POST" actions="/resources/:id/like"> -->
-        <i class="far fa-heart like"></i>
-        <!-- </form> -->
-      </div>
-      <br>
-      <br>
-      <br>
+            <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
+        </div>
+
+        <div class="likes">
+          <h4>Like</h4>
+          <!-- <form method="POST" actions="/resources/:id/like"> -->
+          <i class="far fa-heart like"></i>
+          <!-- </form> -->
+        </div>
+      </section>
     <section class="comment-container">
       <h3>Comments</h3>
 
