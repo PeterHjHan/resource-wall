@@ -29,7 +29,7 @@
 
     <img src="<%= pageuser.avatar %>">
 
-    <% if (user && resource.length !== 0 && user.id === resource[0].user_id) { %>
+    <% if (user && user.username === username) { %>
 
       <div class="greeting">
       <h1>Hello <%= user.username %>!</h1>
@@ -76,7 +76,8 @@
     </div>
 
 
-    <h3><%= username %>'s Property Cards %></h3>
+    <h3>
+      <%= username %>'s Property Cards %></h3>
     <div class="created-resource">
     <% resource.forEach(function(element, i) { %>
       <div class="card">
