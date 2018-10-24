@@ -103,8 +103,7 @@
         <br>
         <br>
         <h4>Link</h4>
-        <% console.log(resource[0].resrouce_url) %>
-        <input class="edit-text" type='text' name="url" placeholder="<%= resource[0].resrouce_url %>">
+        <input class="edit-text" type='text' name="url" placeholder="<%= resource[0].resource_url %>">
         <br>
         <br>
         <h4>Topics | #
@@ -181,7 +180,7 @@
           <p><%= resource[0].resource_description %></p>
           <br>
           <h4>Link</h4>
-          <p><a href="<%= resource[0].resrouce_url %>"><%= resource[0].resrouce_url %></a></p>
+          <p><a href="<%= resource[0].resource_url %>"><%= resource[0].resource_url %></a></p>
           <br>
           <br>
           <h4>Topics | #<%= resource[0].topic %></h4>
@@ -248,8 +247,8 @@
         </p>
         <br>
         <h4>Link</h4>
-        <a href="<%= resource[0].resrouce_url %>">
-          <%= resource[0].resrouce_url %></a>
+        <a href="<%= resource[0].resource_url %>">
+          <%= resource[0].resource_url %></a>
         <br>
         <br>
         </select>

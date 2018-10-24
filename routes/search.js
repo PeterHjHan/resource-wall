@@ -9,7 +9,7 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req, res) => {
     const searchPhrase = decodeURI(req._parsedOriginalUrl.query).toLowerCase();
-   
+
     knex('resources')
       .join("topics", "resources.topic_id", "=", "topics.id")
       .select(
@@ -25,7 +25,6 @@ module.exports = (knex) => {
       .orWhereRaw('LOWER(url) LIKE ?', `%${[searchPhrase]}%`)
       .then((results) => {
         res.json(results);
-        console.log("YAYA", results);
     });
   });
 

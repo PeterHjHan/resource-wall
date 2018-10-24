@@ -34,8 +34,11 @@ module.exports = (knex) => {
        'resources.topic_id',
        'likes.id')
       .then((results) => {
-        res.json(results);
-      });
+        res.json({results, userId: req.session.id});
+      })
+      .catch((err) => {
+              console.error(err);
+            });
   });
 
   return router;

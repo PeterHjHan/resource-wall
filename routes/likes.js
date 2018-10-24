@@ -34,21 +34,27 @@ module.exports = (knex) => {
             });
         }
       })
+      .catch((err) => {
+              console.error(err);
+            });
   });
 
   router.get('/', (req, res) => {
     const resourceId = req.query.resourceId;
     const userId = req.session['id'];
-    console.log(req.query.resourceId);
-    knex('likes')
-      .first('*')
-      .where({'likes.user_id': userId, 'likes.resource_id': resourceId})
-      .then((results) => {
-        res.json(results);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+    if(userId) {
+      knex('likes')
+        .first('*')
+        .where({'likes.user_id': userId, 'likes.resource_id': resourceId})
+        .then((results) => {
+          res.json({results, userId});
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+    } else {
+      res.json({});
+    }
   });
   return router;
 }

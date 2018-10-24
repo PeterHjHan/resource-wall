@@ -1,10 +1,8 @@
 
 $(() => {
-  console.log(window.location.pathname);
   const resourceId = window.location.pathname.replace('/resources/', '');
 
   $('.like').on('click', (e) => {
-    console.log('hi');
 
     $.ajax({
       method: 'POST',
@@ -17,7 +15,6 @@ $(() => {
 
   $(document).on('click', '.clientLike', (e) => {
     let clientResId = $(e.target).attr('id');
-    // console.log(clientResId)
     $.ajax({
       method: 'POST',
       url: "/api/likes",
@@ -28,7 +25,6 @@ $(() => {
   });
 
   $(document).on('click', '.like', (e) => {
-    console.log($(e.target).css('color'))
       if ($(e.target).css('color') !== 'rgb(255, 0, 0)') {
         $(e.target).css({
           'color': 'red'
@@ -41,7 +37,6 @@ $(() => {
   });
 
   $(document).on('click', '.clientLike', (e) => {
-    console.log($(e.target).css('color'))
       if ($(e.target).css('color') !== 'rgb(255, 0, 0)') {
         $(e.target).css({
           'color': 'red'
@@ -56,60 +51,25 @@ $(() => {
 
 
   $('.like').ready((e) => {
-    // console.log('hi', typeof parseInt('hello'));
 
-    $.ajax({
-      method: 'GET',
-      url: "/api/likes",
-      data: {resourceId}
-    }).then((results) => {
-      if (results) {
-        $('.like').css({
-          'color': 'red'
-        });
-      } else {
-        $('.like').css({
-          'color': 'black'
-        });
-      }
-    });
+    if (window.location.pathname.slice(0,11) === '/resources/') {
+      $.ajax({
+        method: 'GET',
+        url: "/api/likes",
+        data: {resourceId}
+      }).then((results) => {
+        console.log('like res', results)
+        if (results.results && results.results.user_id === results.userId) {
+          $('.like').css({
+            'color': 'red'
+          });
+        } else {
+          $('.like').css({
+            'color': 'black'
+          });
+        }
+      });
+    }
   });
 
-
-
-  // $(document).on('DOMNodeInserted', (e) => {
-  //   let clientResId = $('.clientLike').attr('id');
-  //   console.log('ohhi', clientResId);
-
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: "/api/likes",
-  //     data: {resourceId}
-  //   }).then((results) => {
-  //     // console.log(results);
-  //       $('.clientLike').css({
-  //         'color': 'red'
-  //       });
-  //   });
-  // });
-
-  // $(document).on('click', '.clientLike', (e) => {
-  //   let clientResId = $(e.target).attr('id');
-  //   // console.log(clientResId)
-  //   $.ajax({
-  //     method: 'POST',
-  //     url: "/api/likes",
-  //     data: {resourceId: clientResId}
-  //   }).then((results) => {
-  //     console.log('results', results);
-  //     $(e.target).css({
-  //         'color': 'red'
-  //       });
-  //   });
-  // });
-  // $('.grid').masonry({
-  //   // options...
-  //   itemSelector: '.grid-item',
-  //   columnWidth: 20
-  // });
 });

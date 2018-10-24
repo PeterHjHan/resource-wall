@@ -1,4 +1,4 @@
-function createResourceElement(item) {
+function createResourceElement(item, userId) {
   var $article = $('<article>').addClass('grid-item').attr('id', item.topic)
   var $title = $('<h4>').addClass('title').text(item.resource_title);
   var $linkedTitle = $('<a>').attr('href', `/resources/${item.resource_id}`).append($title);
@@ -16,18 +16,23 @@ function createResourceElement(item) {
   }
   var $topic = $('<p>').addClass('title').text(`${item.topic}`).attr('id',`${item.topic}`);
 
-  console.log(item)
 
-  if(item.likes_id > 0) {
-    $($like).css({
-      'color': 'red'
-    })
-  } else {
-    $($like).css({
-      'color': 'back'
-    })
-  }
-//TESTING COMMENTS
+const resourceId = item.resource_id;
+$.ajax({
+      method: 'GET',
+      url: "/api/likes",
+      data: {resourceId}
+    }).then((results) => {
+      if (results.results && results.results.user_id === results.userId) {
+        $($like).css({
+          'color': 'red'
+        });
+      } else {
+        $($like).css({
+          'color': 'black'
+        });
+      }
+    });
 
 
   return $article

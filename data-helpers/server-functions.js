@@ -42,7 +42,7 @@ function makeDataHelpers(knex) {
         'resources.user_id as resource_user_id',
         'resources.title as resource_title',
         'resources.description as resource_description',
-        'resources.url as resrouce_url',
+        'resources.url as resource_url',
         'resources.topic_id as resource_topic_id',
         'comments.id as comment_id',
         'comments.comment as comment',

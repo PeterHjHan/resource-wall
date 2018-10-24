@@ -167,7 +167,6 @@ app.post('/users/:user/settings', (req, res) => {
 app.post('/register', (req, res) => {
   const username = req.body.username;
   //check if username exists
-  console.log(req.body.password)
   const password = bcrypt.hashSync(req.body.password, 10);
   insertNewUser(username, password, (err, user) => {
     if (err) {
@@ -263,11 +262,6 @@ app.post('/resources/:id/update', (req,res) => {
   })
 });
 
-// app.post('/resources/:id/likes', (req, res) => {
-//   console.log("PARAMS ID", req.params.id);
-
-//     res.redirect("/");
-// });
 
 //post a new resource
 app.post('/resources/new', (req, res) => {

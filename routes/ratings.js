@@ -9,8 +9,6 @@ module.exports = (knex) => {
     const resourceId = req.body.resourceId;
     const ratingNum = req.body.ratingNum;
     const userId = req.session.id;
-    console.log('user', userId);
-    console.log('id', resourceId)
     knex('ratings')
       .first('*')
       .where({'ratings.user_id': userId, 'ratings.resource_id': resourceId})
