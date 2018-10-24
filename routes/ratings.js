@@ -39,6 +39,9 @@ module.exports = (knex) => {
             });
         }
       })
+      .catch((err) => {
+              console.error(err);
+            });
   });
 
   return router;

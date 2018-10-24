@@ -42,225 +42,115 @@
 <body>
 
   <% if (user && user.id === resource[0].resource_user_id) { %>
-  <section>
-    <!--
-    <form method="POST" action="/resources/<%= resource[0].topic_id %>/update">
-      <h2>Existing Title:
+    <section class="resource-container">
+      <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
+      <h2 "<%= resource[0].topic %>">Existing Title:
         <%= resource[0].resource_title %>
       </h2>
-
-      <p><input type='text' name="title" placeholder="<%= resource[0].resource_title %>"></p>
-      <p>Existing Description: <br>
+      <input class="edit-text" type='text' name="title" placeholder="<%= resource[0].resource_title %>">
+      <br>
+      <br>
+      <h2>Existing Description</h2>
+      <p>
         <%= resource[0].resource_description %>
       </p>
-      <p><textarea name="description" placeholder="<%= resource[0].resource_description %>"></textarea></p>
-      <p><input type='text' name="url" placeholder="<%= resource[0].url %>"></textarea></p>
-      <a href="<%= resource[0].url %>">
-        <%= resource[0].resource_url %></a>
-      <br><br>
+      <textarea class=name="description" placeholder="<%= resource[0].resource_description %>"></textarea>
+      <br>
+      <br>
+      <h4>Link</h4>
+      <input class="edit-text" type='text' name="url" placeholder="<%= resource[0].resource_url %>">
+      <br>
+      <br>
       <h4>Topics | #
         <%= resource[0].topic %>
       </h4>
       <select name="topic" class="select-topics">
-
       </select>
       <br>
-      <button class="btn btn-outline-secondary" type="submit">Update123</button>
       <br>
-      -->
-      <!-- <a href="<%= resource[0].url %>"><%= resource[0].resource_url %></a> -->
-      <br>
-      <!--
-      <h3>Rating</h3>
-      <i class="far fa-star" id='1'></i>
-      <i class="far fa-star" id='2'></i>
-      <i class="far fa-star" id='3'></i>
-      <i class="far fa-star" id='4'></i>
-      <i class="far fa-star" id='5'></i>
+    </section>
 
-      <br>
-     -->
-     <!-- <h3>Like</h3> -->
-      <!-- <form method="POST" actions="/resources/:id/like"> -->
-      <!-- <i class="far fa-heart like"></i> -->
-      <!-- </form> -->
+    <section class="opinions">
+        <div class="ratings">
+          <% if (resource[0].rating) { %>
+            <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
+          <% } else { %>
+            <h4>Rating</h4>
+          <% }%>
+            <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+            <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
 
-      <br>
+        </div>
 
-      <section class="resource-container">
-        <form method="POST" action="/resources/<%= resource[0].topic_id %>/update"></form>
-        <h2>Existing Title:
-          <%= resource[0].resource_title %>
-        </h2>
-        <input class="edit-text" type='text' name="title" placeholder="<%= resource[0].resource_title %>">
-        <br>
-        <br>
-        <h2>Existing Description</h2>
-        <p>
-          <%= resource[0].resource_description %>
-        </p>
-        <textarea class=name="description" placeholder="<%= resource[0].resource_description %>"></textarea>
-        <br>
-        <br>
-        <h4>Link</h4>
-        <input class="edit-text" type='text' name="url" placeholder="<%= resource[0].resource_url %>">
-        <br>
-        <br>
-        <h4>Topics | #
-          <%= resource[0].topic %>
-        </h4>
-        <select name="topic" class="select-topics">
-        </select>
-        <br>
-        <br>
+        <div class="likes">
+          <h4>Like</h4>
+          <!-- <form method="POST" actions="/resources/:id/like"> -->
+          <i class="far fa-heart like"></i>
+          <!-- </form> -->
+        </div>
       </section>
+    <section class="resource-buttons">
+    <form method="POST" action="/resources/new">
+      <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+    </form>
 
-      <section class="opinions">
-          <div class="ratings">
-            <% if (resource[0].rating) { %>
-              <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
-            <% } else { %>
-              <h4>Rating</h4>
-            <% }%>
-              <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
+    <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
+      <button class="btn btn-outline-secondary" name="delete" type="submit">Delete</button>
+    </form>
+    </section>
+    <br>
+    <br>
+    <br>
 
+    <section class="comment-container">
+      <h3>Comments</h3>
+
+      <article>
+        <form method="POST" action="/resources/:id">
+          <div class="other-comment">
+            <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+            <br>
+            <% if (resource[0].comment) { %>
+              <h5 class="comment-user">
+                <%= resource[0].comment.substr([0],[4]) %>
+              </h5>
+              <p>
+               <%= resource[0].comment.substr([6]) %>
+             <% };%>
           </div>
+          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
+          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
+        </form>
+      </article>
+    </section>
 
-          <div class="likes">
-            <h4>Like</h4>
-            <!-- <form method="POST" actions="/resources/:id/like"> -->
-            <i class="far fa-heart like"></i>
-            <!-- </form> -->
-          </div>
-        </section>
-      <section class="resource-buttons">
-      <form method="POST" action="/resources/new">
-        <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
-      </form>
-
-      <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
-        <button class="btn btn-outline-secondary" name="delete" type="submit">Delete</button>
-      </form>
-      </section>
-      <br>
-      <br>
-      <br>
-
-      <section class="comment-container">
-        <h3>Comments</h3>
-
-        <article>
-          <form method="POST" action="/resources/:id">
-            <div class="other-comment">
-              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-              <br>
-              <% if (resource[0].comment) { %>
-                <h5 class="comment-user">
-                  <%= resource[0].comment.substr([0],[4]) %>
-                </h5>
-                <p>
-                 <%= resource[0].comment.substr([6]) %>
-               <% };%>
-            </div>
-            <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-            <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-          </form>
-        </article>
-      </section>
-
-    <% } else if (user) { %>
-      <section class="resource-container">
-          <h2>Title: <%= resource[0].resource_title %></h2>
-          <br>
-          <h2>Description</h2>
-          <p><%= resource[0].resource_description %></p>
-          <br>
-          <h4>Link</h4>
-          <p><a href="<%= resource[0].resource_url %>"><%= resource[0].resource_url %></a></p>
-          <br>
-          <br>
-          <h4>Topics | #<%= resource[0].topic %></h4>
-          </select>
-          <br>
-        </section>
-
-      <section class="opinions">
-          <div class="ratings">
-             <% if (resource[0].rating) { %>
-              <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
-            <% } else { %>
-              <h4>Rating</h4>
-            <% }%>
-
-              <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
-              <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
-          </div>
-
-          <div class="likes">
-            <h4>Like</h4>
-            <!-- <form method="POST" actions="/resources/:id/like"> -->
-            <i class="far fa-heart like"></i>
-            <!-- </form> -->
-          </div>
-        </section>
-      <section class="comment-container">
-        <h3>Comments</h3>
-
-        <article>
-          <form method="POST" action="/resources/:id">
-            <div class="other-comment">
-              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-              <br>
-              <% if (resource[0].comment) { %>
-                <h5 class="comment-user">
-                  <%= resource[0].comment.substr([0],[4]) %>
-                </h5>
-                <p>
-                 <%= resource[0].comment.substr([6]) %>
-               <% };%>
-            </div>
-            <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-            <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-          </form>
-        </article>
-      </section>
-
-      <% } else { %>
-      <section class="resource-container">
-        <h4 id="<%= resource[0].topic %>">Topics | #
-          <%= resource[0].topic %>
-        </h4>
-        <h2>Title:
-          <%= resource[0].resource_title %>
-        </h2>
+  <% } else if (user) { %>
+    <section class="resource-container">
+        <h2 "<%= resource[0].topic %>">Title: <%= resource[0].resource_title %></h2>
         <br>
         <h2>Description</h2>
-        <p>
-          <%= resource[0].resource_description %>
-        </p>
+        <p><%= resource[0].resource_description %></p>
         <br>
         <h4>Link</h4>
-        <a href="<%= resource[0].resource_url %>">
-          <%= resource[0].resource_url %></a>
+        <p><a href="<%= resource[0].resource_url %>"><%= resource[0].resource_url %></a></p>
         <br>
         <br>
+        <h4>Topics | #<%= resource[0].topic %></h4>
         </select>
         <br>
       </section>
-      <section class="opinions">
+
+    <section class="opinions">
         <div class="ratings">
-            <% if (resource[0].rating) { %>
-              <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
-            <% } else { %>
-              <h4>Rating</h4>
-            <% }%>
+           <% if (resource[0].rating) { %>
+            <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
+          <% } else { %>
+            <h4>Rating</h4>
+          <% }%>
+
             <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
             <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
             <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
@@ -274,29 +164,96 @@
           <i class="far fa-heart like"></i>
           <!-- </form> -->
         </div>
-        <br>
-      <section class="comment-container">
-        <h3>Comments</h3>
-
-        <article>
-          <form method="POST" action="/resources/:id">
-            <div class="other-comment">
-              <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
-              <br>
-              <% if (resource[0].comment) { %>
-                <h5 class="comment-user">
-                  <%= resource[0].comment.substr([0],[4]) %>
-                </h5>
-                <p>
-                 <%= resource[0].comment.substr([6]) %>
-               <% };%>
-            </div>
-            <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-            <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-          </form>
-        </article>
       </section>
-      <% } %>
+    <section class="comment-container">
+      <h3>Comments</h3>
+
+      <article>
+        <form method="POST" action="/resources/:id">
+          <div class="other-comment">
+            <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+            <br>
+            <% if (resource[0].comment) { %>
+              <h5 class="comment-user">
+                <%= resource[0].comment.substr([0],[4]) %>
+              </h5>
+              <p>
+               <%= resource[0].comment.substr([6]) %>
+             <% };%>
+          </div>
+          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
+          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
+        </form>
+      </article>
+    </section>
+
+    <% } else { %>
+    <section class="resource-container">
+      <h4 id="<%= resource[0].topic %>">Topics | #
+        <%= resource[0].topic %>
+      </h4>
+      <h2 id="<%= resource[0].topic %>">Title:
+        <%= resource[0].resource_title %>
+      </h2>
+      <br>
+      <h2>Description</h2>
+      <p>
+        <%= resource[0].resource_description %>
+      </p>
+      <br>
+      <h4>Link</h4>
+      <a href="<%= resource[0].resource_url %>">
+        <%= resource[0].resource_url %></a>
+      <br>
+      <br>
+      </select>
+      <br>
+    </section>
+    <section class="opinions">
+      <div class="ratings">
+          <% if (resource[0].rating) { %>
+            <h4>Rating <%= resource[0].rating.slice(0,4)%></h4>
+          <% } else { %>
+            <h4>Rating</h4>
+          <% }%>
+          <i class="far fa-star rating" name="1" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="2" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="3" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="4" res="<%= resource[0].resource_id%>"></i>
+          <i class="far fa-star rating" name="5" res="<%= resource[0].resource_id%>"></i>
+      </div>
+
+      <div class="likes">
+        <h4>Like</h4>
+        <!-- <form method="POST" actions="/resources/:id/like"> -->
+        <i class="far fa-heart like"></i>
+        <!-- </form> -->
+      </div>
+      <br>
+      <br>
+      <br>
+    <section class="comment-container">
+      <h3>Comments</h3>
+
+      <article>
+        <form method="POST" action="/resources/:id">
+          <div class="other-comment">
+            <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
+            <br>
+            <% if (resource[0].comment) { %>
+              <h5 class="comment-user">
+                <%= resource[0].comment.substr([0],[4]) %>
+              </h5>
+              <p>
+               <%= resource[0].comment.substr([6]) %>
+             <% };%>
+          </div>
+          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
+          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
+        </form>
+      </article>
+    </section>
+    <% } %>
 
 </body>
 

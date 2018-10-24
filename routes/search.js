@@ -24,8 +24,11 @@ module.exports = (knex) => {
       .orWhereRaw('LOWER(description) LIKE ?', `%${[searchPhrase]}%`)
       .orWhereRaw('LOWER(url) LIKE ?', `%${[searchPhrase]}%`)
       .then((results) => {
-        res.json(results);
-    });
+        res.json({results, userId: req.session.id});
+      })
+      .catch((err) => {
+              console.error(err);
+            });
   });
 
   return router;

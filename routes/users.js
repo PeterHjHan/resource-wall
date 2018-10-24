@@ -5,13 +5,8 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+  router.get('/', (req, res) => {
+    res.json({userId: req.session.id});
   });
 
   return router;

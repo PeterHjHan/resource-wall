@@ -7,10 +7,9 @@ $(() => {
     method: "GET",
     url: "/api/resources"
   }).then((resources) => {
-    for(resource of resources) {
-      if(resource.topic === topicName) {
-        createResourceElement(resource).appendTo($(".grid"));
-      }
+    for(resource of resources.results) {
+      if(resource.topic === topicName)
+        createResourceElement(resource, resources.userId).appendTo($(".grid"));
     }
   });
 });
