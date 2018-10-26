@@ -28,7 +28,8 @@ const {
   updateUserDetails,
   insertNewUser,
   deleteResource,
-  updateExistingResource
+  updateExistingResource, 
+  getLikedResourcesByUserId
   } = require('./data-helpers/server-functions')(knex);
 
 
@@ -123,18 +124,29 @@ app.get('/backdoor/:username', (req, res) => {
 //users can access their page with post form, their resources, their liked resources
 app.get('/users/:user', (req, res) => {
   getUserByName(req.params.user, (err, user) => {
-    getResourceByUserId(user.id, (err, resource) => {
-      if (err) {
-        res.redirect('/');
-      } else {
-        const templateVars = {
-              resource,
-              username: req.params.user,
-              pageuser: user
-            };
-            res.render('user', templateVars);
-      }
-    });
+    if (err) {
+      res.redirect('/');
+    } else {
+      getResourceByUserId(user.id, (err, resource) => {
+        if (err) {
+          res.redirect('/');
+        } else {
+          getLikedResourcesByUserId(user.id, (err, likedResource) => {
+            if (err) {
+              res.redirect('/');
+            } else {
+                const templateVars = {
+                      resource,
+                      likedResource,
+                      username: req.params.user,
+                      pageuser: user
+                    };
+                    res.render('user', templateVars);
+              }
+          });
+        }
+      });
+    }
   })
 });
 

@@ -55,7 +55,7 @@
       <h3>Your Collected Property Cards %></h3>
       <section class="liked-resource">
         <br>
-      <% resource.forEach(function(element, i) { %>
+      <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= element.title %></h5>
@@ -97,7 +97,7 @@
 
       <h3><%= username %>'s Collected Property Cards</h3>
       <section class="liked-resource">
-      <% resource.forEach(function(element, i) { %>
+      <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= element.title %></h5>
