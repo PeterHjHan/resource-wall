@@ -1,0 +1,144 @@
+section {
+  padding: 15px;
+  margin: 10px 10px;
+}
+
+.resource-container {
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 20% 0 20%;
+  background: white;
+}
+
+input {
+  width: 25%;
+}
+
+.opinions {
+  text-align: center;
+  margin: 0 20%;
+  padding: 10px 0 70px 0;
+  background: white;
+  border-radius: 10px;
+  border: 0;
+}
+
+.ratings {
+  float: left;
+  margin-left: 15px;
+}
+h2, h4, h5, p {
+  text-align: center;
+}
+
+.edit-text {
+  width: 45%;
+}
+
+.select-topics {
+  margin-left: 45%;
+}
+/*
+textarea {
+  margin-left: 32%;
+  width: 500px;
+  height: 100px;
+} */
+
+.ratings, .likes, .button-container {
+  display: flex;
+  justify-content: center;
+}
+
+i {
+  margin: 5px;
+}
+
+.likes {
+  float: right;
+  margin-right: 15px;
+}
+
+.comment-container {
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 20% 0 20%;
+  background: white;
+  width: 80%;
+}
+
+
+.other-comment {
+  display: inline;
+}
+
+#user-comment {
+  float: right;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+
+
+#comment {
+  margin: 15px;
+  float: left;
+}
+
+#comment-btn {
+  margin: 15px;
+  float: left;
+}
+
+.resource-container #Coding {
+  background: #3D9970;
+  color: white;
+}
+
+.resource-container #Gaming {
+  background: #FF4136;
+  color: white;
+}
+
+.resource-container #Languages {
+  background: #0074D9;
+  color: white;
+}
+
+.resource-container #Photography {
+  background: #FF851B;
+  color: white;
+}
+
+.resource-container #Cooking {
+  background: #85144b;
+  color: white;
+}
+.comment-container {
+  margin: 10px 0 0 10%;
+  float: left;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  width: 80%;
+}
+
+.comment-body {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  height: 100px;
+}
+
+.comment-user {
+  float: left;
+}
+
+img {
+  float: left;
+  width: 100px;
+  height: 100px
+}
+
+.resource-buttons {
+margin-left: 20%;
+}

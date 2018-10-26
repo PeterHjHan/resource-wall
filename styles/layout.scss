@@ -1,11 +1,45 @@
-body {
-  background-color: #EEE;
+@import 'masonry';
+@import 'navbar';
+@import 'resource';
+@import 'user';
 
-  h1 {
-    color: #244751;
-  }
+html {
+  box-sizing: border-box;
 }
 
-.grid-item { width: 200px; }
-.grid-item--width2 { width: 400px; }
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1.15em;
+  background: whitesmoke;
+}
 
+body h1 {
+  color: #244751;
+}
+
+/* TOPIC CSS */
+
+.grid-item #Coding {
+  background: #3D9970;
+  color: white;
+}
+
+.grid-item #Gaming {
+  background: #FF4136;
+  color: white;
+}
+
+.grid-item #Languages {
+  background: #0074D9;
+  color: white;
+}
+
+.grid-item #Photography {
+  background: #FF851B;
+  color: white;
+}
+
+.grid-item #Cooking {
+  background: #85144b;
+  color: white;
+}
