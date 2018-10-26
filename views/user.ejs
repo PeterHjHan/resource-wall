@@ -37,7 +37,6 @@
       </div>
 
       <h3>Your Property Cards %></h3>
-      <section class="created-resource">
         <br>
       <% resource.forEach(function(element, i) { %>
           <div class="card">
@@ -47,15 +46,13 @@
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
           </div>
-        </section>
       <% }); %>
 
       <br><br>
 
       <h3>Your Collected Property Cards %></h3>
-      <section class="liked-resource">
         <br>
-      <% resource.forEach(function(element, i) { %>
+      <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= element.title %></h5>
@@ -63,11 +60,8 @@
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
           </div>
-        </section>
       <% }); %>
-      <div class="liked-resource">
 
-      </div>
 
     <% } else { %>
 
@@ -78,7 +72,6 @@
 
     <h3>
       <%= username %>'s Property Cards %></h3>
-    <div class="created-resource">
     <% resource.forEach(function(element, i) { %>
       <div class="card">
         <div class="card-body">
@@ -87,17 +80,11 @@
           <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
         </div>
       </div>
-    </div>
     <% }); %>
     <br>
-    <div class='liked-resource'>
-
-    <br><br>
-    </div>
 
       <h3><%= username %>'s Collected Property Cards</h3>
-      <section class="liked-resource">
-      <% resource.forEach(function(element, i) { %>
+      <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= element.title %></h5>
@@ -105,7 +92,6 @@
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
           </div>
-        </section>
       <% }); %>
 
     <% }; %>

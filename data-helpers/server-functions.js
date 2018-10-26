@@ -5,21 +5,21 @@ function makeDataHelpers(knex) {
       .first('*')
       .where({id: userId})
       .asCallback(cb);
-  };
+  }
 
   function getUserByName(user, cb) {
     knex('users')
       .first('*')
       .where({username: user})
       .asCallback(cb)
-  };
+  }
 
   function filterTopicsByName(name, cb) {
     knex('topics')
       .select('topic')
       .where({topic : name})
       .asCallback(cb)
-  };
+  }
 
   function updateExistingResource(resourceId, title, desc, URL, topicId, cb) {
     knex('resources')
@@ -81,7 +81,6 @@ function makeDataHelpers(knex) {
 
 
   function updateUserDetails(userId, newUsername, newPassword, newAvatar, cb) {
-    //PETER PLS REVIEW ONEGAISHI MEI SUUUUUUWWWWW
     knex('users')
       .returning('*')
       .update({username: newUsername, password: newPassword, avatar: newAvatar})
@@ -102,7 +101,17 @@ function makeDataHelpers(knex) {
       .where({'resources.id': resourceId, 'resources.user_id': userId})
       .del()
       .asCallback(cb)
-  };
+  }
+
+  function getLikedResourcesByUserId(userId, cb) {
+    // knex('likes')
+    //   .join('resources')
+    knex('resources')
+      .select('*')
+      .where({'likes.user_id': userId})
+      .join('likes', 'likes.resource_id', '=', 'resources.id')
+      .asCallback(cb)
+  }
 
   //comment for git troubleshooting
   return {
@@ -115,7 +124,8 @@ function makeDataHelpers(knex) {
     updateUserDetails,
     insertNewUser,
     deleteResource,
-    updateExistingResource
+    updateExistingResource, 
+    getLikedResourcesByUserId
      };
 }
 

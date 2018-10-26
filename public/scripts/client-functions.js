@@ -131,11 +131,31 @@ function renderTopicsInNavBar() {
   });
 }
 
+function renderNewComment() {
+  $("#comment-btn").on("click", function(event) {
+    event.preventDefault();
+    let commentText = $(event.target).siblings("textarea").val();
+    let resourceId = window.location.pathname.slice(11);
+    $.ajax({
+      url: "/resource/:id",
+      method: "POST",
+      data: {commentText, resourceId},
+      success: function(result) {
+        console.log("WE WORK!", result);
+      },
+      error: function(error) {
+        console.log("PANIC, ERROR", error);
+      }
+    });
+  });
+}
+
 $('<button>').addClass().attr('value','like').appendTo('.grid-item');
 
 function loadCommonFunctions() {
   showNewResourceForm();
   renderNewPostForm();
   renderTopicsInNavBar();
+  renderNewComment();
 }
 
