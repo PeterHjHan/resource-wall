@@ -11,28 +11,6 @@ img {
     margin-bottom: 125px;
 }
 
-.created-resource {
-    /* display: none; */
-    margin-bottom: 35px;
-    /* position: fixed; */
-    width: 80%;
-    margin: 0;
-    /* width: 0; */
-    height: auto;
-    /*height: 100%;*/
-}
-
-.liked-resource {
-    /* display: none; */
-    margin: 0;
-    padding: 0;
-    /* position: fixed; */
-    /* width: 0; */
-    height: auto;
-    /*height: 100%;*/
-    /* overflow: wrap; */
-}
-
 .card {
     display: inline-flex;
     margin: 3px;
