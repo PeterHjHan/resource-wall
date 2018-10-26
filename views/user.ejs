@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Fonts -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/user.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/custom.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="/styles/user.css" type="text/css" /> -->
      <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -35,13 +35,14 @@
       <h1>Hello <%= user.username %>!</h1>
       <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
       </div>
-
+      
       <h3>Your Property Cards %></h3>
         <br>
       <% resource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= element.title %></h5>
+              <% console.log(element) %>
+              <h5 class="card-title"><a href="../resources/<%=element.id%>"><%= element.title %></a></h5>
               <p class="card-text"><%= element.description %></p>
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
@@ -55,7 +56,7 @@
       <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= element.title %></h5>
+                <h5 class="card-title"><a href="../resources/<%=element.id%>"><%= element.title %></a></h5>
               <p class="card-text"><%= element.description %></p>
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
@@ -75,7 +76,7 @@
     <% resource.forEach(function(element, i) { %>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><%= element.title %></h5>
+            <h5 class="card-title"><a href="../resources/<%=element.id%>"><%= element.title %></a></h5>
           <p class="card-text"><%= element.description %></p>
           <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
         </div>
@@ -87,7 +88,7 @@
       <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= element.title %></h5>
+                <h5 class="card-title"><a href="../resources/<%=element.id%>"><%= element.title %></a></h5>
               <p class="card-text"><%= element.description %></p>
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>
             </div>
