@@ -7,7 +7,6 @@ $(() => {
     url: '/api/users'
   }).then((results) => {
     var userId = results.userId;
-    // console.log(userId);
     if (userId) {
       $('.like').on('click', (e) => {
 
@@ -65,7 +64,6 @@ $(() => {
             url: "/api/likes",
             data: {resourceId}
           }).then((results) => {
-            console.log('like res', results)
             if (results.results && results.results.user_id === results.userId) {
               $('.like').css({
                 'color': 'red'

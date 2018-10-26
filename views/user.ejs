@@ -39,7 +39,6 @@
       <% resource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
-              <% console.log(element) %>
               <h5 class="card-title"><a href="../resources/<%=element.id%>"><%= element.title %></a></h5>
               <p class="card-text"><%= element.description %></p>
               <a href="<%= element.url %>" class="card-link" title = "<%= element.url %>">Link</a>

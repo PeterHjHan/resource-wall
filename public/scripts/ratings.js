@@ -7,7 +7,6 @@ $(() => {
   }).then((results) => {
 
     var userId = results.userId;
-    // console.log(userId);
     if (userId) {
       $(document).on('click', '.rating', (e) => {
         let ratingNum = $(e.target).attr('name');

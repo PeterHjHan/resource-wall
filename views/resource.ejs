@@ -90,16 +90,16 @@
           <i class="far fa-heart like"></i>
           <!-- </form> -->
         </div>
+        <section class="resource-buttons">
+        <form method="POST" action="/resources/new">
+          <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
+        </form>
+    
+        <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
+          <button class="btn btn-outline-secondary" name="delete" type="submit">Delete</button>
+        </form>
+        </section>
       </section>
-    <section class="resource-buttons">
-    <form method="POST" action="/resources/new">
-      <button class="btn btn-outline-secondary" name="update" type="submit">Update</button>
-    </form>
-
-    <form method="POST" action="/resources/<%= resource[0].resource_id%>/delete">
-      <button class="btn btn-outline-secondary" name="delete" type="submit">Delete</button>
-    </form>
-    </section>
     <br>
     <br>
     <br>
