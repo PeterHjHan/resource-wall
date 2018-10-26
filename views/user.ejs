@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Fonts -->
     <link rel="stylesheet" href="/styles/custom.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="/styles/user.css" type="text/css" /> -->
      <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -26,7 +25,6 @@
   </header>
 
   <body>
-
     <img src="<%= pageuser.avatar %>" class="user-avatar">
 
     <% if (user && user.username === username) { %>
@@ -36,7 +34,7 @@
       <a href='/users/<%=user.username%>/settings'>Edit Your Profile</a>
       </div>
       
-      <h3>Your Property Cards %></h3>
+      <h3 class="userLine">Your Property Cards %></h3>
         <br>
       <% resource.forEach(function(element, i) { %>
           <div class="card">
@@ -51,7 +49,7 @@
 
       <br><br>
 
-      <h3>Your Collected Property Cards %></h3>
+      <h3 class="userLine">Your Collected Property Cards %></h3>
         <br>
       <% likedResource.forEach(function(element, i) { %>
           <div class="card">
@@ -71,7 +69,7 @@
     </div>
 
 
-    <h3>
+    <h3 class="userLine">
       <%= username %>'s Property Cards %></h3>
     <% resource.forEach(function(element, i) { %>
       <div class="card">
@@ -84,7 +82,7 @@
     <% }); %>
     <br>
 
-      <h3><%= username %>'s Collected Property Cards</h3>
+      <h3 class="userLine"><%= username %>'s Collected Property Cards</h3>
       <% likedResource.forEach(function(element, i) { %>
           <div class="card">
             <div class="card-body">
@@ -96,7 +94,6 @@
       <% }); %>
 
     <% }; %>
-
   </body>
 </html>
 

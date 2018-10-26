@@ -5,3 +5,4 @@ node_modules/
 .DS_Store
 resource_wall.md
 test.js
+styles/

@@ -427,8 +427,8 @@ i {
   text-align: center;
 }
 
-h3 {
-  margin-left: 40px;
+h3.userLine {
+  margin: 0 0.6em;
   border-bottom: 3px solid black;
 }
 
@@ -450,11 +450,11 @@ section {
   margin-left: 40px;
 }
 
-h3 {
-  margin: 15px 30px;
+h3.profile {
+  border-bottom: 3px solid black;
 }
 
-img {
+.profile-avatar {
   margin-bottom: 15px;
   width: 200px;
   height: 200px;
