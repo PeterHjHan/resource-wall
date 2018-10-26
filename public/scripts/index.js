@@ -10,4 +10,5 @@ $(() => {
         createResourceElement(resource, resources.userId).appendTo($(".grid"));
     }
   });
+
 });

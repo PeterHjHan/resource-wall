@@ -12,24 +12,25 @@ img {
 }
 
 .created-resource {
-    display: inline-block;
+    /* display: none; */
     margin-bottom: 35px;
-    /*position: absolute;*/
+    /* position: fixed; */
     width: 80%;
     margin: 0;
-    width: 0;
-    height: 0;
+    /* width: 0; */
+    height: auto;
     /*height: 100%;*/
 }
 
 .liked-resource {
-    display: block;
+    /* display: none; */
     margin: 0;
     padding: 0;
-    /*position: relative;*/
-    width: 0;
-    height: 0;
+    /* position: fixed; */
+    /* width: 0; */
+    height: auto;
     /*height: 100%;*/
+    /* overflow: wrap; */
 }
 
 .card {
@@ -37,11 +38,12 @@ img {
     margin: 3px;
     margin-left: 15px;
     flex: 0 0 auto;
-    /*float: left;*/
+    /* float: right; */
     width: 250px;
     height: 200px;
     border-radius: 8px;
     line-height: 1.5em;
+    /* position: relative; */
 }
 
 .card-title {
