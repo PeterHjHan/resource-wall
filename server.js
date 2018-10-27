@@ -298,7 +298,7 @@ app.post('/resources/new', (req, res) => {
     });
 });
 
-app.post('/resource/:id', (req, res) => {
+app.post('/comment', (req, res) => {
   const comment = req.body.commentText;
   const userId = req.session.id;
   const resourceId = req.body.resourceId;

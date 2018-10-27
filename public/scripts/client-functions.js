@@ -136,6 +136,7 @@ function renderNewComment() {
     event.preventDefault();
     let commentText = $(event.target).siblings("textarea").val();
     let resourceId = window.location.pathname.slice(11);
+
     $.ajax({
       url: "/comment",
       method: "POST",
@@ -147,6 +148,7 @@ function renderNewComment() {
         console.log("PANIC, ERROR", error);
       }
     });
+    $("#user-comment").val('');
   });
 }
 

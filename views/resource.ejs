@@ -115,10 +115,10 @@
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+                User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
           <div class="new-comment">
@@ -177,10 +177,10 @@
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+               User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
           <textarea class="form-control" id="user-comment" name="comment" placeholder="Leave a comment"></textarea>
@@ -236,10 +236,10 @@
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+               User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
       </article>
