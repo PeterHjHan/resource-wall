@@ -298,13 +298,13 @@ app.post('/resources/new', (req, res) => {
     });
 });
 
-app.post('/resource/:id', (req, res) => {
+app.post('/comments', (req, res) => {
   const comment = req.body.commentText;
   const userId = req.session.id;
   const resourceId = req.body.resourceId;
 
   knex('comments')
-    .insert({
+  .insert({
       comment: comment,
       user_id: userId, 
       resource_id: resourceId
