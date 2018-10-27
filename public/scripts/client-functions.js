@@ -137,7 +137,7 @@ function renderNewComment() {
     let commentText = $(event.target).siblings("textarea").val();
     let resourceId = window.location.pathname.slice(11);
     $.ajax({
-      url: "/resource/:id",
+      url: "/comment",
       method: "POST",
       data: {commentText, resourceId},
       success: function(result) {
