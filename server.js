@@ -298,6 +298,25 @@ app.post('/resources/new', (req, res) => {
     });
 });
 
+app.post('/comment', (req, res) => {
+  const comment = req.body.commentText;
+  const userId = req.session.id;
+  const resourceId = req.body.resourceId;
+
+  knex('comments')
+    .insert({
+      comment: comment,
+      user_id: userId, 
+      resource_id: resourceId
+    })
+    .then((comment) => {
+      res.json(comment);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+})
+
 //delete a resource if you are the owner
 app.post('/resources/:id/delete', (req, res) => {
   deleteResource(req.params.id, req.session.id, (err, del) => {

@@ -108,21 +108,23 @@
       <h3>Comments</h3>
 
       <article>
-        <form method="POST" action="/resources/:id">
+        <!-- <form method="POST" action="/resources/:id"> -->
           <div class="other-comment">
             <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+                User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
-          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-        </form>
+          <div class="new-comment">
+            <textarea class="form-control" id="user-comment" name="comment" placeholder="Leave a comment"></textarea>
+            <button class="btn btn-outline-secondary" id='comment-btn' type="submit">Comment</button>
+          </div>
+        <!-- </form> -->
       </article>
     </section>
 
@@ -168,21 +170,21 @@
       <h3>Comments</h3>
 
       <article>
-        <form method="POST" action="/resources/:id">
+        <!-- <form method="POST" action="/resources/:id"></form> -->
           <div class="other-comment">
             <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+               User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
-          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-        </form>
+          <textarea class="form-control" id="user-comment" name="comment" placeholder="Leave a comment"></textarea>
+          <button class="btn btn-outline-secondary" id='comment-btn' type="submit">Comment</button>
+        <!-- </form> -->
       </article>
     </section>
 
@@ -228,21 +230,17 @@
       <h3>Comments</h3>
 
       <article>
-        <form method="POST" action="/resources/:id">
           <div class="other-comment">
             <img class="comment-avatar" src="http://getdrawings.com/images/board-game-drawing-11.png">
             <br>
             <% if (resource[0].comment) { %>
               <h5 class="comment-user">
-                <%= resource[0].comment.substr([0],[4]) %>
+               User <%= resource[0].comment_user_id %>
               </h5>
               <p>
-               <%= resource[0].comment.substr([6]) %>
+               <%= resource[0].comment %>
              <% };%>
           </div>
-          <textarea class="form-control" id="user-comment" placeholder="Leave a comment"></textarea>
-          <button class="btn btn-outline-secondary" name="comment" id='comment-btn' type="submit">Comment</button>
-        </form>
       </article>
     </section>
     <% } %>
