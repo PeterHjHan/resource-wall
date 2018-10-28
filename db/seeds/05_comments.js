@@ -6,19 +6,19 @@ exports.seed = function (knex, Promise) {
         // Inserts seed entries
         knex('comments').insert({
           id: 1,
-          comment: 'ID 1: this was the best thing ever',
+          comment: 'this was the best thing ever',
           user_id: 2,
           resource_id: 2
         }),
         knex('comments').insert({
           id: 2,
-          comment: 'ID2: This wasn not the best thing ever',
+          comment: 'This wasn not the best thing ever',
           user_id: 3,
           resource_id: 3
         }),
         knex('comments').insert({
           id: 3,
-          comment: 'ID 3: HELLO WORLD',
+          comment: 'HELLO WORLD',
           user_id: 1,
           resource_id: 1
         })
