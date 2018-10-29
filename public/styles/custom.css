@@ -500,4 +500,8 @@ body h1 {
   color: white;
 }
 
+#star-rating:hover {
+  background-color: red;
+}
+
 /*# sourceMappingURL=custom.css.map */
