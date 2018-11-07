@@ -15,3 +15,12 @@ Wallnopoly is a simple resource-wall where users are able to create a specific e
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+- bcrypt
+- cookie-session
+- dotenv
+- ejs
+- knex
+- pg
+- sqlite3
+
+## Screenshots
