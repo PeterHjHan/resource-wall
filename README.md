@@ -3,7 +3,7 @@
 A collaborative resource wall (Pinterest clone) with a Monopoly property card theme.
 Any resource can be found through the topics dropdown or search query. Registered/logged in users are able to create, like, rate, and comment on other users' posts. On users' pages, created and liked posts are saved for convenient referral.
 
-This was a collaborative project with ![Peter Han](https://github.com/PeterHjHan), ![Bassem Kaddour](https://github.com/bassemkaddour), and ![Monica Lee](https://github.com/monicasoojilee).
+This was a collaborative project with [Peter Han](https://github.com/PeterHjHan), [Bassem Kaddour](https://github.com/bassemkaddour), and [Monica Lee](https://github.com/monicasoojilee).
 
 ## Final Product
 ![Major Features Walkthrough](https://github.com/bassemkaddour/resource-wall/blob/master/public/WallNOPOLY-demo.gif)
