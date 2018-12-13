@@ -1,14 +1,12 @@
-# Node Skeleton
+# WallNOPOLY
 
-## Project Setup
+An educational resource wall (Pinterest clone) with a Monopoly property card theme. All resources can be found through the topics dropdown or search query.
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+Registered/logged in users are able to create, like, rate, and comment on other users' posts. On users' pages, created and liked posts are saved for convenient referral.
+
+## Final Product
+![Major Features Walkthrough](https://github.com/bassemkaddour/resource-wall/blob/master/public/WallNOPOLY-demo.gif)
+
 
 ## Getting Started
 
@@ -25,5 +23,12 @@
 
 ## Dependencies
 
+- bcryptjs
+- body-parser
+- cookie-session
+- EJS
+- Express
 - Node 5.10.x or above
 - NPM 3.8.x or above
+- PostgreSQL
+- Knex
