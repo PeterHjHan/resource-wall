@@ -1,6 +1,8 @@
 # WallNOPOLY
 
-An educational resource wall (Pinterest clone) with a Monopoly property card theme. All resources can be found through the topics dropdown or search query.
+A collaborative resource wall (Pinterest clone) with a Monopoly property card theme.
+
+Any resource can be found through the topics dropdown or search query. Registered/logged in users are able to create, like, rate, and comment on other users' posts. On users' pages, created and liked posts are saved for convenient referral.
 
 Registered/logged in users are able to create, like, rate, and comment on other users' posts. On users' pages, created and liked posts are saved for convenient referral.
 
