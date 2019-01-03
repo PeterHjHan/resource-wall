@@ -126,7 +126,7 @@ function makeDataHelpers(knex) {
     deleteResource,
     updateExistingResource, 
     getLikedResourcesByUserId
-     };
+  };
 }
 
 module.exports = makeDataHelpers;
