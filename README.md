@@ -30,6 +30,3 @@ This was a collaborative project with [Peter Han](https://github.com/PeterHjHan)
 - bcrypt
 - knex
 - pg
-
-
-## Screenshots
